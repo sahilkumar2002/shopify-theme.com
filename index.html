@@ -19,18 +19,24 @@
   <style>
 
     /* =========================================================================
-       AOS BULLETPROOF FALLBACK & SAFE MODE SYSTEM
-       Guarantees sections never remain blank even if AOS is delayed or disabled
+       PERMANENT BULLETPROOF VISIBILITY & ZERO-BLANK-SPACE ARCHITECTURE
+       All content is 100% visible by default immediately upon page render.
+       No element ever defaults to opacity:0 or causes white blank gaps.
        ========================================================================= */
     html, body {
       overflow-x: clip !important;
+      background-color: var(--luxury-bg, #FAF8F5);
     }
 
     [id] {
       scroll-margin-top: calc(var(--header-height, 74px) + 20px);
     }
 
-    /* Fallback: Ensure content is visible if JS is disabled or AOS fails/times out */
+    /* Universal visibility guarantee: OVERRIDES external AOS default opacity:0 */
+    [data-aos],
+    [data-aos^=fade],
+    [data-aos^=zoom],
+    [data-aos^=slide],
     html.no-js [data-aos],
     html.aos-disabled [data-aos],
     html.aos-fallback-active [data-aos],
@@ -44,21 +50,72 @@
       pointer-events: auto !important;
     }
 
-    /* Accessibility: Always respect prefers-reduced-motion */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
+    /* Bulletproof Swiper Grid & Product Carousel Dimensions */
+    .luxury-products-swiper-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin-top: 1.5rem;
+    }
+    .productSwiper {
+      width: 100%;
+      overflow: hidden;
+      padding: 10px 4px 20px 4px;
+    }
+    .productSwiper .swiper-wrapper {
+      display: flex;
+      width: 100%;
+      box-sizing: border-box;
+      gap: 20px;
+    }
+    .productSwiper .swiper-slide {
+      flex: 0 0 calc((100% - 60px) / 4);
+      max-width: calc((100% - 60px) / 4);
+      width: calc((100% - 60px) / 4);
+      box-sizing: border-box;
+    }
+    @media (max-width: 1200px) {
+      .productSwiper .swiper-slide {
+        flex: 0 0 calc((100% - 40px) / 3);
+        max-width: calc((100% - 40px) / 3);
+        width: calc((100% - 40px) / 3);
       }
-      [data-aos] {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-        animation: none !important;
+    }
+    @media (max-width: 860px) {
+      .productSwiper .swiper-slide {
+        flex: 0 0 calc((100% - 20px) / 2);
+        max-width: calc((100% - 20px) / 2);
+        width: calc((100% - 20px) / 2);
+      }
+    }
+    @media (max-width: 540px) {
+      .productSwiper .swiper-slide {
+        flex: 0 0 85%;
+        max-width: 85%;
+        width: 85%;
       }
     }
 
+    /* Subpage Header & Sticky Nav Alignment */
+    body.luxury-subpage .preview-header-sticky-wrapper,
+    .subpage-header,
+    .preview-header-sticky-wrapper.subpage-header {
+      position: sticky !important;
+      top: 0 !important;
+      background: rgba(255, 255, 255, 0.98) !important;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05) !important;
+      border-bottom: 1px solid var(--luxury-border-light) !important;
+      z-index: 1000 !important;
+    }
+    .luxury-breadcrumbs {
+      background-color: var(--luxury-bg);
+      border-bottom: 1px solid var(--luxury-border-light);
+      padding: 0.85rem 0;
+      position: relative;
+      z-index: 10;
+    }
 
     /* =========================================================================
        1. GLOBAL DESIGN SYSTEM & EDITORIAL RESET
@@ -2300,6 +2357,140 @@
         padding: 1rem;
       }
     }
+  
+    /* =========================================================================
+       BESPOKE LOOM CUSTOMIZER & CURATORIAL TRUST STYLING
+       ========================================================================= */
+    .bespoke-customizer-grid {
+      display: grid !important;
+      grid-template-columns: 1.15fr 0.85fr !important;
+      gap: 3rem !important;
+      align-items: stretch !important;
+      margin-top: 2.5rem !important;
+    }
+    @media (max-width: 960px) {
+      .bespoke-customizer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+      }
+    }
+    .bespoke-config-card {
+      background: #FFFFFF !important;
+      border: 1px solid var(--luxury-border-light) !important;
+      border-radius: var(--luxury-radius-sm) !important;
+      padding: clamp(1.8rem, 3.5vw, 2.8rem) !important;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.03) !important;
+    }
+    .bespoke-tab-btn {
+      padding: 9px 16px !important;
+      background: #FFFFFF !important;
+      border: 1px solid var(--luxury-border-medium) !important;
+      font-family: var(--luxury-font-body) !important;
+      font-size: 0.78rem !important;
+      letter-spacing: 0.1em !important;
+      text-transform: uppercase !important;
+      cursor: pointer !important;
+      border-radius: 2px !important;
+      transition: all 0.25s ease !important;
+      color: var(--luxury-text) !important;
+      font-weight: 500 !important;
+    }
+    .bespoke-tab-btn.is-active,
+    .bespoke-tab-btn:hover {
+      background: var(--luxury-text) !important;
+      color: #FFFFFF !important;
+      border-color: var(--luxury-text) !important;
+    }
+    .bespoke-summary-card {
+      background: #181614 !important;
+      color: #FFFFFF !important;
+      border-radius: var(--luxury-radius-sm) !important;
+      padding: clamp(1.8rem, 3.5vw, 2.8rem) !important;
+      position: relative !important;
+      overflow: hidden !important;
+      border: 1px solid rgba(196, 154, 69, 0.3) !important;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.18) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+    }
+    .bespoke-summary-card::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -40%;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(circle, rgba(196, 154, 69, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .bespoke-metric-row {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      padding: 0.8rem 0 !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+      font-size: 0.92rem !important;
+    }
+    .bespoke-metric-label {
+      color: #A0988E !important;
+      letter-spacing: 0.05em !important;
+    }
+    .bespoke-metric-val {
+      font-family: var(--luxury-font-heading) !important;
+      font-size: 1.25rem !important;
+      color: #FBF9F5 !important;
+      font-weight: 500 !important;
+    }
+
+    /* Curatorial Trust Grid: 4 Horizontal Columns */
+    .curatorial-trust-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 2rem !important;
+      margin-top: 2.5rem !important;
+    }
+    @media (max-width: 1024px) {
+      .curatorial-trust-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+    @media (max-width: 580px) {
+      .curatorial-trust-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+    }
+    .curatorial-trust-card {
+      background: #FFFFFF !important;
+      border: 1px solid var(--luxury-border-light) !important;
+      border-radius: var(--luxury-radius-sm) !important;
+      padding: 2.2rem 1.8rem !important;
+      text-align: center !important;
+      transition: transform 0.3s var(--luxury-ease), box-shadow 0.3s var(--luxury-ease), border-color 0.3s !important;
+    }
+    .curatorial-trust-card:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.04) !important;
+      border-color: var(--luxury-gold) !important;
+    }
+    .curatorial-trust-icon {
+      width: 52px !important;
+      height: 52px !important;
+      border-radius: 50% !important;
+      background: var(--luxury-bg-alt) !important;
+      color: var(--luxury-accent) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin-bottom: 1.2rem !important;
+      transition: background 0.3s, color 0.3s !important;
+    }
+    .curatorial-trust-card:hover .curatorial-trust-icon {
+      background: var(--luxury-accent) !important;
+      color: #FFFFFF !important;
+    }
+
   </style>
 
   <!-- Safety Fallback: Guaranteed Visibility if JavaScript is blocked -->
@@ -3097,21 +3288,196 @@
   <!-- =========================================================================
        SECTION 9: CUSTOM RUG / BESPOKE PROMO BANNER
        ========================================================================= -->
-  <section id="custom-rug" class="luxury-custom-banner-section">
-    <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.45); z-index: 1;"></div>
-
-    <div class="luxury-container" style="position: relative; z-index: 2; width: 100%; display: flex; justify-content: center;">
-      <div class="luxury-custom-banner__card" data-aos="fade-up">
-        <span class="editorial-eyebrow">Bespoke Atelier Program</span>
-        <h2 class="editorial-heading" style="font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 1.2rem;">
-          Your Vision, <em>Custom Woven</em>
+  <!-- =========================================================================
+       SECTION 9: BESPOKE LOOM CUSTOMIZER & ARCHITECTURAL SIZING SUITE
+       Interactive luxury commissioning tool inspired by Jaipur Rugs
+       ========================================================================= -->
+  <section id="custom-rug" class="luxury-section-padding" style="background-color: var(--luxury-bg-alt); border-top: 1px solid var(--luxury-border-light); border-bottom: 1px solid var(--luxury-border-light);">
+    <div class="luxury-container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 3rem;" data-aos="fade-up">
+        <span class="editorial-eyebrow">The Bespoke Loom Commission</span>
+        <h2 class="editorial-heading" style="font-size: clamp(2.4rem, 4.2vw, 3.8rem); margin-bottom: 1.2rem;">
+          Architectural Sizing, <em>Ancestral Craft</em>
         </h2>
-        <p class="luxury-custom-banner__desc">
-          Commission an exclusive one-of-a-kind rug tailored to your architectural dimensions, yarn composition, and personalized palette. Hand-knotted specifically for your interior sanctuary.
+        <p class="editorial-subtext" style="margin: 0 auto; color: var(--luxury-text-muted);">
+          Every architectural space possesses distinct proportions. Customize your exact room placement, dimensions, and pure botanical fiber composition &mdash; hand-tied by master artisans on generational wooden looms in Rajasthan.
         </p>
-        <a href="#newsletter" class="luxury-btn luxury-btn--dark button-shine">
-          Consult Our Design Atelier
-        </a>
+      </div>
+
+      <div class="bespoke-customizer-grid">
+        <!-- Configuration Card (Left) -->
+        <div class="bespoke-config-card" data-aos="fade-right">
+          <div style="margin-bottom: 2rem;">
+            <label style="font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: var(--luxury-accent); display: block; margin-bottom: 0.85rem;">
+              1. Select Room Placement Archetype
+            </label>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;" id="bespokeRoomTabs">
+              <button type="button" class="bespoke-tab-btn is-active" onclick="selectBespokeRoom('living', this);">Living Room (9'×12')</button>
+              <button type="button" class="bespoke-tab-btn" onclick="selectBespokeRoom('dining', this);">Dining Salon (8'×10')</button>
+              <button type="button" class="bespoke-tab-btn" onclick="selectBespokeRoom('bedroom', this);">Master Sanctuary (10'×14')</button>
+              <button type="button" class="bespoke-tab-btn" onclick="selectBespokeRoom('runner', this);">Hallway Runner (3'×12')</button>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.6rem;">
+              <label style="font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: var(--luxury-text);">
+                2. Width Dimension: <span id="valWidth" style="color: var(--luxury-accent); font-family: var(--luxury-font-heading); font-size: 1.15rem;">9 ft</span>
+              </label>
+            </div>
+            <input type="range" id="inputWidth" min="2" max="16" step="0.5" value="9" style="width: 100%; accent-color: var(--luxury-accent); cursor: pointer;" oninput="updateBespokeCalc();">
+            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #8C847A; margin-top: 0.3rem;">
+              <span>Min: 2 ft</span>
+              <span>Standard: 8–9 ft</span>
+              <span>Max: 16 ft</span>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.6rem;">
+              <label style="font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: var(--luxury-text);">
+                3. Length Dimension: <span id="valLength" style="color: var(--luxury-accent); font-family: var(--luxury-font-heading); font-size: 1.15rem;">12 ft</span>
+              </label>
+            </div>
+            <input type="range" id="inputLength" min="3" max="24" step="0.5" value="12" style="width: 100%; accent-color: var(--luxury-accent); cursor: pointer;" oninput="updateBespokeCalc();">
+            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #8C847A; margin-top: 0.3rem;">
+              <span>Min: 3 ft</span>
+              <span>Standard: 10–12 ft</span>
+              <span>Max: 24 ft</span>
+            </div>
+          </div>
+
+          <div>
+            <label style="font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: var(--luxury-text); display: block; margin-bottom: 0.85rem;">
+              4. Fiber Blend & Weave Density
+            </label>
+            <select id="selectFiber" onchange="updateBespokeCalc();" style="width: 100%; padding: 0.9rem 1.1rem; border: 1px solid var(--luxury-border-medium); font-family: var(--luxury-font-body); font-size: 0.9rem; background: #FFFFFF; border-radius: 2px; color: var(--luxury-text); cursor: pointer;">
+              <option value="180">Pure Highland Ghazni Wool & Mulberry Silk (180 Knots/in² &mdash; Museum Grade)</option>
+              <option value="120">100% Hand-Spun New Zealand Wool (120 Knots/in² &mdash; Velvety Luster)</option>
+              <option value="80">Artisanal Dhurrie Flatweave (Earthen Textured Wool & Raw Linen)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Live Atelier Calculation Blueprint (Right) -->
+        <div class="bespoke-summary-card" data-aos="fade-left">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+            <span style="font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--luxury-gold); font-weight: 600;">
+              Loom Commission Blueprint
+            </span>
+            <span style="font-size: 0.72rem; background: rgba(196,154,69,0.18); color: var(--luxury-gold); padding: 3px 8px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.1em;">
+              Rajasthan Guild
+            </span>
+          </div>
+
+          <div class="bespoke-metric-row">
+            <span class="bespoke-metric-label">Calculated Surface Area</span>
+            <span class="bespoke-metric-val" id="metricArea">108 sq. ft. (10.0 m²)</span>
+          </div>
+
+          <div class="bespoke-metric-row">
+            <span class="bespoke-metric-label">Estimated Hand-Tied Knots</span>
+            <span class="bespoke-metric-val" id="metricKnots">2,799,360 Knots</span>
+          </div>
+
+          <div class="bespoke-metric-row">
+            <span class="bespoke-metric-label">Artisan Weavers Assigned</span>
+            <span class="bespoke-metric-val" id="metricWeavers">3 Master Weavers</span>
+          </div>
+
+          <div class="bespoke-metric-row">
+            <span class="bespoke-metric-label">Ancestral Loom Horizon</span>
+            <span class="bespoke-metric-val" id="metricTime">150–180 Days on Loom</span>
+          </div>
+
+          <div class="bespoke-metric-row" style="border-bottom: none; padding-top: 1.5rem; margin-top: 0.5rem;">
+            <div>
+              <div style="font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: #A0988E;">Commission Value</div>
+              <div style="font-size: 0.7rem; color: #766F66;">Includes white-glove global transport</div>
+            </div>
+            <span style="font-family: var(--luxury-font-heading); font-size: 2rem; color: #FBF9F5; font-weight: 600;" id="metricPrice">
+              $2,480.00
+            </span>
+          </div>
+
+          <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
+            <button type="button" class="luxury-btn button-shine" style="width: 100%; background: var(--luxury-gold); color: #161513; font-weight: 600; border: none; cursor: pointer;" onclick="orderSwatchKit();">
+              ✦ Order Tactile Yarn Swatch Portfolio ($35 Refundable)
+            </button>
+            <a href="https://wa.me/919782533367?text=Hello%20Indian%20Rug%20Store%20Concierge,%20I%20am%20interested%20in%20commissioning%20a%20bespoke%20rug." target="_blank" rel="noopener" class="luxury-btn" style="width: 100%; background: transparent; border: 1px solid rgba(255,255,255,0.25); color: #FFFFFF; font-weight: 500; text-align: center; text-decoration: none;">
+              Consult Atelier Stylist on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 10: CURATORIAL TRUST SEALS & ARTISAN EQUITY
+       Museum-grade commitments: 30-Day trial, provenance certificate, white-glove courier
+       ========================================================================= -->
+  <section class="luxury-section-padding" style="background-color: #FFFFFF; border-bottom: 1px solid var(--luxury-border-light);">
+    <div class="luxury-container">
+      <div style="text-align: center; max-width: 700px; margin: 0 auto 3rem;" data-aos="fade-up">
+        <span class="editorial-eyebrow">The Atelier Guarantee</span>
+        <h2 class="editorial-heading" style="font-size: clamp(2rem, 3.4vw, 3rem);">
+          Patron Privileges & <em>Ethical Provenance</em>
+        </h2>
+      </div>
+
+      <div class="curatorial-trust-grid">
+        <!-- Pillar 1 -->
+        <div class="curatorial-trust-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="curatorial-trust-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          </div>
+          <h3 style="font-family: var(--luxury-font-heading); font-size: 1.35rem; color: var(--luxury-text); margin-bottom: 0.6rem; font-weight: 500;">
+            30-Day Sanctuary Trial
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--luxury-text-muted); line-height: 1.7; margin: 0;">
+            Live with the hand-knotted piece in your own home. Observe its subtle color variations through dawn, afternoon sun, and twilight candles.
+          </p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="curatorial-trust-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="curatorial-trust-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          </div>
+          <h3 style="font-family: var(--luxury-font-heading); font-size: 1.35rem; color: var(--luxury-text); margin-bottom: 0.6rem; font-weight: 500;">
+            Certificate of Provenance
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--luxury-text-muted); line-height: 1.7; margin: 0;">
+            Every heirloom arrives with an embossed archival certificate recording knot count, origin hamlet, and signature stamp of the master artisan.
+          </p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="curatorial-trust-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="curatorial-trust-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          </div>
+          <h3 style="font-family: var(--luxury-font-heading); font-size: 1.35rem; color: var(--luxury-text); margin-bottom: 0.6rem; font-weight: 500;">
+            White-Glove Global Delivery
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--luxury-text-muted); line-height: 1.7; margin: 0;">
+            Complimentary, insured, and tracked delivery on all commissions over $500. Handled by museum-grade fine art couriers worldwide.
+          </p>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="curatorial-trust-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="curatorial-trust-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </div>
+          <h3 style="font-family: var(--luxury-font-heading); font-size: 1.35rem; color: var(--luxury-text); margin-bottom: 0.6rem; font-weight: 500;">
+            Direct Artisan Equity
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--luxury-text-muted); line-height: 1.7; margin: 0;">
+            Eliminating all middlemen ensures ethical living wages, literacy workshops, and health sanctuaries across 600+ rural Rajasthani hamlets.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -3733,7 +4099,79 @@
       };
 
       // BOOTSTRAP ALL COMPONENTS SAFELY
-      function bootTheme() {
+      
+    /* =========================================================================
+       BESPOKE LOOM CUSTOMIZER CALCULATION LOGIC
+       ========================================================================= */
+    window.selectBespokeRoom = function(room, btn) {
+      var tabs = document.querySelectorAll('#bespokeRoomTabs .bespoke-tab-btn');
+      tabs.forEach(function(b) {
+        b.classList.remove('is-active');
+      });
+      if (btn) btn.classList.add('is-active');
+
+      var wInput = document.getElementById('inputWidth');
+      var lInput = document.getElementById('inputLength');
+      if (room === 'living') {
+        if (wInput) wInput.value = 9;
+        if (lInput) lInput.value = 12;
+      } else if (room === 'dining') {
+        if (wInput) wInput.value = 8;
+        if (lInput) lInput.value = 10;
+      } else if (room === 'bedroom') {
+        if (wInput) wInput.value = 10;
+        if (lInput) lInput.value = 14;
+      } else if (room === 'runner') {
+        if (wInput) wInput.value = 3;
+        if (lInput) lInput.value = 12;
+      }
+      window.updateBespokeCalc();
+    };
+
+    window.updateBespokeCalc = function() {
+      var wInput = document.getElementById('inputWidth');
+      var lInput = document.getElementById('inputLength');
+      var sFiber = document.getElementById('selectFiber');
+      if (!wInput || !lInput) return;
+
+      var w = parseFloat(wInput.value);
+      var l = parseFloat(lInput.value);
+      var density = sFiber ? parseInt(sFiber.value, 10) : 180;
+
+      var vW = document.getElementById('valWidth');
+      var vL = document.getElementById('valLength');
+      if (vW) vW.textContent = w + ' ft';
+      if (vL) vL.textContent = l + ' ft';
+
+      var areaSqFt = Math.round(w * l);
+      var areaSqM = (areaSqFt * 0.0929).toFixed(1);
+      var totalKnots = Math.round(areaSqFt * 144 * density);
+      
+      var mArea = document.getElementById('metricArea');
+      var mKnots = document.getElementById('metricKnots');
+      var mWeavers = document.getElementById('metricWeavers');
+      var mTime = document.getElementById('metricTime');
+      var mPrice = document.getElementById('metricPrice');
+
+      if (mArea) mArea.textContent = areaSqFt + ' sq. ft. (' + areaSqM + ' m²)';
+      if (mKnots) mKnots.textContent = totalKnots.toLocaleString() + ' Knots';
+
+      var weavers = areaSqFt > 120 ? '4 Master Weavers' : (areaSqFt > 60 ? '3 Master Weavers' : '2 Master Weavers');
+      if (mWeavers) mWeavers.textContent = weavers;
+
+      var days = areaSqFt > 120 ? '180–240 Days on Loom' : (areaSqFt > 60 ? '120–160 Days on Loom' : '80–110 Days on Loom');
+      if (mTime) mTime.textContent = days;
+
+      var baseRate = density === 180 ? 23 : (density === 120 ? 17 : 11);
+      var price = Math.round(areaSqFt * baseRate);
+      if (mPrice) mPrice.textContent = '$' + price.toLocaleString() + '.00';
+    };
+
+    window.orderSwatchKit = function() {
+      window.quickAddDemo('Curated Tactile Yarn Swatch Portfolio (Refundable)', 35);
+    };
+
+    function bootTheme() {
         initBulletproofAOS();
         initSwiper();
         initHeaderScroll();

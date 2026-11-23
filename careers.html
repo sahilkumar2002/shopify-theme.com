@@ -19,18 +19,24 @@
   <style>
 
     /* =========================================================================
-       AOS BULLETPROOF FALLBACK & SAFE MODE SYSTEM
-       Guarantees sections never remain blank even if AOS is delayed or disabled
+       PERMANENT BULLETPROOF VISIBILITY & ZERO-BLANK-SPACE ARCHITECTURE
+       All content is 100% visible by default immediately upon page render.
+       No element ever defaults to opacity:0 or causes white blank gaps.
        ========================================================================= */
     html, body {
       overflow-x: clip !important;
+      background-color: var(--luxury-bg, #FAF8F5);
     }
 
     [id] {
       scroll-margin-top: calc(var(--header-height, 74px) + 20px);
     }
 
-    /* Fallback: Ensure content is visible if JS is disabled or AOS fails/times out */
+    /* Universal visibility guarantee: OVERRIDES external AOS default opacity:0 */
+    [data-aos],
+    [data-aos^=fade],
+    [data-aos^=zoom],
+    [data-aos^=slide],
     html.no-js [data-aos],
     html.aos-disabled [data-aos],
     html.aos-fallback-active [data-aos],
@@ -44,21 +50,26 @@
       pointer-events: auto !important;
     }
 
-    /* Accessibility: Always respect prefers-reduced-motion */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-      }
-      [data-aos] {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-        animation: none !important;
-      }
+    /* Subpage Header & Sticky Nav Alignment */
+    body.luxury-subpage .preview-header-sticky-wrapper,
+    .subpage-header,
+    .preview-header-sticky-wrapper.subpage-header {
+      position: sticky !important;
+      top: 0 !important;
+      background: rgba(255, 255, 255, 0.98) !important;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05) !important;
+      border-bottom: 1px solid var(--luxury-border-light) !important;
+      z-index: 1000 !important;
     }
-
+    .luxury-breadcrumbs {
+      background-color: var(--luxury-bg);
+      border-bottom: 1px solid var(--luxury-border-light);
+      padding: 0.85rem 0;
+      position: relative;
+      z-index: 10;
+    }
 
     /* =========================================================================
        1. GLOBAL DESIGN SYSTEM & EDITORIAL RESET
@@ -2625,7 +2636,7 @@
   </noscript>
 
 </head>
-<body class="editorial-body luxury-subpage">
+<body class="editorial-body luxury-subpage" class="luxury-subpage">
 
   <!-- =========================================================================
        SECTION 1: LUXURY ANNOUNCEMENT BAR (ROTATING MESSAGES, 4S FADE)
