@@ -1,0 +1,4017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Careers at the Atelier &mdash; Indian Rug Store (Jaipur Rugs Heritage)</title>
+
+  <!-- Google Fonts: Editorial Serif & Clean Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- AOS (Animate On Scroll) CSS v2.3.4 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+  <!-- Swiper v11 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <style>
+
+    /* =========================================================================
+       AOS BULLETPROOF FALLBACK & SAFE MODE SYSTEM
+       Guarantees sections never remain blank even if AOS is delayed or disabled
+       ========================================================================= */
+    html, body {
+      overflow-x: clip !important;
+    }
+
+    [id] {
+      scroll-margin-top: calc(var(--header-height, 74px) + 20px);
+    }
+
+    /* Fallback: Ensure content is visible if JS is disabled or AOS fails/times out */
+    html.no-js [data-aos],
+    html.aos-disabled [data-aos],
+    html.aos-fallback-active [data-aos],
+    html.aos-safe-mode [data-aos],
+    .safe-mode [data-aos],
+    [data-aos].force-visible,
+    [data-aos].aos-animate {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+
+    /* Accessibility: Always respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+      [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+
+    /* =========================================================================
+       1. GLOBAL DESIGN SYSTEM & EDITORIAL RESET
+       ========================================================================= */
+    :root {
+      --luxury-bg: #FBF9F5;
+      --luxury-bg-alt: #F4EFE6;
+      --luxury-card-bg: #FFFFFF;
+      --luxury-text: #1E1E1E;
+      --luxury-text-muted: #6E6862;
+      --luxury-accent: #9E583A; /* Terracotta copper */
+      --luxury-accent-hover: #7D4229;
+      --luxury-gold: #C29B4D;
+      --luxury-border-light: #EFEAE3;
+      --luxury-border-medium: #D9D2C7;
+      --luxury-font-heading: 'Cormorant Garamond', Georgia, serif;
+      --luxury-font-body: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+      --luxury-radius-sm: 2px;
+      --luxury-radius-md: 4px;
+      --luxury-ease: cubic-bezier(0.25, 1, 0.35, 1);
+      --luxury-ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+      --header-height: 74px;
+      --announcement-height: 38px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--luxury-bg);
+      color: var(--luxury-text);
+      font-family: var(--luxury-font-body);
+      overflow-x: clip;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a, a:link, a:visited, a:hover, a:active {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s var(--luxury-ease);
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .luxury-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(1.2rem, 3.5vw, 3rem);
+      width: 100%;
+    }
+
+    .luxury-section-padding {
+      padding: clamp(4rem, 7vw, 7.5rem) 0;
+    }
+
+    .luxury-section-padding--large {
+      padding: clamp(5.5rem, 9vw, 9.5rem) 0;
+    }
+
+    .editorial-eyebrow {
+      display: inline-block;
+      font-family: var(--luxury-font-body);
+      font-size: clamp(0.72rem, 1.1vw, 0.82rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--luxury-accent);
+      margin-bottom: 0.85rem;
+    }
+
+    .editorial-heading {
+      font-family: var(--luxury-font-heading);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--luxury-text);
+      margin: 0 0 1rem;
+    }
+
+    .editorial-heading em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .editorial-subtext {
+      font-family: var(--luxury-font-body);
+      font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+      color: var(--luxury-text-muted);
+      max-width: 680px;
+      line-height: 1.7;
+    }
+
+    /* Sliding Underline Animation */
+    .underline-slide {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none !important;
+    }
+
+    .underline-slide::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background-color: currentColor;
+      transition: width 0.35s var(--luxury-ease);
+    }
+
+    .underline-slide:hover::after {
+      width: 100%;
+    }
+
+    .hover-zoom-container {
+      overflow: hidden;
+    }
+
+    .hover-zoom-container img {
+      transition: transform 0.85s var(--luxury-ease);
+    }
+
+    .hover-zoom-container:hover img {
+      transform: scale(1.08);
+    }
+
+    .button-shine {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .button-shine::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: rotate(25deg);
+      transition: left 0.75s ease;
+      pointer-events: none;
+    }
+
+    .button-shine:hover::after {
+      left: 130%;
+    }
+
+    .luxury-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.1rem 2.8rem;
+      font-family: var(--luxury-font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none !important;
+      border-radius: var(--luxury-radius-sm);
+      transition: all 0.35s var(--luxury-ease);
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      min-width: 180px;
+    }
+
+    .luxury-btn--primary {
+      background-color: #FFFFFF;
+      color: #1A1A1A !important;
+      border-color: #FFFFFF;
+    }
+
+    .luxury-btn--primary:hover {
+      background-color: var(--luxury-accent);
+      border-color: var(--luxury-accent);
+      color: #FFFFFF !important;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .luxury-btn--outline {
+      background-color: transparent;
+      color: #FFFFFF !important;
+      border-color: rgba(255, 255, 255, 0.85);
+    }
+
+    .luxury-btn--outline:hover {
+      background-color: #FFFFFF;
+      color: #1A1A1A !important;
+      border-color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    .luxury-btn--dark {
+      background-color: var(--luxury-text);
+      color: #FFFFFF !important;
+      border-color: var(--luxury-text);
+    }
+
+    .luxury-btn--dark:hover {
+      background-color: var(--luxury-accent);
+      border-color: var(--luxury-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .luxury-btn--outline-dark {
+      background-color: transparent;
+      color: var(--luxury-text) !important;
+      border-color: var(--luxury-text);
+    }
+
+    .luxury-btn--outline-dark:hover {
+      background-color: var(--luxury-text);
+      color: #FFFFFF !important;
+      transform: translateY(-2px);
+    }
+
+    /* =========================================================================
+       SECTION 1: ANNOUNCEMENT BAR (TOP, SMOOTH ROTATOR)
+       ========================================================================= */
+    .luxury-announcement-bar {
+      background-color: #1A1918;
+      color: #FAF7F2;
+      height: var(--announcement-height);
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 1001;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .luxury-announcement-bar .page-width {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      width: 100%;
+    }
+
+    .luxury-announcement-bar__rotator {
+      flex: 1;
+      height: var(--announcement-height);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .luxury-announcement-bar__item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      white-space: nowrap;
+      text-align: center;
+      color: #FAF7F2 !important;
+    }
+
+    .luxury-announcement-bar__item.is-active {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .luxury-announcement-bar__arrow {
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .luxury-announcement-bar__item:hover .luxury-announcement-bar__arrow {
+      transform: translateX(4px);
+    }
+
+    /* =========================================================================
+       SECTION 2: HEADER (SMALL ATTRACTIVE TEXT, NON-WRAPPING, FUNCTIONAL ICONS)
+       ========================================================================= */
+    .preview-header-sticky-wrapper {
+      position: absolute;
+      top: var(--announcement-height);
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: transparent;
+      transition: background 0.4s var(--luxury-ease), box-shadow 0.4s var(--luxury-ease), border-color 0.4s var(--luxury-ease), transform 0.35s ease;
+    }
+
+    .preview-header-sticky-wrapper.is-scrolled {
+      position: fixed;
+      top: 0;
+      background: rgba(255, 255, 255, 0.98) !important;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid var(--luxury-border-light);
+    }
+
+    .preview-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 1.15rem 2.5rem;
+      transition: padding 0.3s ease;
+      gap: 1.5rem;
+      flex-wrap: nowrap !important;
+    }
+
+    .preview-header-sticky-wrapper.is-scrolled .preview-header {
+      padding: 0.85rem 2.5rem;
+    }
+
+    .preview-header-logo {
+      font-family: var(--luxury-font-heading);
+      font-size: clamp(1.25rem, 1.7vw, 1.65rem);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-decoration: none !important;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      white-space: nowrap !important;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+    }
+
+    .preview-header-sticky-wrapper.is-scrolled .preview-header-logo {
+      color: var(--luxury-text) !important;
+      text-shadow: none;
+    }
+
+    /* Small, Delicate, Attractive Navigation Links */
+    .preview-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(0.45rem, 0.95vw, 1.3rem);
+      list-style: none;
+      margin: 0 auto;
+      flex-wrap: nowrap !important;
+      flex-shrink: 0;
+    }
+
+    .preview-nav-item {
+      position: static;
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .preview-nav-link {
+      font-family: var(--luxury-font-body);
+      font-size: clamp(0.68rem, 0.74vw, 0.72rem) !important; /* ~11px - 11.5px: delicate editorial font size */
+      font-weight: 500 !important;
+      letter-spacing: 0.18em !important; /* Spacious luxury letter-spacing */
+      text-transform: uppercase !important;
+      white-space: nowrap !important; /* GUARANTEES NO WRAPPING TO 2 LINES */
+      word-break: keep-all !important;
+      text-decoration: none !important;
+      color: #FFFFFF;
+      padding: 0.65rem 0.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      position: relative;
+      transition: color 0.3s ease;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .preview-header-sticky-wrapper.is-scrolled .preview-nav-link {
+      color: var(--luxury-text) !important;
+      text-shadow: none;
+    }
+
+    .preview-nav-link:hover {
+      color: var(--luxury-gold) !important;
+    }
+
+    .preview-header-sticky-wrapper.is-scrolled .preview-nav-link:hover {
+      color: var(--luxury-accent) !important;
+    }
+
+    .preview-nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0.15rem;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background-color: currentColor;
+      transition: width 0.35s var(--luxury-ease);
+    }
+
+    .preview-nav-item:hover .preview-nav-link::after {
+      width: 100%;
+    }
+
+    /* Header Icons in Order: Search, Wishlist, Account, Cart */
+    .preview-header-icons {
+      flex-shrink: 0;
+      gap: clamp(0.55rem, 0.85vw, 1.2rem);
+      display: flex;
+      align-items: center;
+      gap: clamp(0.8rem, 1.3vw, 1.4rem);
+      flex-wrap: nowrap !important;
+      flex-shrink: 0;
+    }
+
+    .preview-header-icon {
+      color: #FFFFFF;
+      text-decoration: none !important;
+      position: relative;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.35rem;
+      background: transparent;
+      border: none;
+      transition: transform 0.25s ease, color 0.3s ease;
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+    }
+
+    .preview-header-sticky-wrapper.is-scrolled .preview-header-icon {
+      color: var(--luxury-text) !important;
+      filter: none;
+    }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease, transform 0.2s ease;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .preview-header-sticky-wrapper.is-scrolled .preview-header-icon {
+      color: var(--luxury-text) !important;
+    }
+
+    .preview-header-icon:hover {
+      transform: scale(1.12);
+      color: var(--luxury-accent) !important;
+    }
+
+    .preview-header-icon svg {
+      width: 21px;
+      height: 21px;
+      stroke-width: 1.8;
+      display: block;
+    }
+
+    .cart-count-bubble,
+    .wishlist-count-bubble {
+      position: absolute;
+      top: -3px;
+      right: -5px;
+      background-color: var(--luxury-accent);
+      color: #FFFFFF;
+      border-radius: 50%;
+      min-width: 18px;
+      height: 18px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+      line-height: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .badge-pop {
+      animation: badgePulse 0.4s var(--luxury-ease-snappy);
+    }
+
+    @keyframes badgePulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.35); }
+      100% { transform: scale(1); }
+    }
+
+    /* Account Profile Dropdown */
+    .luxury-account-wrapper {
+      position: relative;
+    }
+
+    .luxury-account-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 240px;
+      background: #FFFFFF;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+      border: 1px solid var(--luxury-border-light);
+      border-radius: 2px;
+      padding: 1.2rem;
+      margin-top: 0.8rem;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+      z-index: 1000;
+      text-align: left;
+    }
+
+    .luxury-account-wrapper:hover .luxury-account-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .luxury-account-dropdown__greeting {
+      font-family: var(--luxury-font-heading);
+      font-size: 1.15rem;
+      color: var(--luxury-text);
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--luxury-border-light);
+    }
+
+    .luxury-account-dropdown__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .luxury-account-dropdown__link {
+      font-size: 0.84rem;
+      color: var(--luxury-text-muted);
+      text-decoration: none !important;
+      display: block;
+      transition: color 0.2s;
+    }
+
+    .luxury-account-dropdown__link:hover {
+      color: var(--luxury-accent) !important;
+    }
+
+    /* Mega Menu Dropdown - Centered Horizontally across Header */
+    .preview-mega-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      width: min(94vw, 1320px);
+      max-width: 1320px;
+      background: #FFFFFF;
+      border-radius: var(--luxury-radius-sm);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12);
+      border: 1px solid var(--luxury-border-light);
+      padding: 3rem;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.35s var(--luxury-ease), transform 0.35s var(--luxury-ease), visibility 0.35s;
+      z-index: 1000;
+    }
+
+    /* Invisible hover bridge */
+    .preview-mega-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 0;
+      right: 0;
+      height: 20px;
+    }
+
+    .preview-nav-item:hover .preview-mega-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .luxury-mega-menu-wrapper {
+      display: grid;
+      grid-template-columns: 2.5fr 1fr;
+      gap: 3.5rem;
+      align-items: stretch;
+    }
+
+    .luxury-mega-menu__columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .luxury-mega-menu__column-title {
+      font-family: var(--luxury-font-heading);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--luxury-text);
+      display: block;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--luxury-border-light);
+    }
+
+    .luxury-mega-menu__links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .luxury-mega-menu__link {
+      font-size: 0.86rem;
+      color: var(--luxury-text-muted);
+      text-decoration: none !important;
+      transition: color 0.25s ease;
+    }
+
+    .luxury-mega-menu__link:hover {
+      color: var(--luxury-accent) !important;
+    }
+
+    .luxury-mega-menu__promo {
+      display: flex;
+      flex-direction: column;
+      background: var(--luxury-bg);
+      border-radius: var(--luxury-radius-sm);
+      overflow: hidden;
+      text-decoration: none !important;
+      border: 1px solid var(--luxury-border-light);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .luxury-mega-menu__promo:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .luxury-mega-menu__promo-image-box {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+    }
+
+    .luxury-mega-menu__promo-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .luxury-mega-menu__promo:hover .luxury-mega-menu__promo-image-box img {
+      transform: scale(1.06);
+    }
+
+    .luxury-mega-menu__promo-content {
+      padding: 1.4rem;
+    }
+
+    .luxury-mega-menu__promo-heading {
+      font-family: var(--luxury-font-heading);
+      font-size: 1.35rem;
+      color: var(--luxury-text);
+      margin-bottom: 0.4rem;
+    }
+
+    .luxury-mega-menu__promo-subtext {
+      font-size: 0.82rem;
+      color: var(--luxury-text-muted);
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    .luxury-mega-menu__promo-cta {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--luxury-accent);
+    }
+
+    /* =========================================================================
+       SECTION 2B: SLIDE-DOWN SEARCH BAR & SLIDE-IN DRAWERS
+       ========================================================================= */
+    .luxury-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 17, 16, 0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 1040;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s;
+    }
+
+    .luxury-drawer-overlay.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Search Slide-down Modal */
+    .luxury-search-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #FFFFFF;
+      z-index: 1050;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      transform: translateY(-100%);
+      transition: transform 0.38s var(--luxury-ease);
+      border-bottom: 1px solid var(--luxury-border-light);
+    }
+
+    .luxury-search-modal.is-active {
+      transform: translateY(0);
+    }
+
+    .luxury-search-modal__container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+      position: relative;
+    }
+
+    .luxury-search-modal__close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--luxury-text);
+      padding: 8px;
+    }
+
+    .luxury-search-modal__form {
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid var(--luxury-text);
+      padding-bottom: 0.6rem;
+    }
+
+    .luxury-search-modal__input {
+      width: 100%;
+      font-family: var(--luxury-font-heading);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      color: var(--luxury-text);
+      border: none;
+      outline: none;
+      background: transparent;
+    }
+
+    .luxury-search-modal__input::placeholder {
+      color: #BDB6AD;
+      font-style: italic;
+    }
+
+    /* Cart Drawer (Right) */
+    .luxury-cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 460px;
+      height: 100%;
+      background: #FFFFFF;
+      z-index: 1050;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(105%);
+      transition: transform 0.4s var(--luxury-ease);
+    }
+
+    .luxury-cart-drawer.is-active {
+      transform: translateX(0);
+    }
+
+    .luxury-cart-drawer__header {
+      padding: 1.5rem 1.8rem;
+      border-bottom: 1px solid var(--luxury-border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .luxury-cart-drawer__title {
+      font-family: var(--luxury-font-heading);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--luxury-text);
+    }
+
+    .luxury-shipping-bar {
+      background: #F8F5EE;
+      padding: 1rem 1.8rem;
+      border-bottom: 1px solid var(--luxury-border-light);
+    }
+
+    .luxury-shipping-bar__message {
+      font-size: 0.8rem;
+      color: var(--luxury-text);
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .luxury-shipping-bar__message strong {
+      color: var(--luxury-accent);
+    }
+
+    .luxury-shipping-bar__progress-track {
+      width: 100%;
+      height: 4px;
+      background: #E3DDD3;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .luxury-shipping-bar__progress-fill {
+      height: 100%;
+      background: var(--luxury-accent);
+      transition: width 0.5s ease;
+    }
+
+    .luxury-cart-drawer__items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .luxury-cart-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 1.2rem;
+      align-items: start;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--luxury-border-light);
+    }
+
+    .luxury-cart-item__media {
+      width: 80px;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: #F4EFE6;
+      border-radius: 2px;
+    }
+
+    .luxury-cart-item__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .luxury-cart-item__details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .luxury-cart-item__title {
+      font-family: var(--luxury-font-heading);
+      font-size: 1.15rem;
+      color: var(--luxury-text);
+      text-decoration: none !important;
+      line-height: 1.2;
+    }
+
+    .luxury-cart-item__price {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--luxury-text);
+    }
+
+    .luxury-cart-item__qty {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--luxury-border-light);
+      border-radius: 2px;
+      width: fit-content;
+      margin-top: 0.4rem;
+    }
+
+    .luxury-cart-item__qty-btn {
+      background: none;
+      border: none;
+      width: 26px;
+      height: 26px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .luxury-cart-item__qty-input {
+      width: 32px;
+      text-align: center;
+      border: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: transparent;
+      outline: none;
+    }
+
+    .luxury-cart-item__remove {
+      background: none;
+      border: none;
+      color: #9C948B;
+      cursor: pointer;
+      padding: 4px;
+      transition: color 0.2s;
+    }
+
+    .luxury-cart-item__remove:hover {
+      color: #C44D44;
+    }
+
+    .luxury-cart-drawer__footer {
+      padding: 1.5rem 1.8rem;
+      border-top: 1px solid var(--luxury-border-light);
+      background: #FAF7F2;
+    }
+
+    .luxury-cart-drawer__subtotal-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+    }
+
+    .luxury-cart-drawer__subtotal-amount {
+      font-family: var(--luxury-font-heading);
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .luxury-cart-drawer__checkout-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      background: var(--luxury-text);
+      color: #FFFFFF !important;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 1.05rem;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      margin-bottom: 0.6rem;
+      transition: background 0.3s;
+    }
+
+    .luxury-cart-drawer__checkout-btn:hover {
+      background: var(--luxury-accent);
+    }
+
+    /* Wishlist Drawer (Right) */
+    .luxury-wishlist-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 460px;
+      height: 100%;
+      background: #FFFFFF;
+      z-index: 1050;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(105%);
+      transition: transform 0.4s var(--luxury-ease);
+    }
+
+    .luxury-wishlist-drawer.is-active {
+      transform: translateX(0);
+    }
+
+    /* =========================================================================
+       SECTION 3: LUXURY HERO (KEN BURNS ZOOM, SPACING, GRADIENT OVERLAY)
+       ========================================================================= */
+    #hero {
+      position: relative;
+      width: 100%;
+      min-height: 96vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #1A1918;
+      padding-top: calc(var(--announcement-height) + 50px);
+      padding-bottom: 6.5rem;
+    }
+
+    .luxury-hero__media-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .luxury-hero__media-layer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: kenBurnsSlow 24s infinite alternate ease-in-out;
+    }
+
+    @keyframes kenBurnsSlow {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+
+    .luxury-hero__gradient-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(15, 14, 13, 0.45) 0%,
+        rgba(18, 17, 16, 0.72) 100%
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .luxury-hero__content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    .luxury-hero__eyebrow {
+      display: inline-block;
+      font-family: var(--luxury-font-body);
+      font-size: clamp(0.78rem, 1.2vw, 0.9rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: #EADBCC;
+      margin-bottom: 1.3rem;
+    }
+
+    .luxury-hero__heading {
+      font-family: var(--luxury-font-heading);
+      font-size: clamp(2.8rem, 6.8vw, 5.6rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: #FFFFFF;
+      margin: 0 0 1.6rem;
+    }
+
+    .luxury-hero__heading em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .luxury-hero__subtext {
+      font-family: var(--luxury-font-body);
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 680px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    .luxury-hero__button-group {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .luxury-hero__scroll-down {
+      position: absolute;
+      bottom: 1.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none !important;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .luxury-hero__scroll-down:hover {
+      color: #FFFFFF;
+    }
+
+    .scroll-down-arrow-bounce {
+      animation: bounceDown 2s infinite;
+    }
+
+    @keyframes bounceDown {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(6px); }
+      60% { transform: translateY(3px); }
+    }
+
+    /* =========================================================================
+       SECTION 4: SHOP BY CATEGORY (4:5 RATIO, HOVER ZOOM, ARROW SLIDE)
+       ========================================================================= */
+    .luxury-categories__header {
+      text-align: center;
+      margin-bottom: 3.8rem;
+    }
+
+    .luxury-categories__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .luxury-category-card,
+    .luxury-category-card:link,
+    .luxury-category-card:visited,
+    .luxury-category-card:hover,
+    .luxury-category-card:active {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none !important;
+      color: inherit !important;
+    }
+
+    .luxury-category-card *,
+    .luxury-category-card *:link,
+    .luxury-category-card *:visited {
+      text-decoration: none !important;
+    }
+
+    .luxury-category-card__media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background-color: #EBE5DE;
+      border-radius: var(--luxury-radius-sm);
+    }
+
+    .luxury-category-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.85s var(--luxury-ease);
+    }
+
+    .luxury-category-card:hover .luxury-category-card__media img {
+      transform: scale(1.08);
+    }
+
+    .luxury-category-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 55%,
+        rgba(0, 0, 0, 0.45) 100%
+      );
+      opacity: 0.7;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .luxury-category-card:hover .luxury-category-card__overlay {
+      opacity: 0.9;
+    }
+
+    .luxury-category-card__content {
+      padding: 1.25rem 0.2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .luxury-category-card__title,
+    .luxury-category-card:visited .luxury-category-card__title {
+      font-family: var(--luxury-font-heading);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--luxury-text) !important;
+      margin: 0 0 0.3rem;
+      line-height: 1.2;
+      text-decoration: none !important;
+      transition: color 0.3s ease;
+    }
+
+    .luxury-category-card:hover .luxury-category-card__title {
+      color: var(--luxury-accent) !important;
+    }
+
+    .luxury-category-card__subtitle,
+    .luxury-category-card:visited .luxury-category-card__subtitle {
+      font-family: var(--luxury-font-body);
+      font-size: 0.82rem;
+      color: var(--luxury-text-muted) !important;
+      letter-spacing: 0.04em;
+      text-decoration: none !important;
+    }
+
+    .luxury-category-card__explore,
+    .luxury-category-card:visited .luxury-category-card__explore {
+      font-family: var(--luxury-font-body);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--luxury-accent) !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+      margin-top: 0.35rem;
+      text-decoration: none !important;
+      transition: transform 0.3s var(--luxury-ease);
+    }
+
+    .luxury-category-card:hover .luxury-category-card__explore {
+      transform: translateX(4px);
+    }
+
+    /* =========================================================================
+       SECTION 5: FEATURED PRODUCTS CAROUSEL (SWIPER, QUICK ADD, WISHLIST POP)
+       ========================================================================= */
+    .luxury-products__header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .luxury-products-swiper-container {
+      position: relative;
+      padding: 0 10px;
+    }
+
+    .luxury-product-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none !important;
+      color: inherit;
+      background: #FFFFFF;
+      border-radius: var(--luxury-radius-sm);
+    }
+
+    .luxury-product-card__media-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background-color: #F5F1EB;
+      border-radius: var(--luxury-radius-sm);
+    }
+
+    .luxury-product-card__image-primary,
+    .luxury-product-card__image-secondary {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.6s var(--luxury-ease), transform 0.85s var(--luxury-ease);
+    }
+
+    .luxury-product-card__image-secondary {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+    }
+
+    .luxury-product-card:hover .luxury-product-card__image-secondary {
+      opacity: 1;
+    }
+
+    .luxury-product-card:hover .luxury-product-card__image-primary {
+      transform: scale(1.06);
+    }
+
+    .luxury-product-card__badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 3;
+      background-color: var(--luxury-text);
+      color: #FFFFFF;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: 1px;
+    }
+
+    .luxury-product-card__badge--bestseller {
+      background-color: var(--luxury-accent);
+    }
+
+    .wishlist-toggle-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 3;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--luxury-text);
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .wishlist-toggle-btn:hover {
+      transform: scale(1.12);
+      background: #FFFFFF;
+    }
+
+    .wishlist-toggle-btn.is-saved svg {
+      fill: #C44D44;
+      stroke: #C44D44;
+    }
+
+    .wishlist-toggle-btn svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .luxury-product-card__quick-add {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px;
+      z-index: 3;
+      transform: translateY(105%);
+      transition: transform 0.35s var(--luxury-ease);
+    }
+
+    .luxury-product-card:hover .luxury-product-card__quick-add {
+      transform: translateY(0);
+    }
+
+    .luxury-product-card__quick-add-btn {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--luxury-text);
+      color: var(--luxury-text);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 11px;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .luxury-product-card__quick-add-btn:hover {
+      background: var(--luxury-text);
+      color: #FFFFFF;
+    }
+
+    .luxury-product-card__info {
+      padding: 1.1rem 0.2rem 0.5rem;
+    }
+
+    .luxury-product-card__material {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--luxury-accent);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .luxury-product-card__title {
+      margin: 0 0 0.4rem;
+    }
+
+    .luxury-product-card__title a {
+      font-family: var(--luxury-font-heading);
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--luxury-text);
+      text-decoration: none !important;
+      line-height: 1.25;
+      transition: color 0.25s;
+    }
+
+    .luxury-product-card__title a:hover {
+      color: var(--luxury-accent);
+    }
+
+    .luxury-product-card__price-wrap {
+      display: flex;
+      gap: 0.65rem;
+      align-items: baseline;
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--luxury-text);
+    }
+
+    .luxury-product-card__price-compare {
+      text-decoration: line-through;
+      color: #9E968F;
+      font-size: 0.88rem;
+    }
+
+    .luxury-products__nav-arrow {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1px solid var(--luxury-border-medium);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.25s ease;
+      color: var(--luxury-text);
+    }
+
+    .luxury-products__nav-arrow:hover {
+      background: var(--luxury-text);
+      color: #FFFFFF;
+      border-color: var(--luxury-text);
+    }
+
+    .luxury-products__nav-arrow--prev {
+      left: -22px;
+    }
+
+    .luxury-products__nav-arrow--next {
+      right: -22px;
+    }
+
+    /* =========================================================================
+       SECTION 6: SHOP BY ROOM (MASONRY TILES) & COLOR SWATCHES
+       ========================================================================= */
+    .luxury-room-color__header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .luxury-room-tiles {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 240px;
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .luxury-room-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--luxury-radius-sm);
+      text-decoration: none !important;
+      color: #FFFFFF;
+      display: block;
+      background: #E8E2D9;
+    }
+
+    .luxury-room-tile--large {
+      grid-column: span 7;
+      grid-row: span 2;
+    }
+
+    .luxury-room-tile--medium {
+      grid-column: span 5;
+      grid-row: span 2;
+    }
+
+    .luxury-room-tile--small {
+      grid-column: span 4;
+      grid-row: span 1;
+    }
+
+    .luxury-room-tile__bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.85s var(--luxury-ease);
+    }
+
+    .luxury-room-tile:hover .luxury-room-tile__bg {
+      transform: scale(1.08);
+    }
+
+    .luxury-room-tile__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.05) 30%,
+        rgba(18, 17, 16, 0.72) 100%
+      );
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .luxury-room-tile__content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2.2rem;
+      z-index: 2;
+    }
+
+    .luxury-room-tile__title {
+      font-family: var(--luxury-font-heading);
+      font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+      color: #FFFFFF !important;
+      line-height: 1.15;
+    }
+
+    .luxury-room-tile__cta {
+      font-family: var(--luxury-font-body);
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #EADBCC;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .luxury-color-swatches-grid {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .luxury-color-swatch-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none !important;
+      color: var(--luxury-text);
+      transition: transform 0.25s ease;
+    }
+
+    .luxury-color-swatch-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .luxury-color-swatch-circle {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      border: 3px solid #FFFFFF;
+      transition: transform 0.25s var(--luxury-ease), box-shadow 0.25s, border-color 0.25s;
+    }
+
+    .luxury-color-swatch-item:hover .luxury-color-swatch-circle {
+      transform: scale(1.15);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+      border-color: var(--luxury-accent);
+    }
+
+    .luxury-color-swatch-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--luxury-text);
+    }
+
+    /* =========================================================================
+       SECTION 7: BRAND STORY (50/50 SPLIT, DECORATIVE OFFSET FRAME)
+       ========================================================================= */
+    .luxury-brand-story__wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 6.5rem);
+      align-items: center;
+    }
+
+    .luxury-brand-story__image-container {
+      position: relative;
+      padding: 1.5rem;
+    }
+
+    .luxury-brand-story__offset-frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 3rem;
+      bottom: 3rem;
+      border: 1.5px solid var(--luxury-border-medium);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .luxury-brand-story__image-box {
+      position: relative;
+      z-index: 2;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+      border-radius: var(--luxury-radius-sm);
+    }
+
+    .luxury-brand-story__image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .luxury-brand-story__content {
+      padding: 1rem 0;
+    }
+
+    .luxury-brand-story__paragraph {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #55504B;
+      margin-bottom: 1.4rem;
+    }
+
+    .luxury-brand-story__cta-wrap {
+      margin-top: 2rem;
+    }
+
+    .luxury-brand-story__link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--luxury-text);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .luxury-brand-story__link-arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .luxury-brand-story__link:hover .luxury-brand-story__link-arrow {
+      transform: translateX(6px);
+    }
+
+    /* =========================================================================
+       SECTION 8: ARTISAN CRAFTSMANSHIP (VIGNETTE BG, LIVE COUNTERS, 3 STEPS)
+       ========================================================================= */
+    .luxury-craftsmanship-section {
+      position: relative;
+      background-color: #1A1918;
+      color: #FFFFFF;
+      overflow: hidden;
+    }
+
+    .luxury-craftsmanship__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.24;
+      pointer-events: none;
+    }
+
+    .luxury-craftsmanship__overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(26,25,24,0.65) 0%, #1A1918 100%);
+      pointer-events: none;
+    }
+
+    .luxury-craftsmanship__container {
+      position: relative;
+      z-index: 3;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      padding: clamp(5rem, 8vw, 8rem) clamp(1.5rem, 4vw, 3rem);
+    }
+
+    .luxury-craftsmanship__quote-box {
+      margin: 2.5rem auto 4.5rem;
+      max-width: 880px;
+    }
+
+    .luxury-craftsmanship__quote-mark {
+      font-family: var(--luxury-font-heading);
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--luxury-gold);
+      margin-bottom: -1.5rem;
+    }
+
+    .luxury-craftsmanship__quote-text {
+      font-family: var(--luxury-font-heading);
+      font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.35;
+      color: #FAF7F2;
+      margin-bottom: 1.8rem;
+    }
+
+    .luxury-craftsmanship__artisan-author {
+      font-family: var(--luxury-font-body);
+      font-size: 0.92rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--luxury-gold);
+      font-weight: 600;
+    }
+
+    .luxury-craftsmanship__artisan-author span {
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 400;
+    }
+
+    .luxury-craftsmanship__counters {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin: 4rem 0 5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 3rem 0;
+    }
+
+    .luxury-counter-number {
+      font-family: var(--luxury-font-heading);
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      color: #FFFFFF;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .luxury-counter-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .luxury-craft-process {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      text-align: left;
+    }
+
+    .luxury-process-step {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 2.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--luxury-radius-sm);
+    }
+
+    .luxury-process-step__number {
+      font-family: var(--luxury-font-heading);
+      font-size: 2.2rem;
+      color: var(--luxury-gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .luxury-process-step__title {
+      font-family: var(--luxury-font-heading);
+      font-size: 1.4rem;
+      color: #FFFFFF;
+      margin-bottom: 0.8rem;
+    }
+
+    .luxury-process-step__desc {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.7;
+    }
+
+    /* =========================================================================
+       SECTION 9: CUSTOM RUG / BESPOKE PROMO BANNER (PARALLAX + SHINE HOVER)
+       ========================================================================= */
+    .luxury-custom-banner-section {
+      background-image: url('https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=2200&q=80');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      padding: clamp(6rem, 10vw, 10rem) 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .luxury-custom-banner__card {
+      background: #FFFFFF;
+      padding: clamp(2.5rem, 5vw, 4.5rem);
+      max-width: 680px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+      border-radius: var(--luxury-radius-sm);
+    }
+
+    .luxury-custom-banner__desc {
+      font-size: 1.02rem;
+      color: var(--luxury-text-muted);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    /* =========================================================================
+       SECTION 10: TESTIMONIALS & PRESS LOGO MARQUEE
+       ========================================================================= */
+    .luxury-press-section {
+      margin-top: 5rem;
+      padding-top: 4rem;
+      border-top: 1px solid var(--luxury-border-light);
+    }
+
+    .luxury-press-section__title {
+      font-family: var(--luxury-font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--luxury-text-muted);
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .luxury-marquee {
+      display: flex;
+      overflow: hidden;
+      user-select: none;
+      gap: 3rem;
+      mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+    }
+
+    .luxury-marquee__track {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 4rem;
+      min-width: 100%;
+      animation: marqueeScroll 28s linear infinite;
+    }
+
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-100%); }
+    }
+
+    .luxury-press-marquee-item {
+      font-family: var(--luxury-font-heading);
+      font-size: 1.6rem;
+      letter-spacing: 0.1em;
+      color: #9C948B;
+      filter: grayscale(100%);
+      transition: color 0.3s ease, filter 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .luxury-press-marquee-item:hover {
+      color: var(--luxury-text);
+      filter: grayscale(0%);
+    }
+
+    /* =========================================================================
+       SECTION 11: INSTAGRAM LIFESTYLE GALLERY (6 COLUMNS, 1:1, HOVER OVERLAY)
+       ========================================================================= */
+    .luxury-instagram__header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .luxury-instagram__handle {
+      font-family: var(--luxury-font-body);
+      font-size: 0.88rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--luxury-accent);
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+
+    .luxury-instagram__grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.2rem;
+    }
+
+    .luxury-instagram-item {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: var(--luxury-radius-sm);
+      background-color: #EFEAE3;
+      cursor: pointer;
+    }
+
+    .luxury-instagram-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.85s var(--luxury-ease);
+    }
+
+    .luxury-instagram-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .luxury-instagram-item__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 30, 30, 0.45);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      color: #FFFFFF;
+    }
+
+    .luxury-instagram-item:hover .luxury-instagram-item__overlay {
+      opacity: 1;
+    }
+
+    .luxury-instagram-item__icon {
+      width: 26px;
+      height: 26px;
+      fill: #FFFFFF;
+    }
+
+    .luxury-instagram-item__tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================================
+       SECTION 12: SPLIT NEWSLETTER & FOOTER
+       ========================================================================= */
+    .luxury-newsletter-card {
+      background: #FFFFFF;
+      border-radius: var(--luxury-radius-sm);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--luxury-border-light);
+    }
+
+    .luxury-newsletter__media-col {
+      min-height: 400px;
+    }
+
+    .luxury-newsletter__media-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .luxury-newsletter__content-col {
+      padding: clamp(2.5rem, 5vw, 4.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .luxury-newsletter__subtext {
+      font-size: 0.98rem;
+      color: var(--luxury-text-muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .luxury-newsletter-form__input-group {
+      display: flex;
+      width: 100%;
+      border: 1.5px solid var(--luxury-border-medium);
+      border-radius: var(--luxury-radius-sm);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .luxury-newsletter-form__input-group:focus-within {
+      border-color: var(--luxury-text);
+    }
+
+    .luxury-newsletter-form__input {
+      flex: 1;
+      padding: 1.1rem 1.4rem;
+      border: none;
+      outline: none;
+      font-family: var(--luxury-font-body);
+      font-size: 0.92rem;
+      color: var(--luxury-text);
+      background: transparent;
+    }
+
+    .luxury-newsletter-form__btn {
+      background: var(--luxury-text);
+      color: #FFFFFF;
+      border: none;
+      padding: 0 2.2rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .luxury-newsletter-form__btn:hover {
+      background: var(--luxury-accent);
+    }
+
+    .luxury-newsletter-success {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      color: #2F6F4E;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .luxury-newsletter-success svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer {
+      background-color: #1A1918;
+      color: #FAF7F2;
+      padding: 5.5rem 0 2.5rem;
+    }
+
+    .footer-block__heading {
+      font-family: var(--luxury-font-heading);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #FFFFFF;
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-block__details-content {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .footer-block__details-content a {
+      font-size: 0.88rem;
+      color: rgba(250, 247, 242, 0.72);
+      text-decoration: none !important;
+      transition: color 0.25s;
+    }
+
+    .footer-block__details-content a:hover {
+      color: #FFFFFF !important;
+    }
+
+    .luxury-back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      background: #FFFFFF;
+      color: var(--luxury-text);
+      border: 1px solid var(--luxury-border-medium);
+      border-radius: 50%;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity 0.3s, transform 0.3s, visibility 0.3s, background 0.25s, color 0.25s;
+    }
+
+    .luxury-back-to-top.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .luxury-back-to-top:hover {
+      background: var(--luxury-text);
+      color: #FFFFFF;
+    }
+
+    /* =========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================= */
+    @media screen and (max-width: 1200px) {
+      .luxury-categories__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.8rem;
+      }
+      .luxury-instagram__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 990px) {
+      .preview-nav { display: none; }
+      .preview-header { padding: 1rem 1.5rem; }
+      .small-hide { display: none !important; }
+      .luxury-brand-story__wrapper {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+      .luxury-craftsmanship__counters {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .luxury-craft-process {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .luxury-newsletter-card {
+        grid-template-columns: 1fr;
+      }
+      .luxury-newsletter__media-col {
+        min-height: 260px;
+      }
+      .luxury-room-tiles {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 280px;
+      }
+      .luxury-room-tile--large,
+      .luxury-room-tile--medium,
+      .luxury-room-tile--small {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .luxury-categories__grid {
+        grid-template-columns: 1fr;
+      }
+      .luxury-hero__button-group {
+        flex-direction: column;
+        width: 100%;
+      }
+      .luxury-hero__button-group .luxury-btn {
+        width: 100%;
+      }
+      .luxury-instagram__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .luxury-newsletter-form__input-group {
+        flex-direction: column;
+      }
+      .luxury-newsletter-form__btn {
+        padding: 1rem;
+      }
+    }
+  
+    /* Careers Page Specific Luxury Styling */
+    .careers-filter-bar {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 2.5rem 0 3.5rem;
+    }
+    .careers-filter-btn {
+      background: #FFFFFF;
+      border: 1px solid var(--luxury-border-medium);
+      color: #5C554E;
+      padding: 0.65rem 1.4rem;
+      border-radius: 2px;
+      font-family: var(--luxury-font-body);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .careers-filter-btn:hover {
+      border-color: var(--luxury-accent);
+      color: var(--luxury-accent);
+    }
+    .careers-filter-btn.is-active {
+      background: #1E1E1E;
+      color: #FFFFFF;
+      border-color: #1E1E1E;
+    }
+    .careers-job-card {
+      background: #FFFFFF;
+      border: 1px solid var(--luxury-border-light);
+      border-radius: 2px;
+      padding: clamp(1.8rem, 3.5vw, 2.5rem);
+      margin-bottom: 1.8rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      transition: transform 0.3s var(--luxury-ease), box-shadow 0.3s var(--luxury-ease), border-color 0.3s ease;
+    }
+    .careers-job-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.06);
+      border-color: var(--luxury-border-medium);
+    }
+    .careers-job-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+    .careers-job-card__title {
+      font-family: var(--luxury-font-heading);
+      font-size: clamp(1.5rem, 2.2vw, 2rem);
+      color: #1E1E1E;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+    .careers-job-card__meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--luxury-text-muted);
+    }
+    .careers-job-card__badge {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border-radius: 2px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: var(--luxury-bg-alt);
+      color: var(--luxury-accent);
+    }
+    .careers-job-card__desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #5C554E;
+      margin-bottom: 1.5rem;
+    }
+    .careers-job-card__details {
+      display: none;
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+      border-top: 1px dashed var(--luxury-border-medium);
+    }
+    .careers-job-card__details.is-open {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+    .careers-job-card__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--luxury-border-light);
+    }
+    .careers-perk-card {
+      background: #FFFFFF;
+      border: 1px solid var(--luxury-border-light);
+      padding: clamp(2rem, 3.5vw, 2.8rem);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .careers-perk-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.05);
+      border-color: var(--luxury-accent);
+    }
+    .careers-perk-card__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--luxury-bg-alt);
+      color: var(--luxury-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.4rem;
+    }
+
+  </style>
+
+  <!-- Safety Fallback: Guaranteed Visibility if JavaScript is blocked -->
+  <noscript>
+    <style>
+
+    /* =========================================================================
+       AOS BULLETPROOF FALLBACK & SAFE MODE SYSTEM
+       Guarantees sections never remain blank even if AOS is delayed or disabled
+       ========================================================================= */
+    html, body {
+      overflow-x: clip !important;
+    }
+
+    [id] {
+      scroll-margin-top: calc(var(--header-height, 74px) + 20px);
+    }
+
+    /* Fallback: Ensure content is visible if JS is disabled or AOS fails/times out */
+    html.no-js [data-aos],
+    html.aos-disabled [data-aos],
+    html.aos-fallback-active [data-aos],
+    html.aos-safe-mode [data-aos],
+    .safe-mode [data-aos],
+    [data-aos].force-visible,
+    [data-aos].aos-animate {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+
+    /* Accessibility: Always respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+      [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+
+      [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+      }
+    
+    /* Careers Page Specific Luxury Styling */
+    .careers-filter-bar {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 2.5rem 0 3.5rem;
+    }
+    .careers-filter-btn {
+      background: #FFFFFF;
+      border: 1px solid var(--luxury-border-medium);
+      color: #5C554E;
+      padding: 0.65rem 1.4rem;
+      border-radius: 2px;
+      font-family: var(--luxury-font-body);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .careers-filter-btn:hover {
+      border-color: var(--luxury-accent);
+      color: var(--luxury-accent);
+    }
+    .careers-filter-btn.is-active {
+      background: #1E1E1E;
+      color: #FFFFFF;
+      border-color: #1E1E1E;
+    }
+    .careers-job-card {
+      background: #FFFFFF;
+      border: 1px solid var(--luxury-border-light);
+      border-radius: 2px;
+      padding: clamp(1.8rem, 3.5vw, 2.5rem);
+      margin-bottom: 1.8rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      transition: transform 0.3s var(--luxury-ease), box-shadow 0.3s var(--luxury-ease), border-color 0.3s ease;
+    }
+    .careers-job-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.06);
+      border-color: var(--luxury-border-medium);
+    }
+    .careers-job-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+    .careers-job-card__title {
+      font-family: var(--luxury-font-heading);
+      font-size: clamp(1.5rem, 2.2vw, 2rem);
+      color: #1E1E1E;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+    .careers-job-card__meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--luxury-text-muted);
+    }
+    .careers-job-card__badge {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border-radius: 2px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: var(--luxury-bg-alt);
+      color: var(--luxury-accent);
+    }
+    .careers-job-card__desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #5C554E;
+      margin-bottom: 1.5rem;
+    }
+    .careers-job-card__details {
+      display: none;
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+      border-top: 1px dashed var(--luxury-border-medium);
+    }
+    .careers-job-card__details.is-open {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+    .careers-job-card__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--luxury-border-light);
+    }
+    .careers-perk-card {
+      background: #FFFFFF;
+      border: 1px solid var(--luxury-border-light);
+      padding: clamp(2rem, 3.5vw, 2.8rem);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .careers-perk-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.05);
+      border-color: var(--luxury-accent);
+    }
+    .careers-perk-card__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--luxury-bg-alt);
+      color: var(--luxury-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.4rem;
+    }
+
+  </style>
+  </noscript>
+
+</head>
+<body class="editorial-body luxury-subpage">
+
+  <!-- =========================================================================
+       SECTION 1: LUXURY ANNOUNCEMENT BAR (ROTATING MESSAGES, 4S FADE)
+       ========================================================================= -->
+  <div class="luxury-announcement-bar" id="AnnouncementBar">
+    <div class="page-width">
+      <div class="small-hide" style="opacity: 0.75;">
+        Artisanal Loom Heritage Since 1990
+      </div>
+
+      <div class="luxury-announcement-bar__rotator" id="AnnouncementRotator">
+        <div class="luxury-announcement-bar__item is-active">
+          <span>Complimentary White-Glove Worldwide Delivery on Orders Over $500</span>
+          <span class="luxury-announcement-bar__arrow">&rarr;</span>
+        </div>
+        <div class="luxury-announcement-bar__item">
+          <span>The Autumn Bespoke Collection: Hand-Spun Wool & Natural Indigo</span>
+          <span class="luxury-announcement-bar__arrow">&rarr;</span>
+        </div>
+        <div class="luxury-announcement-bar__item">
+          <span>Receive a 30-Day In-Home Sanctuary Trial on All Heirloom Creations</span>
+          <span class="luxury-announcement-bar__arrow">&rarr;</span>
+        </div>
+      </div>
+
+      <div class="small-hide" style="display: flex; gap: 1.2rem; opacity: 0.85;">
+        <span>USD ($)</span>
+        <span>EN</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SECTION 2: HEADER (SOLID EDITORIAL WHITE HEADER FOR CAREERS)
+       ========================================================================= -->
+  <header class="preview-header-sticky-wrapper is-scrolled" id="MainHeaderWrapper" style="position: sticky; top: 0; background: #FFFFFF !important; border-bottom: 1px solid var(--luxury-border-light); box-shadow: 0 4px 20px rgba(0,0,0,0.04); z-index: 1000;">
+    <div class="preview-header">
+      <a href="preview.html" class="preview-header-logo" style="color: #1E1E1E !important;">
+        Indian Rug Store
+      </a>
+
+      <!-- Desktop Navigation (Small, Delicate, Single-Line Editorial Menu) -->
+      <nav aria-label="Main Navigation">
+        <ul class="preview-nav">
+          <li class="preview-nav-item">
+            <a href="preview.html#categories" class="preview-nav-link" style="color: #1E1E1E !important;">
+              <span>Collections</span>
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1L5 5L9 1"/></svg>
+            </a>
+
+            <!-- Mega Menu Dropdown -->
+            <div class="preview-mega-dropdown">
+              <div class="luxury-mega-menu-wrapper">
+                <div class="luxury-mega-menu__columns">
+                  <div class="luxury-mega-menu__column">
+                    <span class="luxury-mega-menu__column-title">By Construction</span>
+                    <ul class="luxury-mega-menu__links">
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Hand-Knotted Heirlooms</a></li>
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Hand-Tufted Wool</a></li>
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Flatweaves & Dhurries</a></li>
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Pure Mulberry Silk</a></li>
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Organic Jute & Hemp</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="luxury-mega-menu__column">
+                    <span class="luxury-mega-menu__column-title">By Design Style</span>
+                    <ul class="luxury-mega-menu__links">
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Classical Oriental & Persian</a></li>
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Modern Architectural</a></li>
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Subtle Neutral Textures</a></li>
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Vintage Anatolian Patina</a></li>
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Abstract Painterly</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="luxury-mega-menu__column">
+                    <span class="luxury-mega-menu__column-title">Standard Sizes</span>
+                    <ul class="luxury-mega-menu__links">
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Small & Accent (4 &times; 6 ft)</a></li>
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Medium Living (6 &times; 9 ft)</a></li>
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Large Living (8 &times; 10 ft)</a></li>
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Estate Grand (9 &times; 12 ft)</a></li>
+                      <li><a href="preview.html#featured" class="luxury-mega-menu__link underline-slide">Hallway & Stair Runners</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Featured Editorial Card in Mega Menu -->
+                <div class="luxury-mega-menu__featured">
+                  <div class="luxury-mega-menu__featured-card">
+                    <div class="luxury-mega-menu__featured-media">
+                      <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=600&q=80" alt="Royal Manchaha Rug">
+                    </div>
+                    <div class="luxury-mega-menu__featured-content">
+                      <h4 class="luxury-mega-menu__featured-title">The Royal Manchaha</h4>
+                      <p class="luxury-mega-menu__featured-desc">Designed entirely by weaver artisans from leftover heirloom yarn.</p>
+                      <a href="preview.html#featured" class="luxury-mega-menu__featured-btn underline-slide">Discover Collection &rarr;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="preview-nav-item">
+            <a href="preview.html#room-color" class="preview-nav-link" style="color: #1E1E1E !important;">
+              <span>Shop By Room</span>
+            </a>
+          </li>
+
+          <li class="preview-nav-item">
+            <a href="preview.html#story" class="preview-nav-link" style="color: #1E1E1E !important;">
+              <span>Artisans & Heritage</span>
+            </a>
+          </li>
+
+          <li class="preview-nav-item">
+            <a href="preview.html#custom-rug" class="preview-nav-link" style="color: #1E1E1E !important;">
+              <span>Custom Rugs</span>
+            </a>
+          </li>
+
+          <li class="preview-nav-item">
+            <a href="brand-story.html" class="preview-nav-link" id="navLinkBrandStory" style="color: #1E1E1E !important;">
+              <span>Brand Story</span>
+            </a>
+          </li>
+
+          <li class="preview-nav-item">
+            <a href="about-us.html" class="preview-nav-link" id="navLinkAboutUs" style="color: #1E1E1E !important;">
+              <span>About Us</span>
+            </a>
+          </li>
+
+          <li class="preview-nav-item">
+            <a href="careers.html" class="preview-nav-link is-active" id="navLinkCareers" style="color: var(--luxury-accent) !important; font-weight: 600;">
+              <span>Careers</span>
+            </a>
+          </li>
+
+          <li class="preview-nav-item">
+            <a href="contact-us.html" class="preview-nav-link" id="navLinkContactUs" style="color: #1E1E1E !important;">
+              <span>Contact Us</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Icons (Order: Search, Wishlist, Account, Cart) -->
+      <div class="preview-header-icons">
+        <!-- 1. Search Icon -->
+        <button class="preview-header-icon" id="SearchIconBtn" aria-label="Search Collection" onclick="openSearch();" style="color: #1E1E1E !important;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+
+        <!-- 2. Account / Profile Icon with Dropdown -->
+        <div class="luxury-account-wrapper" style="position: relative;">
+          <a href="#hero" class="preview-header-icon" id="AccountIconBtn" aria-label="Account Login" style="color: #1E1E1E !important;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </a>
+          <div class="luxury-account-dropdown">
+            <ul style="list-style: none; margin: 0; padding: 0.5rem 0;">
+              <li><a href="preview.html#hero" class="luxury-account-dropdown__link">Sign In</a></li>
+              <li><a href="preview.html#hero" class="luxury-account-dropdown__link">Create Sanctuary Account</a></li>
+              <li><a href="preview.html#hero" class="luxury-account-dropdown__link" onclick="openWishlist(); return false;">Saved Wishlist</a></li>
+              <li><a href="preview.html#hero" class="luxury-account-dropdown__link">Track Loom Order</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3. Wishlist (Heart) Icon with Live Count Bubble -->
+        <button class="preview-header-icon" id="WishlistIconBtn" aria-label="Saved Wishlist" onclick="openWishlist();" style="color: #1E1E1E !important;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <span class="wishlist-count-bubble" id="WishlistBubble">1</span>
+        </button>
+
+        <!-- 4. Cart (Bag) Icon with Live Count Bubble -->
+        <button class="preview-header-icon" id="CartIconBtn" aria-label="Sanctuary Cart" onclick="openCart();" style="color: #1E1E1E !important;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span class="cart-count-bubble" id="CartBubble">2</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Drawers Overlay -->
+  <div class="luxury-drawer-overlay" id="DrawerOverlay" onclick="closeAllDrawers();"></div>
+
+  <!-- Slide-down Search Modal -->
+  <div class="luxury-search-modal" id="SearchModal">
+    <div class="luxury-search-modal__container">
+      <button type="button" class="luxury-search-modal__close-btn" onclick="closeSearch();">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <form onsubmit="event.preventDefault();" class="luxury-search-modal__form">
+        <input type="search" id="SearchInput" class="luxury-search-modal__input" placeholder="Search for Hand-Knotted, Silk, Terracotta, Dhurries...">
+        <button type="submit" style="background:none; border:none; color:#1E1E1E; cursor:pointer;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Slide-in Cart Drawer -->
+  <div class="luxury-cart-drawer" id="CartDrawer">
+    <div class="luxury-cart-drawer__header">
+      <div style="display: flex; align-items: baseline; gap: 0.6rem;">
+        <h2 class="luxury-cart-drawer__title">Your Sanctuary Bag</h2>
+        <span class="cart-count-bubble" id="DrawerCartBubble" style="position: static;">2</span>
+      </div>
+      <button type="button" style="background:none; border:none; cursor:pointer;" onclick="closeCart();">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <!-- Free Shipping Bar -->
+    <div class="luxury-shipping-bar">
+      <div class="luxury-shipping-bar__message" id="ShippingMsg">
+        🎉 <strong>Complimentary White-Glove Delivery Unlocked!</strong>
+      </div>
+      <div class="luxury-shipping-bar__progress-track">
+        <div class="luxury-shipping-bar__progress-fill" id="ShippingFill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items -->
+    <div class="luxury-cart-drawer__items" id="CartItemsList">
+      <!-- Item 1 -->
+      <div class="luxury-cart-item" id="CartItem-1">
+        <div class="luxury-cart-item__media">
+          <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=240&q=80" alt="Kashan Rug">
+        </div>
+        <div class="luxury-cart-item__details">
+          <a href="preview.html#featured" class="luxury-cart-item__title">The Kashan Royal Botanical Rug</a>
+          <span style="font-size: 0.78rem; color: #7A746E;">Hand-Knotted / 8 &times; 10 ft</span>
+          <span class="luxury-cart-item__price">$1,480.00</span>
+          <div class="luxury-cart-item__qty">
+            <button type="button" class="luxury-cart-item__qty-btn" onclick="updateQty(1, -1)">&minus;</button>
+            <input type="text" class="luxury-cart-item__qty-input" value="1" id="qty-1" readonly>
+            <button type="button" class="luxury-cart-item__qty-btn" onclick="updateQty(1, 1)">&plus;</button>
+          </div>
+        </div>
+        <button type="button" class="luxury-cart-item__remove" onclick="removeCartItem(1);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        </button>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="luxury-cart-item" id="CartItem-2">
+        <div class="luxury-cart-item__media">
+          <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=240&q=80" alt="Terracotta Rug">
+        </div>
+        <div class="luxury-cart-item__details">
+          <a href="preview.html#featured" class="luxury-cart-item__title">Anatolian Terracotta Vintage Rug</a>
+          <span style="font-size: 0.78rem; color: #7A746E;">Vegetable Dyes / 6 &times; 9 ft</span>
+          <span class="luxury-cart-item__price">$2,540.00</span>
+          <div class="luxury-cart-item__qty">
+            <button type="button" class="luxury-cart-item__qty-btn" onclick="updateQty(2, -1)">&minus;</button>
+            <input type="text" class="luxury-cart-item__qty-input" value="1" id="qty-2" readonly>
+            <button type="button" class="luxury-cart-item__qty-btn" onclick="updateQty(2, 1)">&plus;</button>
+          </div>
+        </div>
+        <button type="button" class="luxury-cart-item__remove" onclick="removeCartItem(2);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Cart Footer -->
+    <div class="luxury-cart-drawer__footer" id="CartFooter">
+      <div class="luxury-cart-drawer__subtotal-row">
+        <span style="font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600;">Subtotal</span>
+        <span class="luxury-cart-drawer__subtotal-amount" id="CartSubtotal">$4,020.00</span>
+      </div>
+      <div style="font-size: 0.76rem; color: #7A746E; margin-bottom: 1.2rem;">
+        Taxes and customs duties calculated at checkout.
+      </div>
+      <a href="checkout.html" class="luxury-cart-drawer__checkout-btn button-shine" style="display: flex; align-items: center; justify-content: center; text-decoration: none; text-align: center;">
+        Proceed to Checkout &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- Slide-in Wishlist Drawer -->
+  <div class="luxury-wishlist-drawer" id="WishlistDrawer">
+    <div class="luxury-cart-drawer__header">
+      <div style="display: flex; align-items: baseline; gap: 0.6rem;">
+        <h2 class="luxury-cart-drawer__title">Your Saved Pieces</h2>
+        <span class="wishlist-count-bubble" id="DrawerWishlistBubble" style="position: static;">1</span>
+      </div>
+      <button type="button" style="background:none; border:none; cursor:pointer;" onclick="closeWishlist();">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <div class="luxury-cart-drawer__items" id="WishlistItemsList">
+      <div class="luxury-cart-item">
+        <div class="luxury-cart-item__media">
+          <img src="https://images.unsplash.com/photo-1579656381226-5fc0f0100c3b?auto=format&fit=crop&w=240&q=80" alt="Oushak Serenade Ivory">
+        </div>
+        <div class="luxury-cart-item__details">
+          <a href="preview.html#featured" class="luxury-cart-item__title">Oushak Serenade Ivory Loom Rug</a>
+          <span class="luxury-cart-item__price">$1,650.00</span>
+          <button type="button" class="luxury-btn luxury-btn--dark button-shine" style="width: fit-content; padding: 0.6rem 1.2rem; font-size: 0.74rem; margin-top: 0.5rem;" onclick="addFromWishlistToCart();">
+            + Move to Sanctuary Bag
+          </button>
+        </div>
+        <button type="button" class="luxury-cart-item__remove" onclick="removeWishlistItem(this);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <main id="MainContent">
+    <!-- Breadcrumbs -->
+    <nav class="luxury-breadcrumbs" aria-label="Breadcrumb" style="background: #FBF9F5; border-bottom: 1px solid var(--luxury-border-light); padding: 1rem 0;">
+      <div class="luxury-container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+        <ol style="display: flex; align-items: center; list-style: none; gap: 0.6rem; margin: 0; padding: 0; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase;">
+          <li><a href="preview.html" class="underline-slide" style="color: var(--luxury-text-muted); text-decoration: none;">Home</a></li>
+          <li style="color: var(--luxury-border-medium);">&bull;</li>
+          <li style="color: var(--luxury-accent); font-weight: 600;">Careers & Atelier Guild</li>
+        </ol>
+        <span style="font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--luxury-gold);">Jaipur Atelier Opportunities</span>
+      </div>
+    </nav>
+
+    <!-- 1. Editorial Hero Banner -->
+    <section class="luxury-section-padding--large" style="background-color: #FFFFFF; position: relative; overflow: hidden;">
+      <div class="luxury-container">
+        <div style="text-align: center; max-width: 860px; margin: 0 auto;" data-aos="fade-up">
+          <span class="editorial-eyebrow">Craftsmanship & Human Purpose</span>
+          <h1 class="editorial-heading" style="font-size: clamp(2.8rem, 5.2vw, 4.8rem); line-height: 1.1; margin-bottom: 1.6rem;">
+            Join Our Design &amp; Artisan Sanctuary
+          </h1>
+          <p class="editorial-subtext" style="font-size: clamp(1.05rem, 1.3vw, 1.25rem); line-height: 1.8; color: #5C554E; margin: 0 auto 2.5rem;">
+            At Indian Rug Store, we do not merely craft textiles. We cultivate human dignity, preserve a 2,500-year-old Rajasthani weaving heritage, and design museum-grade heirlooms for architectural spaces across 45 countries. Discover your chapter in our unfolding story.
+          </p>
+          <div style="display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;">
+            <a href="#open-positions" class="luxury-btn luxury-btn--dark button-shine" style="padding: 1rem 2.4rem; font-size: 0.84rem;">
+              Explore Open Positions &darr;
+            </a>
+            <a href="#culture-values" class="luxury-btn luxury-btn--outline-dark button-shine" style="padding: 1rem 2.4rem; font-size: 0.84rem;">
+              Our Guild Values &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Impact & Guild Metrics -->
+    <section style="background-color: var(--luxury-bg-alt); border-top: 1px solid var(--luxury-border-light); border-bottom: 1px solid var(--luxury-border-light); padding: 3.5rem 0;">
+      <div class="luxury-container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; text-align: center;">
+          <div data-aos="fade-up" data-aos-delay="0">
+            <div style="font-family: var(--luxury-font-heading); font-size: clamp(2.6rem, 3.8vw, 3.6rem); color: var(--luxury-accent); line-height: 1; margin-bottom: 0.4rem;" data-counter-target="40000" data-counter-suffix="+">40,000+</div>
+            <div style="font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: #4E4740; font-weight: 600;">Generational Artisans</div>
+            <div style="font-size: 0.82rem; color: #7A746E; margin-top: 0.3rem;">Directly empowered across Rajasthan</div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="100">
+            <div style="font-family: var(--luxury-font-heading); font-size: clamp(2.6rem, 3.8vw, 3.6rem); color: var(--luxury-accent); line-height: 1; margin-bottom: 0.4rem;" data-counter-target="85" data-counter-suffix="%+">85%+</div>
+            <div style="font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: #4E4740; font-weight: 600;">Women Weaver Leaders</div>
+            <div style="font-size: 0.82rem; color: #7A746E; margin-top: 0.3rem;">Financial autonomy & village leadership</div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="200">
+            <div style="font-family: var(--luxury-font-heading); font-size: clamp(2.6rem, 3.8vw, 3.6rem); color: var(--luxury-accent); line-height: 1; margin-bottom: 0.4rem;" data-counter-target="600" data-counter-suffix="+">600+</div>
+            <div style="font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: #4E4740; font-weight: 600;">Weaver Villages</div>
+            <div style="font-size: 0.82rem; color: #7A746E; margin-top: 0.3rem;">Preserving ancestral loom genealogies</div>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="300">
+            <div style="font-family: var(--luxury-font-heading); font-size: clamp(2.6rem, 3.8vw, 3.6rem); color: var(--luxury-accent); line-height: 1; margin-bottom: 0.4rem;" data-counter-target="45" data-counter-suffix="+">45+</div>
+            <div style="font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: #4E4740; font-weight: 600;">Countries Adorned</div>
+            <div style="font-size: 0.82rem; color: #7A746E; margin-top: 0.3rem;">From Jaipur lofts to global architecture</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Our Four Guiding Pillars (Culture & Values) -->
+    <section id="culture-values" class="luxury-section-padding" style="background-color: var(--luxury-bg);">
+      <div class="luxury-container">
+        <div style="text-align: center; max-width: 780px; margin: 0 auto 4rem;" data-aos="fade-up">
+          <span class="editorial-eyebrow">The Atelier Culture</span>
+          <h2 class="editorial-heading" style="font-size: clamp(2.2rem, 3.8vw, 3.4rem);">Why Build Your Career With Us</h2>
+          <p class="editorial-subtext" style="margin: 0 auto;">We operate at the rare intersection of uncompromising ancestral artistry, conscious social justice, and contemporary architectural elegance.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+          <!-- Card 1 -->
+          <div class="careers-perk-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="careers-perk-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3 style="font-family: var(--luxury-font-heading); font-size: 1.65rem; margin-bottom: 0.8rem; color: #1E1E1E;">Ancestral Artistry &amp; Modern Design</h3>
+            <p style="font-size: 0.92rem; line-height: 1.7; color: #6E6862; margin: 0;">Collaborate with legendary master weavers, architectural studios, and textile curators using highland Ghazni wool, botanical indigo, and raw mulberry silk.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="careers-perk-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="careers-perk-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 style="font-family: var(--luxury-font-heading); font-size: 1.65rem; margin-bottom: 0.8rem; color: #1E1E1E;">Grassroots Human Dignity</h3>
+            <p style="font-size: 0.92rem; line-height: 1.7; color: #6E6862; margin: 0;">We bypass all middlemen, delivering looms, raw wool, and fair living wages directly to rural doorsteps. Every team member directly touches artisan lives.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="careers-perk-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="careers-perk-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3 style="font-family: var(--luxury-font-heading); font-size: 1.65rem; margin-bottom: 0.8rem; color: #1E1E1E;">Unhurried Excellence</h3>
+            <p style="font-size: 0.92rem; line-height: 1.7; color: #6E6862; margin: 0;">We consciously reject fast-fashion rush and burnout cycles. We celebrate deep focus, tactile exploration, and pieces crafted to endure for generations.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="careers-perk-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="careers-perk-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <h3 style="font-family: var(--luxury-font-heading); font-size: 1.65rem; margin-bottom: 0.8rem; color: #1E1E1E;">Global Sanctuary Footprint</h3>
+            <p style="font-size: 0.92rem; line-height: 1.7; color: #6E6862; margin: 0;">Work from our Mansarovar design studios in Jaipur, international trade outposts, or flexible hybrid home studios with white-glove collaborative support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Editorial Split: Life at the Atelier -->
+    <section class="luxury-section-padding" style="background-color: #FFFFFF;">
+      <div class="luxury-container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; align-items: center;">
+          <div data-aos="fade-right">
+            <span class="editorial-eyebrow">Studio Living</span>
+            <h2 class="editorial-heading" style="font-size: clamp(2.2rem, 3.8vw, 3.2rem); margin-bottom: 1.4rem;">
+              Where Ancestral Looms Meet Contemporary Architecture
+            </h2>
+            <p style="font-size: 1rem; line-height: 1.8; color: #5C554E; margin-bottom: 1.5rem;">
+              Our teams do not sit in sterile cubicles. Our Jaipur atelier is bathed in natural desert light, filled with hanging yarn skeins dyed with pomegranate peels and indigo, and resonates with the rhythmic clatter of sample looms.
+            </p>
+            <p style="font-size: 0.95rem; line-height: 1.8; color: #6E6862; margin-bottom: 2rem;">
+              Whether sketching bespoke CAD renderings for AD100 architects or traveling into the Thar desert to hear an artisan’s spontaneous song translated into knot patterns, working here is an immersive sensory dialogue.
+            </p>
+            <blockquote style="border-left: 2px solid var(--luxury-accent); padding-left: 1.5rem; margin: 0 0 2rem; font-style: italic; color: #1E1E1E;">
+              &ldquo;Working at Indian Rug Store taught me that design without human conscience is empty. Here, every knot we specify directly changes the destiny of a village family.&rdquo;
+              <cite style="display: block; font-style: normal; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--luxury-accent); margin-top: 0.6rem; font-weight: 600;">
+                &mdash; Ananya Mathur, Senior Curation Lead
+              </cite>
+            </blockquote>
+          </div>
+
+          <div style="position: relative;" data-aos="fade-left">
+            <div style="position: relative; border-radius: 2px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.08);">
+              <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=900&q=80" alt="Artisan Studio" style="width: 100%; height: auto; display: block;">
+            </div>
+            <div style="position: absolute; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); background: rgba(251, 249, 245, 0.92); border: 1px solid var(--luxury-border-medium); border-radius: 2px; padding: 1.4rem 1.8rem; bottom: -24px; left: -24px; max-width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.06);" class="small-hide">
+              <span style="font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--luxury-gold); font-weight: 600; display: block; margin-bottom: 0.3rem;">Jaipur Atelier</span>
+              <p style="margin: 0; font-size: 0.88rem; color: #1E1E1E; line-height: 1.5;">Home to 80+ designers, textile historians, and logistics concierges.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Open Positions Job Board (Interactive Filter & Expandable) -->
+    <section id="open-positions" class="luxury-section-padding" style="background-color: var(--luxury-bg);">
+      <div class="luxury-container">
+        <div style="text-align: center; max-width: 780px; margin: 0 auto;" data-aos="fade-up">
+          <span class="editorial-eyebrow">Available Opportunities</span>
+          <h2 class="editorial-heading" style="font-size: clamp(2.4rem, 4vw, 3.6rem);">Current Open Positions</h2>
+          <p class="editorial-subtext" style="margin: 0 auto;">Select an opening below to explore the role requirements, or apply directly to our curatorial talent desk.</p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="careers-filter-bar" data-aos="fade-up">
+          <button type="button" class="careers-filter-btn is-active" onclick="filterJobs('all', this);">All Disciplines (5)</button>
+          <button type="button" class="careers-filter-btn" onclick="filterJobs('design', this);">Design &amp; Curation (2)</button>
+          <button type="button" class="careers-filter-btn" onclick="filterJobs('community', this);">Community &amp; Sourcing (1)</button>
+          <button type="button" class="careers-filter-btn" onclick="filterJobs('client', this);">Private Concierge &amp; Trade (1)</button>
+          <button type="button" class="careers-filter-btn" onclick="filterJobs('brand', this);">Editorial &amp; Content (1)</button>
+        </div>
+
+        <!-- Job Cards List -->
+        <div id="JobCardsList" style="max-width: 1040px; margin: 0 auto;">
+
+          <!-- Job 1 -->
+          <div class="careers-job-card" data-category="design" data-aos="fade-up">
+            <div class="careers-job-card__header">
+              <div>
+                <h3 class="careers-job-card__title">Senior Textile &amp; Rug Designer</h3>
+                <div class="careers-job-card__meta">
+                  <span>Jaipur Atelier / Hybrid</span>
+                  <span>&bull;</span>
+                  <span>Full-Time</span>
+                  <span>&bull;</span>
+                  <span>Design &amp; Architecture Guild</span>
+                </div>
+              </div>
+              <span class="careers-job-card__badge">Design Guild</span>
+            </div>
+            <p class="careers-job-card__desc">
+              Lead bespoke rug commissions for top-tier global architects and interior firms. Translate spatial blueprints into intricate knot-by-knot graph schemes (Naksha), formulate botanical dye palettes, and oversee prototype development alongside village guild masters.
+            </p>
+            <div class="careers-job-card__details" id="job-details-1">
+              <h4 style="font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1E1E1E; margin-bottom: 0.6rem;">Key Responsibilities:</h4>
+              <ul style="list-style: disc; margin: 0 0 1.2rem 1.4rem; color: #5C554E; font-size: 0.9rem; line-height: 1.7;">
+                <li>Develop seasonal collections inspired by Rajasthani architectural heritage and modernist minimalism.</li>
+                <li>Work directly with master weavers in Dausa and Sikar to refine textural density and yarn spinning.</li>
+                <li>Collaborate with international trade clients on custom scale, color rendering, and fiber choices.</li>
+                <li>Conduct botanical dye laboratory tests with walnut husks, madder root, and organic indigo.</li>
+              </ul>
+              <h4 style="font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1E1E1E; margin-bottom: 0.6rem;">Desired Qualifications:</h4>
+              <p style="font-size: 0.9rem; line-height: 1.7; color: #5C554E; margin: 0;">Degree in Textile/Surface Design (NID, NIFT, or international equivalent); 4+ years in woven textile or rug design; proficiency in Pointcarré, NedGraphics, Photoshop, and hand graph drafting; deep cultural empathy for rural artisan communities.</p>
+            </div>
+            <div class="careers-job-card__footer">
+              <button type="button" class="underline-slide" style="background:none; border:none; color: var(--luxury-accent); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; cursor: pointer;" onclick="toggleJobDetails(1, this);">
+                <span>View Full Role Blueprint &darr;</span>
+              </button>
+              <button type="button" class="luxury-btn luxury-btn--dark button-shine" style="padding: 0.6rem 1.4rem; font-size: 0.78rem;" onclick="applyForJob('Senior Textile & Rug Designer');">
+                Apply for this Position &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Job 2 -->
+          <div class="careers-job-card" data-category="community" data-aos="fade-up">
+            <div class="careers-job-card__header">
+              <div>
+                <h3 class="careers-job-card__title">Artisan Community &amp; Loom Outreach Manager</h3>
+                <div class="careers-job-card__meta">
+                  <span>Rajasthan Weaver Hubs (Dausa, Bikaner)</span>
+                  <span>&bull;</span>
+                  <span>Full-Time · Field Based</span>
+                  <span>&bull;</span>
+                  <span>Community &amp; Sourcing</span>
+                </div>
+              </div>
+              <span class="careers-job-card__badge">Grassroots Field</span>
+            </div>
+            <p class="careers-job-card__desc">
+              Serve as the crucial empathetic bridge between our Jaipur design sanctuary and 600+ rural weaving villages. Oversee raw wool delivery logistics, conduct regular artisan welfare audits, support women weaver self-help groups, and document genealogy records for every loom creation.
+            </p>
+            <div class="careers-job-card__details" id="job-details-2">
+              <h4 style="font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1E1E1E; margin-bottom: 0.6rem;">Key Responsibilities:</h4>
+              <ul style="list-style: disc; margin: 0 0 1.2rem 1.4rem; color: #5C554E; font-size: 0.9rem; line-height: 1.7;">
+                <li>Spend 3-4 days weekly in rural artisan hamlets facilitating weaver community meetings.</li>
+                <li>Coordinate the Manchaha initiative, empowering weavers to design their own spontaneous carpets.</li>
+                <li>Ensure 100% on-time, transparent payments directly to women artisans' individual bank accounts.</li>
+                <li>Organize village health checkup camps and artisan children educational scholarships.</li>
+              </ul>
+              <h4 style="font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1E1E1E; margin-bottom: 0.6rem;">Desired Qualifications:</h4>
+              <p style="font-size: 0.9rem; line-height: 1.7; color: #5C554E; margin: 0;">Fluency in Hindi and Rajasthani dialects; 3+ years experience in rural development, grassroots craft NGOs, or artisanal supply chains; valid driver's license and passion for rural field engagement.</p>
+            </div>
+            <div class="careers-job-card__footer">
+              <button type="button" class="underline-slide" style="background:none; border:none; color: var(--luxury-accent); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; cursor: pointer;" onclick="toggleJobDetails(2, this);">
+                <span>View Full Role Blueprint &darr;</span>
+              </button>
+              <button type="button" class="luxury-btn luxury-btn--dark button-shine" style="padding: 0.6rem 1.4rem; font-size: 0.78rem;" onclick="applyForJob('Artisan Community & Loom Outreach Manager');">
+                Apply for this Position &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Job 3 -->
+          <div class="careers-job-card" data-category="client" data-aos="fade-up">
+            <div class="careers-job-card__header">
+              <div>
+                <h3 class="careers-job-card__title">Private Client Concierge &amp; Trade Specialist</h3>
+                <div class="careers-job-card__meta">
+                  <span>New York / London / Hybrid</span>
+                  <span>&bull;</span>
+                  <span>Full-Time</span>
+                  <span>&bull;</span>
+                  <span>Client Experience Guild</span>
+                </div>
+              </div>
+              <span class="careers-job-card__badge">Client Concierge</span>
+            </div>
+            <p class="careers-job-card__desc">
+              Manage high-touch relationships with discerning private collectors, luxury hospitality developers, and interior design firms across North America and Europe. Provide in-home styling consultations, coordinate physical yarn pom swatches, and guide clients from initial loom conception through white-glove delivery.
+            </p>
+            <div class="careers-job-card__details" id="job-details-3">
+              <h4 style="font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1E1E1E; margin-bottom: 0.6rem;">Key Responsibilities:</h4>
+              <ul style="list-style: disc; margin: 0 0 1.2rem 1.4rem; color: #5C554E; font-size: 0.9rem; line-height: 1.7;">
+                <li>Act as personal concierge for high-net-worth clients commissioning custom heirloom carpets ($10k - $80k+).</li>
+                <li>Curate tailored digital presentations and tactile material swatches for architectural project pitches.</li>
+                <li>Provide bi-weekly progress photo dispatches directly from the village loom to the client.</li>
+                <li>Represent the atelier at international design salons (Maison&amp;Objet, Salone del Mobile, ICFF).</li>
+              </ul>
+              <h4 style="font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1E1E1E; margin-bottom: 0.6rem;">Desired Qualifications:</h4>
+              <p style="font-size: 0.9rem; line-height: 1.7; color: #5C554E; margin: 0;">5+ years luxury interior design trade or high-end bespoke home furnishings sales; impeccable written and verbal communication; established network with AD100 designers and architectural specifiers.</p>
+            </div>
+            <div class="careers-job-card__footer">
+              <button type="button" class="underline-slide" style="background:none; border:none; color: var(--luxury-accent); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; cursor: pointer;" onclick="toggleJobDetails(3, this);">
+                <span>View Full Role Blueprint &darr;</span>
+              </button>
+              <button type="button" class="luxury-btn luxury-btn--dark button-shine" style="padding: 0.6rem 1.4rem; font-size: 0.78rem;" onclick="applyForJob('Private Client Concierge & Trade Specialist');">
+                Apply for this Position &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Job 4 -->
+          <div class="careers-job-card" data-category="brand" data-aos="fade-up">
+            <div class="careers-job-card__header">
+              <div>
+                <h3 class="careers-job-card__title">Visual Storyteller &amp; Editorial Content Lead</h3>
+                <div class="careers-job-card__meta">
+                  <span>Jaipur Atelier / Hybrid</span>
+                  <span>&bull;</span>
+                  <span>Full-Time</span>
+                  <span>&bull;</span>
+                  <span>Editorial &amp; Brand Story</span>
+                </div>
+              </div>
+              <span class="careers-job-card__badge">Brand Story</span>
+            </div>
+            <p class="careers-job-card__desc">
+              Author the visual and poetic identity of Indian Rug Store. Travel with documentary cinematographers to remote desert loom villages, capture the intimate hands and voices of our artisan families, and craft evocative editorial publications, cinematic campaign films, and exhibition catalogs.
+            </p>
+            <div class="careers-job-card__details" id="job-details-4">
+              <h4 style="font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1E1E1E; margin-bottom: 0.6rem;">Key Responsibilities:</h4>
+              <ul style="list-style: disc; margin: 0 0 1.2rem 1.4rem; color: #5C554E; font-size: 0.9rem; line-height: 1.7;">
+                <li>Direct biannual editorial lookbooks, campaign photo shoots, and artisan profile documentary shorts.</li>
+                <li>Write lyrical, culturally authentic narrative copy for our global digital platforms, print journals, and museum collaborations.</li>
+                <li>Curate visual storytelling for our physical design sanctuaries and gallery pop-ups worldwide.</li>
+                <li>Collaborate with international architectural and design media editors (Architectural Digest, Elle Decor, Wallpaper*).</li>
+              </ul>
+              <h4 style="font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1E1E1E; margin-bottom: 0.6rem;">Desired Qualifications:</h4>
+              <p style="font-size: 0.9rem; line-height: 1.7; color: #5C554E; margin: 0;">Portfolio demonstrating editorial writing and art direction in luxury, craftsmanship, or cultural documentation; deep aesthetic sensitivity; hands-on creative direction experience.</p>
+            </div>
+            <div class="careers-job-card__footer">
+              <button type="button" class="underline-slide" style="background:none; border:none; color: var(--luxury-accent); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; cursor: pointer;" onclick="toggleJobDetails(4, this);">
+                <span>View Full Role Blueprint &darr;</span>
+              </button>
+              <button type="button" class="luxury-btn luxury-btn--dark button-shine" style="padding: 0.6rem 1.4rem; font-size: 0.78rem;" onclick="applyForJob('Visual Storyteller & Editorial Content Lead');">
+                Apply for this Position &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Job 5 -->
+          <div class="careers-job-card" data-category="design" data-aos="fade-up">
+            <div class="careers-job-card__header">
+              <div>
+                <h3 class="careers-job-card__title">Master Loom Apprenticeship Coordinator</h3>
+                <div class="careers-job-card__meta">
+                  <span>Mansarovar Atelier, Jaipur</span>
+                  <span>&bull;</span>
+                  <span>Full-Time · Studio Based</span>
+                  <span>&bull;</span>
+                  <span>Heritage Preservation</span>
+                </div>
+              </div>
+              <span class="careers-job-card__badge">Heritage Guild</span>
+            </div>
+            <p class="careers-job-card__desc">
+              Preserve rare and endangered Rajasthani weaving techniques by orchestrating our generational apprentice academy. Mentor aspiring young weavers, document centuries-old knotting notations, and oversee museum restoration commissions for antique Persian and Mughal textile fragments.
+            </p>
+            <div class="careers-job-card__details" id="job-details-5">
+              <h4 style="font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1E1E1E; margin-bottom: 0.6rem;">Key Responsibilities:</h4>
+              <ul style="list-style: disc; margin: 0 0 1.2rem 1.4rem; color: #5C554E; font-size: 0.9rem; line-height: 1.7;">
+                <li>Structure curricula and hands-on workshops for 120+ young generational apprentices annually.</li>
+                <li>Work with senior master weavers to record oral folklore and weaving chants passed through memory.</li>
+                <li>Conduct archival studies on museum textile conservation and antique repair methods.</li>
+                <li>Facilitate educational visits for international design universities and textile scholars.</li>
+              </ul>
+              <h4 style="font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1E1E1E; margin-bottom: 0.6rem;">Desired Qualifications:</h4>
+              <p style="font-size: 0.9rem; line-height: 1.7; color: #5C554E; margin: 0;">Extensive background in hand-weaving, textile conservation, or craft pedagogical instruction; master-level understanding of Persian asymmetrical knotting and Indian flatweaves; passion for passing cultural heritage to youth.</p>
+            </div>
+            <div class="careers-job-card__footer">
+              <button type="button" class="underline-slide" style="background:none; border:none; color: var(--luxury-accent); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; cursor: pointer;" onclick="toggleJobDetails(5, this);">
+                <span>View Full Role Blueprint &darr;</span>
+              </button>
+              <button type="button" class="luxury-btn luxury-btn--dark button-shine" style="padding: 0.6rem 1.4rem; font-size: 0.78rem;" onclick="applyForJob('Master Loom Apprenticeship Coordinator');">
+                Apply for this Position &rarr;
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Interactive Application Form -->
+    <section id="apply-form-section" class="luxury-section-padding--large" style="background-color: #FFFFFF;">
+      <div class="luxury-container">
+        <div style="max-width: 860px; margin: 0 auto; background: #FBF9F5; border: 1px solid var(--luxury-border-medium); border-radius: 2px; padding: clamp(2rem, 5vw, 4rem); box-shadow: 0 15px 45px rgba(0,0,0,0.03);" data-aos="fade-up">
+          <div style="text-align: center; margin-bottom: 2.8rem;">
+            <span class="editorial-eyebrow">Direct Atelier Application</span>
+            <h2 class="editorial-heading" style="font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 0.8rem;">Begin Your Journey with Our Guild</h2>
+            <p style="font-size: 0.95rem; color: #6E6862; margin: 0 auto; line-height: 1.6; max-width: 600px;">
+              Submit your curriculum vitae and reflections on craftsmanship. Every application is reviewed individually by our senior curatorial team in Jaipur.
+            </p>
+          </div>
+
+          <form id="CareersApplicationForm" onsubmit="handleCareerSubmit(event);">
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; color: #4E4740; font-weight: 600;">Desired Position *</label>
+              <select id="appPositionSelect" required style="width: 100%; padding: 0.95rem 1.2rem; border: 1px solid var(--luxury-border-medium); border-radius: 2px; font-family: inherit; font-size: 0.95rem; background: #FFFFFF; color: #1E1E1E; box-sizing: border-box;">
+                <option value="">-- Select an Open Opportunity --</option>
+                <option value="Senior Textile & Rug Designer">Senior Textile &amp; Rug Designer</option>
+                <option value="Artisan Community & Loom Outreach Manager">Artisan Community &amp; Loom Outreach Manager</option>
+                <option value="Private Client Concierge & Trade Specialist">Private Client Concierge &amp; Trade Specialist</option>
+                <option value="Visual Storyteller & Editorial Content Lead">Visual Storyteller &amp; Editorial Content Lead</option>
+                <option value="Master Loom Apprenticeship Coordinator">Master Loom Apprenticeship Coordinator</option>
+                <option value="General Spontaneous Application">General Spontaneous Fellowship / Other Role</option>
+              </select>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 1.5rem;">
+              <div>
+                <label style="display: block; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; color: #4E4740; font-weight: 600;">Full Name *</label>
+                <input type="text" placeholder="e.g. Radhika Sharma" required style="width: 100%; padding: 0.95rem 1.2rem; border: 1px solid var(--luxury-border-medium); border-radius: 2px; font-family: inherit; font-size: 0.95rem; background: #FFFFFF; box-sizing: border-box;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; color: #4E4740; font-weight: 600;">Email Address *</label>
+                <input type="email" placeholder="radhika@example.com" required style="width: 100%; padding: 0.95rem 1.2rem; border: 1px solid var(--luxury-border-medium); border-radius: 2px; font-family: inherit; font-size: 0.95rem; background: #FFFFFF; box-sizing: border-box;">
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 1.5rem;">
+              <div>
+                <label style="display: block; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; color: #4E4740; font-weight: 600;">Telephone / WhatsApp *</label>
+                <input type="tel" placeholder="+91 98000 00000" required style="width: 100%; padding: 0.95rem 1.2rem; border: 1px solid var(--luxury-border-medium); border-radius: 2px; font-family: inherit; font-size: 0.95rem; background: #FFFFFF; box-sizing: border-box;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; color: #4E4740; font-weight: 600;">Portfolio / LinkedIn URL</label>
+                <input type="url" placeholder="https://linkedin.com/in/... or portfolio" style="width: 100%; padding: 0.95rem 1.2rem; border: 1px solid var(--luxury-border-medium); border-radius: 2px; font-family: inherit; font-size: 0.95rem; background: #FFFFFF; box-sizing: border-box;">
+              </div>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; color: #4E4740; font-weight: 600;">Curriculum Vitae / Resume (PDF, DOCX) *</label>
+              <div style="border: 2px dashed var(--luxury-border-medium); padding: 1.8rem; text-align: center; background: #FFFFFF; border-radius: 2px; position: relative;">
+                <input type="file" id="resumeFileInput" required accept=".pdf,.doc,.docx" style="position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;" onchange="updateFileName(this);">
+                <div id="fileUploadPlaceholder">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="margin: 0 auto 0.5rem; color: var(--luxury-accent);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                  <span style="font-size: 0.88rem; color: #1E1E1E; display: block; font-weight: 500;">Click or drag file here to upload CV</span>
+                  <span style="font-size: 0.76rem; color: #8A847C;">Maximum file size: 15 MB (PDF preferred)</span>
+                </div>
+                <div id="fileUploadSelected" style="display: none; font-size: 0.88rem; color: var(--luxury-accent); font-weight: 600;">
+                  <span id="selectedFileName">file.pdf</span> (Ready to submit)
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <label style="display: block; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; color: #4E4740; font-weight: 600;">Why Does Generational Craftsmanship Matter to You? *</label>
+              <textarea rows="4" placeholder="Briefly share your perspective on heritage textiles, social impact, or unhurried design..." required style="width: 100%; padding: 0.95rem 1.2rem; border: 1px solid var(--luxury-border-medium); border-radius: 2px; font-family: inherit; font-size: 0.95rem; background: #FFFFFF; box-sizing: border-box; line-height: 1.6;"></textarea>
+            </div>
+
+            <button type="submit" id="careerSubmitBtn" class="luxury-btn luxury-btn--dark button-shine" style="width: 100%; padding: 1.1rem; font-size: 0.88rem; letter-spacing: 0.14em; text-transform: uppercase;">
+              Submit Application to Jaipur Atelier &rarr;
+            </button>
+          </form>
+
+          <!-- Success State Notification -->
+          <div id="careerSuccessState" style="display: none; text-align: center; padding: 3rem 1.5rem; background: #FFFFFF; border: 1px solid var(--luxury-border-medium); border-radius: 2px; margin-top: 1rem;">
+            <div style="width: 54px; height: 54px; border-radius: 50%; background: #E8F5E9; color: #2E7D32; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h3 style="font-family: var(--luxury-font-heading); font-size: 2rem; color: #1E1E1E; margin-bottom: 0.6rem;">Application Sacredly Received</h3>
+            <p style="font-size: 0.95rem; color: #5C554E; line-height: 1.7; max-width: 540px; margin: 0 auto 1.8rem;">
+              Thank you for sharing your path and aspirations with our guild. Our curatorial talent director reviews every submission individually and will reach out to you within 48 business hours.
+            </p>
+            <a href="preview.html" class="luxury-btn luxury-btn--dark button-shine" style="padding: 0.8rem 2rem; font-size: 0.8rem;">
+              Return to Atelier Collections &rarr;
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Atelier Privileges & Guild Benefits (6 Cards) -->
+    <section class="luxury-section-padding" style="background-color: var(--luxury-bg-alt); border-top: 1px solid var(--luxury-border-light);">
+      <div class="luxury-container">
+        <div style="text-align: center; max-width: 780px; margin: 0 auto 3.5rem;" data-aos="fade-up">
+          <span class="editorial-eyebrow">Guild Endowment</span>
+          <h2 class="editorial-heading" style="font-size: clamp(2.2rem, 3.8vw, 3.2rem);">Atelier Privileges &amp; Well-being</h2>
+          <p class="editorial-subtext" style="margin: 0 auto;">We believe sustainable luxury begins with nurturing the humans who craft and steward it.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+          <div class="careers-perk-card" data-aos="fade-up" data-aos-delay="0">
+            <h4 style="font-family: var(--luxury-font-heading); font-size: 1.45rem; color: #1E1E1E; margin-bottom: 0.6rem;">Annual Village Loom Retreats</h4>
+            <p style="font-size: 0.9rem; line-height: 1.7; color: #6E6862; margin: 0;">Full-immersion annual journeys to stay alongside artisan families in rural Rajasthan, participating in morning warp threading and village communal feasts.</p>
+          </div>
+
+          <div class="careers-perk-card" data-aos="fade-up" data-aos-delay="100">
+            <h4 style="font-family: var(--luxury-font-heading); font-size: 1.45rem; color: #1E1E1E; margin-bottom: 0.6rem;">Heirloom Carpet Privilege</h4>
+            <p style="font-size: 0.9rem; line-height: 1.7; color: #6E6862; margin: 0;">Generous annual employee rug endowments and bespoke custom weaving privileges for personal residential sanctuaries.</p>
+          </div>
+
+          <div class="careers-perk-card" data-aos="fade-up" data-aos-delay="200">
+            <h4 style="font-family: var(--luxury-font-heading); font-size: 1.45rem; color: #1E1E1E; margin-bottom: 0.6rem;">Holistic Health &amp; Mindful Leave</h4>
+            <p style="font-size: 0.9rem; line-height: 1.7; color: #6E6862; margin: 0;">Comprehensive medical coverage for you and your dependents, wellness sabbaticals, and dedicated quiet creative restoration days.</p>
+          </div>
+
+          <div class="careers-perk-card" data-aos="fade-up" data-aos-delay="300">
+            <h4 style="font-family: var(--luxury-font-heading); font-size: 1.45rem; color: #1E1E1E; margin-bottom: 0.6rem;">Masterclass Guild Sabbaticals</h4>
+            <p style="font-size: 0.9rem; line-height: 1.7; color: #6E6862; margin: 0;">Funded learning opportunities with master dyers, international textile conservationists, and architectural design institutions.</p>
+          </div>
+
+          <div class="careers-perk-card" data-aos="fade-up" data-aos-delay="400">
+            <h4 style="font-family: var(--luxury-font-heading); font-size: 1.45rem; color: #1E1E1E; margin-bottom: 0.6rem;">Hybrid Creative Autonomy</h4>
+            <p style="font-size: 0.9rem; line-height: 1.7; color: #6E6862; margin: 0;">Balanced integration between our sunlight-filled Jaipur studio spaces and focused, distraction-free home atelier arrangements.</p>
+          </div>
+
+          <div class="careers-perk-card" data-aos="fade-up" data-aos-delay="500">
+            <h4 style="font-family: var(--luxury-font-heading); font-size: 1.45rem; color: #1E1E1E; margin-bottom: 0.6rem;">Direct Social Equity Sharing</h4>
+            <p style="font-size: 0.9rem; line-height: 1.7; color: #6E6862; margin: 0;">A dedicated percentage of every rug sold funds village school education, clean water installations, and women's health clinics.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Newsletter Section -->
+    <section class="luxury-section-padding" style="background-color: #FFFFFF; border-top: 1px solid var(--luxury-border-light);">
+      <div class="luxury-container">
+        <div style="max-width: 680px; margin: 0 auto; text-align: center;" data-aos="fade-up">
+          <span class="editorial-eyebrow">The Loom Gazette</span>
+          <h2 class="editorial-heading" style="font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 0.8rem;">Stories from the Rajasthan Hearth</h2>
+          <p class="editorial-subtext" style="margin: 0 auto 2rem;">Receive invitations to exclusive private salon previews, architectural case studies, and field dispatches directly from village looms.</p>
+          <form onsubmit="handleNewsletterSubmit(event);" style="display: flex; gap: 0.5rem; max-width: 500px; margin: 0 auto; flex-wrap: wrap;">
+            <input type="email" id="newsletterEmailInput" placeholder="Enter your email address..." required style="flex: 1; min-width: 240px; padding: 0.9rem 1.2rem; border: 1px solid var(--luxury-border-medium); border-radius: 2px; font-family: inherit; font-size: 0.92rem; background: #FFFFFF;">
+            <button type="submit" class="luxury-btn luxury-btn--dark button-shine" style="padding: 0.9rem 1.8rem; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;">
+              Subscribe &rarr;
+            </button>
+          </form>
+          <div id="newsletterSuccessMessage" style="display: none; justify-content: center; align-items: center; gap: 0.6rem; color: var(--luxury-accent); font-size: 0.86rem; margin-top: 1rem; font-weight: 500;">
+            <span>&check;</span> Welcome to our inner curatorial circle.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="footer">
+    <div class="luxury-container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 4rem;">
+        <div>
+          <h4 class="footer-block__heading">INDIAN RUG STORE</h4>
+          <p style="font-size: 0.88rem; color: rgba(250,247,242,0.7); line-height: 1.8; margin-bottom: 1.2rem;">
+            Honoring four decades of authentic hand-knotted weaving artistry. Designed in Jaipur, cherished across heirloom homes worldwide.
+          </p>
+          <div style="font-size: 0.8rem; color: var(--luxury-gold);">
+            Direct Artisan Livelihood Guarantee
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-block__heading">Artisanal Collections</h4>
+          <ul class="footer-block__details-content">
+            <li><a href="#featured" class="underline-slide">Hand-Knotted Ghazni Wool</a></li>
+            <li><a href="#featured" class="underline-slide">Mulberry Silk & Bamboo Sheen</a></li>
+            <li><a href="#featured" class="underline-slide">Reversible Dhurries & Kilims</a></li>
+            <li><a href="#featured" class="underline-slide">Oushak & Vintage Anatolian</a></li>
+            <li><a href="#custom-rug" class="underline-slide">Custom Bespoke Atelier</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-block__heading">The Atelier</h4>
+          <ul class="footer-block__details-content">
+            <li><a href="about-us.html" class="underline-slide">About Us & Heritage</a></li>
+            <li><a href="brand-story.html" class="underline-slide">Our 40-Year Journey</a></li>
+            <li><a href="#craftsmanship" class="underline-slide">Meet Our Rural Artisans</a></li>
+            <li><a href="#hero" class="underline-slide">Rug Care & Washing Guide</a></li>
+            <li><a href="#hero" class="underline-slide">Trade & Interior Designers</a></li>
+            <li><a href="#hero" class="underline-slide">Sustainable Botanical Dyes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-block__heading">Client Concierge</h4>
+          <ul class="footer-block__details-content">
+            <li><a href="contact-us.html" class="underline-slide">Contact Us & Atelier Inquiries</a></li>
+            <li><a href="#hero" class="underline-slide">Complimentary Shipping Policy</a></li>
+            <li><a href="#hero" class="underline-slide">30-Day Sanctuary Returns</a></li>
+            <li><a href="contact-us.html#faq" class="underline-slide">Frequently Asked Questions</a></li>
+            <li><a href="https://wa.me/919782533367" target="_blank" rel="noopener noreferrer" class="underline-slide">WhatsApp Stylist Specialist</a></li>
+            <li><a href="#hero" class="underline-slide">Track Your Loom Order</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem;">
+        <div style="font-size: 0.82rem; color: rgba(255,255,255,0.6);">
+          &copy; 2026 Indian Rug Store. Inspired by Jaipur Rugs luxury editorial design. All rights reserved.
+        </div>
+        <div style="display: flex; gap: 1.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.6);">
+          <span>Privacy Policy</span>
+          <span>Terms of Service</span>
+          <span>Artisan Charter</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       SCRIPTS: AOS, SWIPER, THEME INTERACTIONS, CAREERS INTERACTIVE BOARD
+       ========================================================================= -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    /* =========================================================================
+       JAIPUR RUGS LUXURY THEME ENGINE: AOS, SWIPER, DRAWERS, CART & WISHLIST
+       ========================================================================= */
+
+    // 1. BULLETPROOF AOS ENGINE
+    function initBulletproofAOS() {
+      try {
+        if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.documentElement.classList.add('aos-disabled');
+          return;
+        }
+
+        if (typeof AOS !== 'undefined') {
+          AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 40,
+            disableMutationObserver: false
+          });
+          setTimeout(function() {
+            try { AOS.refreshHard(); } catch(e) {}
+          }, 150);
+        } else if (typeof document !== 'undefined') {
+          document.documentElement.classList.add('aos-fallback-active');
+        }
+      } catch (e) {
+        console.warn('AOS initialization error, falling back:', e);
+        if (typeof document !== 'undefined') {
+          document.documentElement.classList.add('aos-fallback-active');
+        }
+      }
+
+      // Safety fallback 1: Force in-view elements after 600ms
+      setTimeout(function() {
+        if (typeof document === 'undefined') return;
+        document.querySelectorAll('[data-aos]:not(.aos-animate)').forEach(function(el) {
+          var rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight + 200) {
+            el.classList.add('aos-animate');
+          }
+        });
+      }, 600);
+
+      // Safety fallback 2: Force ALL elements visible after 1.5s
+      setTimeout(function() {
+        if (typeof document === 'undefined') return;
+        document.documentElement.classList.add('aos-fallback-active');
+        document.querySelectorAll('[data-aos]:not(.aos-animate)').forEach(function(el) {
+          el.classList.add('aos-animate');
+        });
+      }, 1500);
+    }
+
+    // 2. SWIPER BESTSELLER CAROUSEL
+    var productSwiperInstance = null;
+    function initSwiper() {
+      try {
+        if (typeof Swiper !== 'undefined' && typeof document !== 'undefined' && document.querySelector('.productSwiper')) {
+          productSwiperInstance = new Swiper('.productSwiper', {
+            slidesPerView: 1.15,
+            spaceBetween: 16,
+            grabCursor: true,
+            loop: false,
+            navigation: {
+              nextEl: '#nextSlide',
+              prevEl: '#prevSlide',
+            },
+            breakpoints: {
+              640: {
+                slidesPerView: 2.2,
+                spaceBetween: 20
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 24
+              },
+              1280: {
+                slidesPerView: 4,
+                spaceBetween: 28
+              }
+            },
+            observer: true,
+            observeParents: true,
+            resizeObserver: true
+          });
+        }
+      } catch (e) {
+        console.error('Swiper initialization error:', e);
+      }
+    }
+
+    // 3. HEADER SCROLL DYNAMICS
+    function initHeaderScroll() {
+      if (typeof document === 'undefined') return;
+      var headerWrapper = document.getElementById('MainHeaderWrapper');
+      var backToTopBtn = document.getElementById('BackToTopBtn');
+      var isSubpage = document.body.classList.contains('luxury-subpage') || 
+                      (window.location.pathname.indexOf('preview.html') === -1 && 
+                       window.location.pathname.indexOf('index.html') === -1 && 
+                       window.location.pathname !== '/');
+
+      function handleScroll() {
+        var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        if (headerWrapper) {
+          if (isSubpage) {
+            headerWrapper.classList.add('is-scrolled');
+          } else {
+            if (scrollY > 80) {
+              headerWrapper.classList.add('is-scrolled');
+            } else {
+              headerWrapper.classList.remove('is-scrolled');
+            }
+          }
+        }
+
+        if (backToTopBtn) {
+          if (scrollY > 400) {
+            backToTopBtn.classList.add('is-visible');
+          } else {
+            backToTopBtn.classList.remove('is-visible');
+          }
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    }
+
+    // 4. ANNOUNCEMENT ROTATOR
+    function initAnnouncementRotator() {
+      if (typeof document === 'undefined') return;
+      var rotator = document.getElementById('AnnouncementRotator');
+      if (rotator) {
+        var items = rotator.querySelectorAll('.luxury-announcement-bar__item');
+        if (items.length > 1) {
+          var currIdx = 0;
+          var isPaused = false;
+          rotator.addEventListener('mouseenter', function() { isPaused = true; });
+          rotator.addEventListener('mouseleave', function() { isPaused = false; });
+          setInterval(function() {
+            if (isPaused) return;
+            items[currIdx].classList.remove('is-active');
+            currIdx = (currIdx + 1) % items.length;
+            items[currIdx].classList.add('is-active');
+          }, 4000);
+        }
+      }
+    }
+
+    // 5. ANIMATED NUMERICAL COUNTERS
+    function initCounters() {
+      if (typeof document === 'undefined') return;
+      var counters = document.querySelectorAll('[data-counter-target]');
+      if ('IntersectionObserver' in window && counters.length) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var el = entry.target;
+              var target = parseInt(el.getAttribute('data-counter-target'), 10);
+              var suffix = el.getAttribute('data-counter-suffix') || '';
+              var start = null;
+              var dur = 2000;
+              function step(ts) {
+                if (!start) start = ts;
+                var p = Math.min((ts - start) / dur, 1);
+                var val = Math.floor((1 - Math.pow(1 - p, 3)) * target);
+                el.textContent = val.toLocaleString() + suffix;
+                if (p < 1) requestAnimationFrame(step);
+                else el.textContent = target.toLocaleString() + suffix;
+              }
+              requestAnimationFrame(step);
+              observer.unobserve(el);
+            }
+          });
+        }, { threshold: 0.3 });
+        counters.forEach(function(c) { observer.observe(c); });
+      }
+    }
+
+    // 6. DRAWERS, CART & WISHLIST ENGINE (GLOBAL ON WINDOW)
+    if (typeof window !== 'undefined') {
+      window.closeAllDrawers = function() {
+        var overlay = document.getElementById('DrawerOverlay');
+        var cartDrawer = document.getElementById('CartDrawer');
+        var wishlistDrawer = document.getElementById('WishlistDrawer');
+        var searchModal = document.getElementById('SearchModal');
+        if (overlay) overlay.classList.remove('is-active');
+        if (cartDrawer) cartDrawer.classList.remove('is-active');
+        if (wishlistDrawer) wishlistDrawer.classList.remove('is-active');
+        if (searchModal) searchModal.classList.remove('is-active');
+        document.body.style.overflow = '';
+      };
+
+      window.openCart = function() {
+        window.closeAllDrawers();
+        var cartDrawer = document.getElementById('CartDrawer');
+        var overlay = document.getElementById('DrawerOverlay');
+        if (cartDrawer) cartDrawer.classList.add('is-active');
+        if (overlay) overlay.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeCart = function() {
+        var cartDrawer = document.getElementById('CartDrawer');
+        var overlay = document.getElementById('DrawerOverlay');
+        if (cartDrawer) cartDrawer.classList.remove('is-active');
+        if (overlay) overlay.classList.remove('is-active');
+        document.body.style.overflow = '';
+      };
+
+      window.openWishlist = function() {
+        window.closeAllDrawers();
+        var wishlistDrawer = document.getElementById('WishlistDrawer');
+        var overlay = document.getElementById('DrawerOverlay');
+        if (wishlistDrawer) wishlistDrawer.classList.add('is-active');
+        if (overlay) overlay.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeWishlist = function() {
+        var wishlistDrawer = document.getElementById('WishlistDrawer');
+        var overlay = document.getElementById('DrawerOverlay');
+        if (wishlistDrawer) wishlistDrawer.classList.remove('is-active');
+        if (overlay) overlay.classList.remove('is-active');
+        document.body.style.overflow = '';
+      };
+
+      window.openSearch = function() {
+        window.closeAllDrawers();
+        var searchModal = document.getElementById('SearchModal');
+        var overlay = document.getElementById('DrawerOverlay');
+        if (searchModal) searchModal.classList.add('is-active');
+        if (overlay) overlay.classList.add('is-active');
+        setTimeout(function() {
+          var input = document.getElementById('SearchInput');
+          if (input) input.focus();
+        }, 150);
+      };
+
+      window.closeSearch = function() {
+        var searchModal = document.getElementById('SearchModal');
+        var overlay = document.getElementById('DrawerOverlay');
+        if (searchModal) searchModal.classList.remove('is-active');
+        if (overlay) overlay.classList.remove('is-active');
+      };
+
+      // ESC to close any drawer
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' || e.keyCode === 27) {
+          window.closeAllDrawers();
+        }
+      });
+
+      // Cart state & interactions
+      window.cartCount = 2;
+      window.cartSubtotal = 4020;
+
+      window.bumpBadge = function(id) {
+        var badge = document.getElementById(id);
+        if (badge) {
+          badge.classList.remove('badge-pop');
+          void badge.offsetWidth;
+          badge.classList.add('badge-pop');
+        }
+      };
+
+      window.updateQty = function(itemNum, change) {
+        var qtyInput = document.getElementById('qty-' + itemNum);
+        if (!qtyInput) return;
+        var cur = parseInt(qtyInput.value, 10);
+        var next = cur + change;
+        if (next <= 0) {
+          window.removeCartItem(itemNum);
+        } else {
+          qtyInput.value = next;
+          window.cartCount += change;
+          var unitPrice = itemNum === 1 ? 1480 : 2540;
+          window.cartSubtotal += change * unitPrice;
+          var subEl = document.getElementById('CartSubtotal');
+          if (subEl) subEl.textContent = '$' + window.cartSubtotal.toLocaleString() + '.00';
+          var cB = document.getElementById('CartBubble');
+          var dCB = document.getElementById('DrawerCartBubble');
+          if (cB) cB.textContent = window.cartCount;
+          if (dCB) dCB.textContent = window.cartCount;
+          window.bumpBadge('CartBubble');
+        }
+      };
+
+      window.removeCartItem = function(itemNum) {
+        var itemEl = document.getElementById('CartItem-' + itemNum);
+        if (itemEl) {
+          var qtyInput = document.getElementById('qty-' + itemNum);
+          var q = qtyInput ? parseInt(qtyInput.value, 10) : 1;
+          var unitPrice = itemNum === 1 ? 1480 : 2540;
+          window.cartSubtotal -= q * unitPrice;
+          window.cartCount -= q;
+          itemEl.remove();
+          var subEl = document.getElementById('CartSubtotal');
+          if (subEl) subEl.textContent = '$' + window.cartSubtotal.toLocaleString() + '.00';
+          var cB = document.getElementById('CartBubble');
+          var dCB = document.getElementById('DrawerCartBubble');
+          if (cB) cB.textContent = window.cartCount;
+          if (dCB) dCB.textContent = window.cartCount;
+          window.bumpBadge('CartBubble');
+          if (window.cartCount <= 0) {
+            var list = document.getElementById('CartItemsList');
+            if (list) list.innerHTML = '<div style="text-align:center; padding: 4rem 1.5rem; color:#8A847C;"><h3 style="font-family: Cormorant Garamond; font-size: 1.8rem; color:#1E1E1E;">Your Sanctuary Bag is Empty</h3></div>';
+            var foot = document.getElementById('CartFooter');
+            if (foot) foot.style.display = 'none';
+          }
+        }
+      };
+
+      window.quickAddDemo = function(name, price) {
+        window.cartCount++;
+        window.cartSubtotal += price;
+        var cB = document.getElementById('CartBubble');
+        var dCB = document.getElementById('DrawerCartBubble');
+        var subEl = document.getElementById('CartSubtotal');
+        if (cB) cB.textContent = window.cartCount;
+        if (dCB) dCB.textContent = window.cartCount;
+        if (subEl) subEl.textContent = '$' + window.cartSubtotal.toLocaleString() + '.00';
+        window.bumpBadge('CartBubble');
+        window.openCart();
+      };
+
+      // Wishlist Toggle
+      window.wishlistCount = 1;
+      window.toggleHeart = function(btn, name) {
+        var isSaved = btn.classList.contains('is-saved');
+        if (isSaved) {
+          btn.classList.remove('is-saved');
+          var svg = btn.querySelector('svg');
+          if (svg) {
+            svg.setAttribute('fill', 'none');
+            svg.setAttribute('stroke', 'currentColor');
+          }
+          window.wishlistCount = Math.max(0, window.wishlistCount - 1);
+        } else {
+          btn.classList.add('is-saved');
+          var svg = btn.querySelector('svg');
+          if (svg) {
+            svg.setAttribute('fill', '#C44D44');
+            svg.setAttribute('stroke', '#C44D44');
+          }
+          btn.classList.add('badge-pop');
+          setTimeout(function() { btn.classList.remove('badge-pop'); }, 400);
+          window.wishlistCount++;
+        }
+        var wB = document.getElementById('WishlistBubble');
+        var dWB = document.getElementById('DrawerWishlistBubble');
+        if (wB) wB.textContent = window.wishlistCount;
+        if (dWB) dWB.textContent = window.wishlistCount;
+        window.bumpBadge('WishlistBubble');
+      };
+
+      window.addFromWishlistToCart = function() {
+        window.quickAddDemo('Oushak Serenade Ivory Loom Rug', 1650);
+        window.closeWishlist();
+      };
+
+      window.removeWishlistItem = function(btn) {
+        var item = btn.closest('.luxury-cart-item');
+        if (item) item.remove();
+        window.wishlistCount = Math.max(0, window.wishlistCount - 1);
+        var wB = document.getElementById('WishlistBubble');
+        var dWB = document.getElementById('DrawerWishlistBubble');
+        if (wB) wB.textContent = window.wishlistCount;
+        if (dWB) dWB.textContent = window.wishlistCount;
+        window.bumpBadge('WishlistBubble');
+        if (window.wishlistCount === 0) {
+          var list = document.getElementById('WishlistItemsList');
+          if (list) list.innerHTML = '<div style="text-align:center; padding: 4rem 1.5rem; color:#8A847C;"><h3 style="font-family: Cormorant Garamond; font-size: 1.8rem; color:#1E1E1E;">Your Wishlist is Empty</h3></div>';
+        }
+      };
+
+      window.handleNewsletterSubmit = function(e) {
+        e.preventDefault();
+        var input = document.getElementById('newsletterEmailInput');
+        if (input) input.value = '';
+        var msg = document.getElementById('newsletterSuccessMessage');
+        if (msg) {
+          msg.style.display = 'flex';
+          setTimeout(function() { msg.style.display = 'none'; }, 5000);
+        }
+      };
+
+      // BOOTSTRAP ALL COMPONENTS SAFELY
+      function bootTheme() {
+        initBulletproofAOS();
+        initSwiper();
+        initHeaderScroll();
+        initAnnouncementRotator();
+        initCounters();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bootTheme);
+      } else {
+        bootTheme();
+      }
+
+      window.addEventListener('load', function() {
+        if (typeof AOS !== 'undefined') {
+          try { AOS.refreshHard(); } catch(e) {}
+        }
+        if (productSwiperInstance) {
+          try { productSwiperInstance.update(); } catch(e) {}
+        }
+      });
+    }
+
+
+    // Careers Interactive Filter Functions
+    window.filterJobs = function(category, btn) {
+      document.querySelectorAll('.careers-filter-btn').forEach(function(b) {
+        b.classList.remove('is-active');
+      });
+      if (btn) btn.classList.add('is-active');
+
+      var cards = document.querySelectorAll('.careers-job-card');
+      cards.forEach(function(card) {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    };
+
+    window.toggleJobDetails = function(jobId, btn) {
+      var details = document.getElementById('job-details-' + jobId);
+      if (!details) return;
+      var isOpen = details.classList.contains('is-open');
+      if (isOpen) {
+        details.classList.remove('is-open');
+        btn.querySelector('span').innerHTML = 'View Full Role Blueprint &darr;';
+      } else {
+        details.classList.add('is-open');
+        btn.querySelector('span').innerHTML = 'Close Role Blueprint &uarr;';
+      }
+    };
+
+    window.applyForJob = function(jobTitle) {
+      var select = document.getElementById('appPositionSelect');
+      if (select) {
+        select.value = jobTitle;
+      }
+      var target = document.getElementById('apply-form-section');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    window.updateFileName = function(input) {
+      if (input.files && input.files.length > 0) {
+        document.getElementById('fileUploadPlaceholder').style.display = 'none';
+        document.getElementById('fileUploadSelected').style.display = 'block';
+        document.getElementById('selectedFileName').textContent = input.files[0].name;
+      }
+    };
+
+    window.handleCareerSubmit = function(e) {
+      e.preventDefault();
+      document.getElementById('CareersApplicationForm').style.display = 'none';
+      document.getElementById('careerSuccessState').style.display = 'block';
+    };
+
+  </script>
+</body>
+</html>
+

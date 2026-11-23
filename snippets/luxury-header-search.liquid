@@ -1,0 +1,44 @@
+{% comment %}
+  Renders a luxury editorial slide-down predictive search bar.
+{% endcomment %}
+
+<div class="luxury-search-modal" id="LuxurySearchModal" role="dialog" aria-modal="true" aria-label="Search collections">
+  <div class="luxury-search-modal__container">
+    <button type="button" class="luxury-search-modal__close-btn" id="LuxurySearchCloseBtn" aria-label="Close search">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+
+    <form action="{{ routes.search_url }}" method="get" role="search" class="luxury-search-modal__form">
+      <input
+        type="search"
+        name="q"
+        id="LuxurySearchInput"
+        class="luxury-search-modal__input"
+        placeholder="Search for Hand-Knotted, Silk, Terracotta, Dhurries..."
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+      >
+      <input type="hidden" name="options[prefix]" value="last">
+      <button type="submit" class="luxury-search-modal__submit" aria-label="Submit search">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+    </form>
+
+    <div class="luxury-search-modal__results" id="LuxurySearchResults">
+      <div style="padding: 1.5rem 0; color: #8A847C; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;">
+        <span>Popular Curations:</span>
+        <div style="display: flex; gap: 0.8rem; margin-top: 0.8rem; flex-wrap: wrap;">
+          <a href="/search?q=Kashan" class="underline-slide" style="color: #1E1E1E; font-size: 0.82rem;">Kashan Heirlooms</a>
+          <span style="opacity: 0.4;">&bull;</span>
+          <a href="/search?q=Oushak" class="underline-slide" style="color: #1E1E1E; font-size: 0.82rem;">Oushak Ivory</a>
+          <span style="opacity: 0.4;">&bull;</span>
+          <a href="/search?q=Terracotta" class="underline-slide" style="color: #1E1E1E; font-size: 0.82rem;">Terracotta Botanical</a>
+          <span style="opacity: 0.4;">&bull;</span>
+          <a href="/search?q=Silk" class="underline-slide" style="color: #1E1E1E; font-size: 0.82rem;">Mulberry Silk</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

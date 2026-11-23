@@ -1,0 +1,211 @@
+{% doc %}
+  @prompt
+    Create a clean, minimal horizontal Shopify navigation bar with these default menu items:
+    
+    HOSPITALITY | RETAIL | AVIATION | YACHT | RESIDENTIAL | ALL
+    
+    - Center the navigation in a 60px white header.
+    - Use uppercase, modern sans-serif text, 12–13px, weight 400.
+    - Active item: dark/black. Inactive items: warm gray/taupe.
+    - Hover: smoothly transition to the configured hover color in 0.2–0.3s.
+    - Keep all items on one line. On mobile, allow horizontal scrolling without wrapping and hide the scrollbar.
+    - Each item must be clickable with its own Shopify Theme Editor URL.
+    
+    SHOPIFY THEME EDITOR CUSTOMIZATION:
+    - Individually edit each menu label.
+    - Individually set each menu URL.
+    - Global and individual label font size.
+    - Active, inactive, and hover colors.
+    - Menu item gap/spacing.
+    - Left/right and top/bottom padding.
+    - Header height.
+    - Letter spacing and font weight.
+    - Separate mobile font size, gap, and padding.
+    - Desktop alignment: Left / Center / Right.
+    - Automatically detect and style the active menu item based on the current Shopify page/URL.
+    
+    Do not hard-code customizable values. Use Shopify section settings/schema and CSS variables where appropriate.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-rug-nav-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background: {{ block.settings.background_color }};
+  }
+
+  .ai-rug-nav-{{ ai_gen_id }}__inner {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: {% if block.settings.alignment == 'left' %}flex-start{% elsif block.settings.alignment == 'right' %}flex-end{% else %}center{% endif %};
+    height: {{ block.settings.header_height }}px;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: {{ block.settings.vertical_padding }}px {{ block.settings.horizontal_padding }}px;
+  }
+
+  .ai-rug-nav-{{ ai_gen_id }}__list {
+    display: flex;
+    align-items: center;
+    justify-content: inherit;
+    gap: {{ block.settings.item_gap }}px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .ai-rug-nav-{{ ai_gen_id }}__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ai-rug-nav-{{ ai_gen_id }}__item {
+    flex: 0 0 auto;
+  }
+
+  .ai-rug-nav-{{ ai_gen_id }}__link {
+    display: inline-block;
+    color: {{ block.settings.inactive_color }};
+    font-family: {{ block.settings.font_family.family }}, {{ block.settings.font_family.fallback_families }};
+    font-size: {{ block.settings.global_font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    letter-spacing: {{ block.settings.letter_spacing }}px;
+    line-height: 1.3;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+    outline-offset: 4px;
+  }
+
+  .ai-rug-nav-{{ ai_gen_id }}__link:hover {
+    color: {{ block.settings.hover_color }};
+  }
+
+  .ai-rug-nav-{{ ai_gen_id }}__link[aria-current="page"] {
+    color: {{ block.settings.active_color }};
+  }
+
+  .ai-rug-nav-{{ ai_gen_id }}__link:focus-visible {
+    outline: 2px solid currentColor;
+  }
+
+  {% for i in (1..6) %}
+    {% assign item_size_key = 'item_' | append: i | append: '_font_size' %}
+    {% if block.settings[item_size_key] > 0 %}
+      .ai-rug-nav-{{ ai_gen_id }}__link--{{ i }} { font-size: {{ block.settings[item_size_key] }}px; }
+    {% endif %}
+  {% endfor %}
+
+  @media screen and (max-width: 749px) {
+    .ai-rug-nav-{{ ai_gen_id }}__inner {
+      height: auto;
+      min-height: {{ block.settings.header_height }}px;
+      padding: {{ block.settings.mobile_vertical_padding }}px {{ block.settings.mobile_horizontal_padding }}px;
+    }
+
+    .ai-rug-nav-{{ ai_gen_id }}__list {
+      justify-content: flex-start;
+      gap: {{ block.settings.mobile_item_gap }}px;
+    }
+
+    .ai-rug-nav-{{ ai_gen_id }}__link {
+      font-size: {{ block.settings.mobile_font_size }}px;
+    }
+
+    {% for i in (1..6) %}
+      {% assign item_size_key = 'item_' | append: i | append: '_font_size' %}
+      {% if block.settings[item_size_key] > 0 %}
+        .ai-rug-nav-{{ ai_gen_id }}__link--{{ i }} { font-size: {{ block.settings.mobile_font_size }}px; }
+      {% endif %}
+    {% endfor %}
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ai-rug-nav-{{ ai_gen_id }}__link { transition: none; }
+  }
+{% endstyle %}
+
+<nav class="ai-rug-nav-{{ ai_gen_id }}" aria-label="{{ block.settings.navigation_label | escape }}" {{ block.shopify_attributes }}>
+  <div class="ai-rug-nav-{{ ai_gen_id }}__inner">
+    <ul class="ai-rug-nav-{{ ai_gen_id }}__list">
+      {% for i in (1..6) %}
+        {% liquid
+          assign label_key = 'item_' | append: i | append: '_label'
+          assign url_key = 'item_' | append: i | append: '_url'
+          assign item_label = block.settings[label_key]
+          assign item_url = block.settings[url_key]
+          assign is_current = false
+          if item_url != blank and request.path == item_url
+            assign is_current = true
+          endif
+        %}
+        {% if item_label != blank and item_url != blank %}
+          <li class="ai-rug-nav-{{ ai_gen_id }}__item">
+            <a class="ai-rug-nav-{{ ai_gen_id }}__link ai-rug-nav-{{ ai_gen_id }}__link--{{ i }}" href="{{ item_url }}"{% if is_current %} aria-current="page"{% endif %}>{{ item_label | escape }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "Rug category navigation",
+  "settings": [
+    { "type": "header", "content": "Menu items" },
+    { "type": "text", "id": "navigation_label", "label": "Navigation label", "default": "Rug categories" },
+    { "type": "text", "id": "item_1_label", "label": "Item 1 label", "default": "Hospitality" },
+    { "type": "url", "id": "item_1_url", "label": "Item 1 link" },
+    { "type": "range", "id": "item_1_font_size", "label": "Item 1 font size", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 0 },
+    { "type": "text", "id": "item_2_label", "label": "Item 2 label", "default": "Retail" },
+    { "type": "url", "id": "item_2_url", "label": "Item 2 link" },
+    { "type": "range", "id": "item_2_font_size", "label": "Item 2 font size", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 0 },
+    { "type": "text", "id": "item_3_label", "label": "Item 3 label", "default": "Aviation" },
+    { "type": "url", "id": "item_3_url", "label": "Item 3 link" },
+    { "type": "range", "id": "item_3_font_size", "label": "Item 3 font size", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 0 },
+    { "type": "text", "id": "item_4_label", "label": "Item 4 label", "default": "Yacht" },
+    { "type": "url", "id": "item_4_url", "label": "Item 4 link" },
+    { "type": "range", "id": "item_4_font_size", "label": "Item 4 font size", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 0 },
+    { "type": "text", "id": "item_5_label", "label": "Item 5 label", "default": "Residential" },
+    { "type": "url", "id": "item_5_url", "label": "Item 5 link" },
+    { "type": "range", "id": "item_5_font_size", "label": "Item 5 font size", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 0 },
+    { "type": "text", "id": "item_6_label", "label": "Item 6 label", "default": "All" },
+    { "type": "url", "id": "item_6_url", "label": "Item 6 link" },
+    { "type": "range", "id": "item_6_font_size", "label": "Item 6 font size", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 0 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "header_height", "label": "Header height", "min": 40, "max": 100, "step": 5, "unit": "px", "default": 60 },
+    { "type": "select", "id": "alignment", "label": "Desktop alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }], "default": "center" },
+    { "type": "range", "id": "item_gap", "label": "Item gap", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 28 },
+    { "type": "range", "id": "horizontal_padding", "label": "Left/right padding", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 20 },
+    { "type": "range", "id": "vertical_padding", "label": "Top/bottom padding", "min": 0, "max": 30, "step": 2, "unit": "px", "default": 0 },
+    { "type": "header", "content": "Typography and color" },
+    { "type": "font_picker", "id": "font_family", "label": "Font", "default": "assistant_n4" },
+    { "type": "range", "id": "global_font_size", "label": "Global font size", "min": 10, "max": 24, "step": 1, "unit": "px", "default": 13 },
+    { "type": "range", "id": "font_weight", "label": "Font weight", "min": 100, "max": 900, "step": 100, "default": 400 },
+    { "type": "range", "id": "letter_spacing", "label": "Letter spacing", "min": 0, "max": 4, "step": 1, "unit": "px", "default": 1 },
+    { "type": "color", "id": "background_color", "label": "Header background", "default": "#FFFFFF" },
+    { "type": "color", "id": "active_color", "label": "Active item", "default": "#121212" },
+    { "type": "color", "id": "inactive_color", "label": "Inactive items", "default": "#756E66" },
+    { "type": "color", "id": "hover_color", "label": "Hover", "default": "#493F35" },
+    { "type": "header", "content": "Mobile layout" },
+    { "type": "range", "id": "mobile_font_size", "label": "Mobile font size", "min": 10, "max": 24, "step": 1, "unit": "px", "default": 12 },
+    { "type": "range", "id": "mobile_item_gap", "label": "Mobile item gap", "min": 0, "max": 50, "step": 2, "unit": "px", "default": 20 },
+    { "type": "range", "id": "mobile_horizontal_padding", "label": "Mobile left/right padding", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 16 },
+    { "type": "range", "id": "mobile_vertical_padding", "label": "Mobile top/bottom padding", "min": 0, "max": 30, "step": 2, "unit": "px", "default": 0 }
+  ],
+  "presets": [
+    { "name": "Rug category navigation" }
+  ],
+  "tag": null,
+  "class": "rug-category-navigation"
+}
+{% endschema %}

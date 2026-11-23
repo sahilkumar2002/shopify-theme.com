@@ -1,0 +1,249 @@
+<section class="luxury-about-craft luxury-section-padding--large" style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 | default: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=2000&q=80' }}');">
+  <div class="luxury-about-craft__overlay"></div>
+  <div class="luxury-container luxury-about-craft__content">
+    <div class="luxury-about-craft__quote-wrap" data-aos="fade-up">
+      <span class="editorial-eyebrow" style="color: #E2B77A;">{{ section.settings.eyebrow | default: 'The Human Loom' }}</span>
+      <blockquote class="luxury-about-craft__quote">
+        &ldquo;{{ section.settings.quote | default: 'When my fingers guide the wool across the warp, I am not alone at the loom. My grandmother sits beside me in memory, and the home across the sea that will cherish this carpet is already in my heart.' }}&rdquo;
+      </blockquote>
+      <div class="luxury-about-craft__author">
+        {%- if section.settings.artisan_image != blank -%}
+          <img src="{{ section.settings.artisan_image | image_url: width: 140 }}" alt="{{ section.settings.author | escape }}" class="luxury-about-craft__avatar" loading="lazy">
+        {%- endif -%}
+        <div>
+          <h4 class="luxury-about-craft__name">{{ section.settings.author | default: 'Shanti Devi' }}</h4>
+          <span class="luxury-about-craft__village">{{ section.settings.village | default: 'Master Weaver & Artisan Guild Leader, Aaspura' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Animated Counters -->
+    <div class="luxury-about-craft__counters" id="CraftCounters" data-aos="fade-up" data-aos-delay="200">
+      <div class="luxury-about-craft__counter-card">
+        <div class="luxury-about-craft__number" data-target="{{ section.settings.count_artisans | default: 40000 }}">0</div>
+        <div class="luxury-about-craft__label">{{ section.settings.label_artisans | default: 'Generational Artisans' }}</div>
+      </div>
+      <div class="luxury-about-craft__counter-card">
+        <div class="luxury-about-craft__number" data-target="{{ section.settings.count_villages | default: 600 }}">0</div>
+        <div class="luxury-about-craft__label">{{ section.settings.label_villages | default: 'Weaver Villages Empowered' }}</div>
+      </div>
+      <div class="luxury-about-craft__counter-card">
+        <div class="luxury-about-craft__number" data-target="{{ section.settings.count_countries | default: 45 }}">0</div>
+        <div class="luxury-about-craft__label">{{ section.settings.label_countries | default: 'Countries Adorned' }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .luxury-about-craft {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #FFFFFF;
+    text-align: center;
+  }
+  .luxury-about-craft__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(18, 17, 16, 0.88) 0%, rgba(18, 17, 16, 0.82) 100%);
+  }
+  .luxury-about-craft__content {
+    position: relative;
+    z-index: 2;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .luxury-about-craft__quote {
+    font-family: var(--luxury-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: clamp(1.8rem, 3.4vw, 2.9rem);
+    font-weight: 300;
+    line-height: 1.35;
+    font-style: italic;
+    color: #FAF7F2;
+    margin: 1rem 0 2rem;
+  }
+  .luxury-about-craft__author {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 4.5rem;
+    text-align: left;
+  }
+  .luxury-about-craft__avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--luxury-accent, #9E583A);
+  }
+  .luxury-about-craft__name {
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0;
+  }
+  .luxury-about-craft__village {
+    font-size: 0.85rem;
+    color: #C5BFB7;
+    letter-spacing: 0.05em;
+  }
+  .luxury-about-craft__counters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-top: 3.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .luxury-about-craft__number {
+    font-family: var(--luxury-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: clamp(3rem, 5.5vw, 4.8rem);
+    color: #E2B77A;
+    line-height: 1;
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+  }
+  .luxury-about-craft__label {
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.85rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #D9D2C7;
+  }
+  @media (max-width: 768px) {
+    .luxury-about-craft__counters {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    function initCounters() {
+      var container = document.getElementById('CraftCounters');
+      if (!container || container.getAttribute('data-counted')) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            container.setAttribute('data-counted', 'true');
+            var numbers = container.querySelectorAll('.luxury-about-craft__number');
+            numbers.forEach(function(numEl) {
+              var target = parseInt(numEl.getAttribute('data-target'), 10);
+              var duration = 2000;
+              var start = 0;
+              var startTime = null;
+
+              function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var progress = Math.min((timestamp - startTime) / duration, 1);
+                var easeProgress = 1 - Math.pow(1 - progress, 3); // Ease out cubic
+                var current = Math.floor(easeProgress * target);
+                numEl.textContent = current.toLocaleString() + '+';
+                if (progress < 1) {
+                  window.requestAnimationFrame(step);
+                } else {
+                  numEl.textContent = target.toLocaleString() + '+';
+                }
+              }
+              window.requestAnimationFrame(step);
+            });
+            observer.unobserve(container);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(container);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCounters);
+    } else {
+      initCounters();
+    }
+    document.addEventListener('shopify:section:load', initCounters);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "About — Craftsmanship",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Section Background"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Human Loom"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Artisan Quote",
+      "default": "When my fingers guide the wool across the warp, I am not alone at the loom. My grandmother sits beside me in memory, and the home across the sea that will cherish this carpet is already in my heart."
+    },
+    {
+      "type": "image_picker",
+      "id": "artisan_image",
+      "label": "Artisan Photo"
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Artisan Name",
+      "default": "Shanti Devi"
+    },
+    {
+      "type": "text",
+      "id": "village",
+      "label": "Artisan Guild / Village",
+      "default": "Master Weaver & Artisan Guild Leader, Aaspura"
+    },
+    {
+      "type": "number",
+      "id": "count_artisans",
+      "label": "Artisans Count",
+      "default": 40000
+    },
+    {
+      "type": "text",
+      "id": "label_artisans",
+      "label": "Artisans Label",
+      "default": "Generational Artisans"
+    },
+    {
+      "type": "number",
+      "id": "count_villages",
+      "label": "Villages Count",
+      "default": 600
+    },
+    {
+      "type": "text",
+      "id": "label_villages",
+      "label": "Villages Label",
+      "default": "Weaver Villages Empowered"
+    },
+    {
+      "type": "number",
+      "id": "count_countries",
+      "label": "Countries Count",
+      "default": 45
+    },
+    {
+      "type": "text",
+      "id": "label_countries",
+      "label": "Countries Label",
+      "default": "Countries Adorned"
+    }
+  ]
+}
+{% endschema %}

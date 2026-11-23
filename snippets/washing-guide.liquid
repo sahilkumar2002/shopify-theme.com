@@ -1,0 +1,193 @@
+<details class="care-accordion" open>
+  <summary class="care-summary">
+
+    <div class="care-header-left">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M4 10h24l-3 12H7L4 10z"/>
+        <path d="M7 10L5 6"/>
+        <path d="M25 10l2-4"/>
+      </svg>
+      <span>Washing Instructions</span>
+    </div>
+
+    <span class="care-arrow"></span>
+
+  </summary>
+
+  <div class="care-guide">
+
+    <div class="care-item">
+      <img src="https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Make_design_layout_3477dd2f_2K.jpg?v=1793876595">
+      <span>DO NOT Brush Or Scrub The Rug.</span>
+    </div>
+
+    <div class="care-item">
+      <img src="https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Make_design_layout_reference_17b91e96_2K.jpg?v=1793876595">
+      <span>Only Vacuum Clean It Periodically. Avoid Using Vacuum Beater Brush Mode.</span>
+    </div>
+
+    <div class="care-item">
+      <img src="https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Make_design_layout_dd971fe3_2K.jpg?v=1793876595">
+      <span>If Spills Occur, Blot Immediately. Do Not Rub The Stain.</span>
+    </div>
+
+    <div class="care-item">
+      <img src="https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Make_design_layout_reference_6facc30d_2K.jpg?v=1793876595">
+      <span>Rotate Occasionally To Equalize Wear.</span>
+    </div>
+
+    <div class="care-item">
+      <img src="https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Make_design_layout_reference_6c61e6ce_2K.jpg?v=1793876595">
+      <span>Use Protectors Under The Legs Of Heavy Furniture To Avoid Flattening And Piling.</span>
+    </div>
+
+    <div class="care-item">
+      <img src="https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Make_design_layout_b8e04e19_2K.jpg?v=1793876595">
+      <span>If Thread Comes Out Do Not Pull The Yarn, Trim With Scissors.</span>
+    </div>
+
+    <div class="care-item">
+      <img src="https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Make_design_layout_reference_732618f0_2K.jpg?v=1793876595">
+      <span>Periodic Professional Cleaning Recommended.</span>
+    </div>
+
+  </div>
+</details>
+
+<style>
+.care-accordion{
+  /*border-bottom:1px solid #e5e5e5;*/
+}
+
+.care-summary{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 0px 15px 0px;
+  cursor:pointer;
+  list-style:none;
+  border-radius: 25px;
+}
+
+.care-summary:hover {
+  background-color: #f5f5f5 !important;
+}
+
+.care-summary::-webkit-details-marker{
+  display:none;
+}
+
+.care-header-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.care-title-icon{
+  width:20px;
+  height:20px;
+  object-fit:contain;
+}
+
+.care-header-left span{
+  font-size:15px;
+  font-weight:600;
+  color:#000;
+}
+
+.care-accordion[open] .care-arrow{
+  width:7px;
+  height:7px;
+  border-right:1px solid #000;
+  border-bottom:1px solid #000;
+  transform:rotate(45deg);
+  transition:.3s;
+  margin-right:15px;
+}
+
+.care-arrow{
+  width:7px;
+  height:7px;
+  border-right:1px solid #000;
+  border-bottom:1px solid #000;
+  transform:rotate(45deg); /* closed */
+  transition:transform .3s ease;
+  margin-right:15px;
+  flex-shrink:0;
+}
+
+.care-accordion[open] .care-arrow{
+  transform:rotate(-135deg);
+}
+
+.care-guide{
+  padding:0px 0 25px;
+}
+
+.care-item{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-bottom:20px;
+}
+
+.care-item:last-child{
+  margin-bottom:0;
+}
+
+.care-item img{
+  width:32px;
+  height:32px;
+  min-width:32px;
+  object-fit:contain;
+}
+
+.care-item span{
+  color:#555;
+  font-size:16px;
+  line-height:1.7;
+}
+
+@media(max-width:749px){
+
+  .care-header-left span{
+    font-size:16px;
+  }
+
+  .care-item{
+    gap:14px;
+    align-items:flex-start;
+  }
+
+  .care-item img{
+    width:34px;
+    height:34px;
+    min-width:34px;
+  }
+
+  .care-item span{
+    font-size:14px;
+  }
+}
+
+.care-summary{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+}
+
+.care-guide{
+  display:block !important;
+}
+
+.care-summary{
+  cursor:pointer !important;
+}
+
+.care-summary:hover{
+  cursor:pointer !important;
+}
+</style>
+
+

@@ -1,0 +1,338 @@
+<nav class="header__inline-menu">
+
+  <ul class="list-menu list-menu--inline" role="list">
+
+    {%- for link in section.settings.menu.links -%}
+      {%- assign item_handle = link.handle | downcase -%}
+
+      <li {% if item_handle == 'projects' %}style="position: static !important;"{% endif %}>
+
+        {%- if link.links != blank or item_handle == 'accessories' or item_handle == 'projects' -%}
+
+          <header-menu {% if item_handle == 'projects' %}style="position: static !important;"{% endif %}>
+
+            <details
+              id="Details-HeaderMenu-{{ forloop.index }}"
+              class="{% if item_handle == 'accessories' %}accessories-menu{% endif %}"
+              {% if item_handle == 'projects' %}style="position: static !important;"{% endif %}
+            >
+
+              <!-- TOP LEVEL MENU ITEM -->
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset"
+              >
+                <span
+                  {% if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{ link.title | escape }}
+                </span>
+                {% render 'icon-caret' %}
+              </summary>
+
+
+              {%- if item_handle == 'accessories' -%}
+
+                <!-- =================================================
+                     ACCESSORIES MEGA MENU
+                     ================================================= -->
+                <div
+                  id="AccessoriesMenu-{{ forloop.index }}"
+                  class="accessories-menu__panel"
+                  tabindex="-1"
+                >
+                  <div class="accessories-menu__inner">
+                    <div class="accessories-menu__content">
+                      <div class="accessories-menu__grid">
+
+                        <a href="https://indianrugstore.com/collections/rug-accessories" class="accessories-menu__card">
+                          <div class="accessories-menu__image" style="background-image: url('https://cdn.shopify.com/s/files/1/0648/2188/7176/files/rug-accessories-bg.jpg?v=1789648447');">
+                            <div class="accessories-menu__overlay"></div>
+                            <span class="accessories-menu__title">Rug accessories</span>
+                            <span class="accessories-menu__arrow" aria-hidden="true">→</span>
+                          </div>
+                        </a>
+
+                        <a href="https://indianrugstore.com/collections/cushion-covers" class="accessories-menu__card">
+                          <div class="accessories-menu__image" style="background-image: url('https://cdn.shopify.com/s/files/1/0648/2188/7176/files/10701__cushion-cover-outdoor-accessory-yellow-3x4.jpg?v=1789716342');">
+                            <div class="accessories-menu__overlay"></div>
+                            <span class="accessories-menu__title">Cushion covers</span>
+                            <span class="accessories-menu__arrow" aria-hidden="true">→</span>
+                          </div>
+                        </a>
+
+                        <a href="https://indianrugstore.com/collections/wall-decorations" class="accessories-menu__card">
+                          <div class="accessories-menu__image" style="background-image: url('https://cdn.shopify.com/s/files/1/0648/2188/7176/files/627131.webp?v=1789724725');">
+                            <div class="accessories-menu__overlay"></div>
+                            <span class="accessories-menu__title">Wall decorations</span>
+                            <span class="accessories-menu__arrow" aria-hidden="true">→</span>
+                          </div>
+                        </a>
+
+                        <a href="https://indianrugstore.com/collections/poufs" class="accessories-menu__card">
+                          <div class="accessories-menu__image" style="background-image: url('https://cdn.shopify.com/s/files/1/0648/2188/7176/files/10687__pouf-livingroom-red-accessory-soft-1x1.jpg?v=1789721288');">
+                            <div class="accessories-menu__overlay"></div>
+                            <span class="accessories-menu__title">Poufs</span>
+                            <span class="accessories-menu__arrow" aria-hidden="true">→</span>
+                          </div>
+                        </a>
+
+                        <a href="https://indianrugstore.com/collections/door-mates" class="accessories-menu__card">
+                          <div class="accessories-menu__image" style="background-image: url('https://cdn.shopify.com/s/files/1/0648/2188/7176/files/rug-accessories-bg.jpg?v=1789648447');">
+                            <div class="accessories-menu__overlay"></div>
+                            <span class="accessories-menu__title">Door Mates</span>
+                            <span class="accessories-menu__arrow" aria-hidden="true">→</span>
+                          </div>
+                        </a>
+
+                        <a href="https://indianrugstore.com/collections/room-mates" class="accessories-menu__card">
+                          <div class="accessories-menu__image" style="background-image: url('https://cdn.shopify.com/s/files/1/0648/2188/7176/files/rug-accessories-bg.jpg?v=1789648447');">
+                            <div class="accessories-menu__overlay"></div>
+                            <span class="accessories-menu__title">Room Mates</span>
+                            <span class="accessories-menu__arrow" aria-hidden="true">→</span>
+                          </div>
+                        </a>
+
+                      </div>
+                    </div>
+
+                    <div class="header-benefits-bar">
+                      <div class="header-benefits-bar__inner">
+                        <div class="header-benefit">
+                          <span class="header-benefit__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                              <path d="M3 7h11v10H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/><path d="M14 14h7"/>
+                            </svg>
+                          </span>
+                          <span>Free and Fast shipping</span>
+                        </div>
+                        <div class="header-benefit">
+                          <span class="header-benefit__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                              <path d="M6 3v18"/><path d="M6 5h9l-2 3 2 3H6"/><path d="M17 12v9"/><path d="M17 14h4l-2 3 2 3h-4"/>
+                            </svg>
+                          </span>
+                          <span>Home delivery</span>
+                        </div>
+                        <div class="header-benefit">
+                          <span class="header-benefit__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                              <path d="M20 7v6h-6"/><path d="M20 13a8 8 0 1 0 1 4"/><path d="M20 13l-5-5"/>
+                            </svg>
+                          </span>
+                          <span>Free returns</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              {%- elsif item_handle == 'projects' -%}
+                
+                <!-- =================================================
+                     NEW PROJECTS MEGA MENU
+                     ================================================= -->
+                <div id="ProjectsMenu-{{ forloop.index }}" class="jaipur-proj-menu" tabindex="-1">
+                  <div class="jaipur-proj-inner">
+                    
+                    <!-- Left: Navigation Links with assigned URLs -->
+                    <div class="jaipur-proj-nav">
+                      <a href="https://indianrugstore.com/pages/hospitality" class="jaipur-proj-link" data-target="hospitality">HOSPITALITY</a>
+                      <a href="https://indianrugstore.com/pages/retail" class="jaipur-proj-link" data-target="retail">RETAIL</a>
+                      <a href="https://indianrugstore.com/pages/aviation" class="jaipur-proj-link" data-target="aviation">AVIATION</a>
+                      <a href="https://indianrugstore.com/pages/yacht" class="jaipur-proj-link" data-target="yacht">YACHT</a>
+                      <a href="https://indianrugstore.com/pages/residential" class="jaipur-proj-link" data-target="residential">RESIDENTIAL</a>
+                      
+                      <!-- distinct View All button with underline and no hover data-target -->
+                      <a href="https://indianrugstore.com/pages/all" class="jaipur-proj-link-viewall">VIEW ALL</a>
+                    </div>
+
+                    <!-- Middle: Title & Paragraph -->
+                    <div class="jaipur-proj-content">
+                      <h3 class="jaipur-proj-title" id="ProjTitle">ALL</h3>
+                      <p class="jaipur-proj-desc" id="ProjDesc">
+                        No two spaces are alike. Across hospitality, retail, aviation, residential, and yachting projects, we create handcrafted rugs that balance performance with artistry. Each piece is designed to complement its surroundings and feel like a natural part of the space.
+                      </p>
+                    </div>
+
+                    <!-- Right: Large Feature Image -->
+                    <div class="jaipur-proj-visual">
+                      <img 
+                        id="ProjImg"
+                        class="jaipur-proj-img" 
+                        src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200" 
+                        alt="Projects Showcase"
+                      >
+                    </div>
+
+                  </div>
+                </div>
+
+              {%- else -%}
+
+                <!-- =================================================
+                     STANDARD DAWN DROPDOWN
+                     ================================================= -->
+                <ul
+                  id="HeaderMenu-MenuList-{{ forloop.index }}"
+                  class="header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
+                  role="list"
+                  tabindex="-1"
+                >
+                  {%- for childlink in link.links -%}
+                    <li>
+                      {%- if childlink.links == blank -%}
+                        <a
+                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                          href="{{ childlink.url }}"
+                          class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
+                          {% if childlink.current %}
+                            aria-current="page"
+                          {% endif %}
+                        >
+                          {{ childlink.title | escape }}
+                        </a>
+                      {%- else -%}
+                        <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
+                          <summary
+                            id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                            class="header__menu-item link link--text list-menu__item focus-inset caption-large"
+                          >
+                            <span>{{ childlink.title | escape }}</span>
+                            {% render 'icon-caret' %}
+                          </summary>
+                          <ul
+                            id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}"
+                            class="header__submenu list-menu motion-reduce"
+                          >
+                            {%- for grandchildlink in childlink.links -%}
+                              <li>
+                                <a
+                                  id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                  href="{{ grandchildlink.url }}"
+                                  class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
+                                  {% if grandchildlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                >
+                                  {{ grandchildlink.title | escape }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </details>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+
+              {%- endif -%}
+            </details>
+          </header-menu>
+
+        {%- else -%}
+
+          <!-- =====================================================
+               NORMAL TOP LEVEL LINK
+               ===================================================== -->
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {% if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{ link.title | escape }}
+            </span>
+          </a>
+
+        {%- endif -%}
+
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
+
+<!-- =================================================
+     PROJECTS MEGA MENU JAVASCRIPT LOGIC
+     ================================================= -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Only fetch links that should trigger a hover swap
+    const projectLinks = document.querySelectorAll('.jaipur-proj-link');
+    
+    const projectTitle = document.getElementById('ProjTitle');
+    const projectDesc = document.getElementById('ProjDesc');
+    const projectImg = document.getElementById('ProjImg');
+    const contentPanel = document.querySelector('.jaipur-proj-content');
+
+    // 1. CHANGE HOVER TEXT AND IMAGES HERE
+    const data = {
+      'hospitality': {
+        title: 'Hospitality',
+        desc: 'Creating memorable experiences begins with the right atmosphere. Our bespoke hospitality rugs combine enduring quality with striking design, ensuring each space leaves a lasting impression on your guests.',
+        img: 'https://cdn.shopify.com/s/files/1/0648/2188/7176/files/hospitality-banner1.jpg?v=1790841085'
+      },
+      'retail': {
+        title: 'Retail',
+        desc: 'In stores, rugs set the mood. Whether it\'s a window display or the center of a showroom, our rugs are made to draw attention and handle heavy foot traffic—while staying true to the brand\'s style.',
+        img: 'https://cdn.shopify.com/s/files/1/0648/2188/7176/files/retail-banner1.jpg?v=1790841277'
+      },
+      'aviation': {
+        title: 'Aviation',
+        desc: 'Private jets and airport lounges need rugs that are light, durable, and refined. We work with global designers to craft carpets that meet technical requirements without losing the softness and detail of handmade work.',
+        img: 'https://cdn.shopify.com/s/files/1/0648/2188/7176/files/aviation-banner1.jpg?v=1790843771'
+      },
+      'yacht': {
+        title: 'Yacht',
+        desc: 'We create custom rugs for luxury yachts—made to fit tight layouts, handle moisture, and stay in place even at sea. Every piece is tailored to the space, so it feels like part of the design, not an afterthought.',
+        img: 'https://cdn.shopify.com/s/files/1/0648/2188/7176/files/yacht-banner2.jpg?v=1790844069'
+      },
+      'residential': {
+        title: 'Residential',
+        desc: 'From apartments to estates, our rugs are made to feel personal. We work closely with homeowners, architects, and interior designers to create pieces that reflect the space and the people living in it.',
+        img: 'https://cdn.shopify.com/s/files/1/0648/2188/7176/files/residential-banner1.jpg?v=1790844069'
+      }
+    };
+
+    // 2. HOVER INTERACTIVITY
+    projectLinks.forEach(link => {
+      link.addEventListener('mouseenter', function() {
+        // Remove active class from all swappable links
+        projectLinks.forEach(l => l.classList.remove('is-active'));
+        // Add active class to hovered link
+        this.classList.add('is-active');
+
+        // Fetch data based on target
+        const target = this.getAttribute('data-target');
+        const newData = data[target];
+
+        if(newData) {
+          // Quick fade out effect
+          contentPanel.style.opacity = '0';
+          projectImg.style.opacity = '0';
+          
+          setTimeout(() => {
+            // Swap text and image
+            projectTitle.textContent = newData.title;
+            projectDesc.textContent = newData.desc;
+            projectImg.src = newData.img;
+            
+            // Fade back in
+            contentPanel.style.opacity = '1';
+            projectImg.style.opacity = '1';
+          }, 150);
+        }
+      });
+    });
+  });
+</script>

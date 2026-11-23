@@ -1,0 +1,237 @@
+{{ 'customer.aio.min.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .luxury-customer-auth-wrap {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--luxury-bg, #FBF9F5);
+    padding: clamp(3rem, 6vw, 6rem) 1.5rem;
+  }
+
+  .luxury-customer-card {
+    width: 100%;
+    max-width: 480px;
+    background: #FFFFFF;
+    border: 1px solid var(--luxury-border-light, #EFEAE3);
+    border-radius: 2px;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.05);
+    padding: clamp(2.5rem, 5vw, 3.8rem);
+    text-align: center;
+  }
+
+  .luxury-customer-card h1 {
+    font-family: var(--luxury-font-heading, 'Cormorant Garamond', serif);
+    font-size: clamp(2rem, 3.5vw, 2.6rem);
+    font-weight: 400;
+    color: #1E1E1E;
+    margin: 0 0 0.8rem;
+    line-height: 1.15;
+  }
+
+  .luxury-customer-card p {
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.92rem;
+    color: #6E6862;
+    margin-bottom: 2.2rem;
+    line-height: 1.6;
+  }
+
+  .luxury-auth-field {
+    position: relative;
+    margin-bottom: 1.4rem;
+    text-align: left;
+  }
+
+  .luxury-auth-input {
+    width: 100%;
+    padding: 1.1rem 1.2rem;
+    border: 1.5px solid #D9D2C7;
+    border-radius: 2px;
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.95rem;
+    color: #1E1E1E;
+    background: transparent;
+    outline: none;
+    transition: border-color 0.25s ease;
+  }
+
+  .luxury-auth-input:focus {
+    border-color: #1E1E1E;
+  }
+
+  .luxury-password-toggle-wrap {
+    position: relative;
+  }
+
+  .luxury-password-toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #7A746E;
+    padding: 4px;
+  }
+
+  .luxury-auth-btn {
+    width: 100%;
+    background: #1E1E1E;
+    color: #FFFFFF !important;
+    border: 1px solid #1E1E1E;
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 1.1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-top: 0.8rem;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .luxury-auth-btn:hover {
+    background: #9E583A;
+    border-color: #9E583A;
+    transform: translateY(-2px);
+  }
+
+  .luxury-auth-link {
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.85rem;
+    color: #6E6862;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .luxury-auth-link:hover {
+    color: #1E1E1E;
+  }
+{%- endstyle -%}
+
+<div class="luxury-customer-auth-wrap">
+  <div class="luxury-customer-card">
+    <div id="recover" style="display: none;">
+      <span class="editorial-eyebrow">Patron Concierge</span>
+      <h1>Reset Password</h1>
+      <p>Enter your email to receive a secure link to reset your account password.</p>
+
+      {%- form 'recover_customer_password' -%}
+        {% assign recover_success = form.posted_successfully? %}
+        <div class="luxury-auth-field">
+          <input
+            type="email"
+            value=""
+            name="email"
+            id="RecoverEmail"
+            class="luxury-auth-input"
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="email"
+            placeholder="Email address"
+            required
+          >
+        </div>
+        {%- if form.errors -%}
+          <small class="form__message" style="color: #C44D44; margin-bottom: 1rem; display: block;">
+            {{ form.errors.messages.form }}
+          </small>
+        {%- endif -%}
+
+        <button type="submit" class="luxury-auth-btn button-shine">
+          Send Reset Instructions
+        </button>
+
+        <div style="margin-top: 1.5rem;">
+          <a href="#login" class="luxury-auth-link" onclick="document.getElementById('recover').style.display='none'; document.getElementById('login-box').style.display='block'; return false;">
+            &larr; Return to Sign In
+          </a>
+        </div>
+      {%- endform -%}
+    </div>
+
+    <div id="login-box">
+      <span class="editorial-eyebrow">Patron Sanctuary</span>
+      <h1 id="login" tabindex="-1">Sign In</h1>
+      <p>Access your curated orders, saved heirloom wishlist, and trade concierge.</p>
+
+      {%- if recover_success == true -%}
+        <div style="padding: 0.8rem; background: #EDF7EE; color: #2E6B34; font-size: 0.88rem; margin-bottom: 1.5rem; border-radius: 2px;">
+          Instructions to reset your password have been dispatched.
+        </div>
+      {%- endif -%}
+
+      {%- form 'customer_login', novalidate: 'novalidate' -%}
+        {%- if form.errors -%}
+          <div style="color: #C44D44; font-size: 0.88rem; margin-bottom: 1.2rem; text-align: left;">
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <div class="luxury-auth-field">
+          <input
+            type="email"
+            name="customer[email]"
+            id="CustomerEmail"
+            class="luxury-auth-input"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            placeholder="Email address"
+            required
+          >
+        </div>
+
+        {%- if form.password_needed -%}
+          <div class="luxury-auth-field luxury-password-toggle-wrap">
+            <input
+              type="password"
+              name="customer[password]"
+              id="CustomerPassword"
+              class="luxury-auth-input"
+              autocomplete="current-password"
+              placeholder="Password"
+              required
+            >
+            <button
+              type="button"
+              class="luxury-password-toggle-btn"
+              onclick="var p = document.getElementById('CustomerPassword'); p.type = p.type === 'password' ? 'text' : 'password';"
+              aria-label="Toggle password visibility"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+          </div>
+
+          <div style="text-align: right; margin-top: -0.6rem; margin-bottom: 1.2rem;">
+            <a href="#recover" class="luxury-auth-link" style="font-size: 0.8rem;" onclick="document.getElementById('login-box').style.display='none'; document.getElementById('recover').style.display='block'; return false;">
+              Forgot password?
+            </a>
+          </div>
+        {%- endif -%}
+
+        <button type="submit" class="luxury-auth-btn button-shine">
+          Sign In &rarr;
+        </button>
+
+        <div style="margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px solid #EFEAE3; font-size: 0.88rem;">
+          <span style="color: #6E6862;">New patron?</span>
+          <a href="{{ routes.account_register_url }}" style="color: #9E583A; font-weight: 600; text-decoration: underline; margin-left: 0.3rem;">
+            Create an Account
+          </a>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Customer Login",
+  "settings": []
+}
+{% endschema %}

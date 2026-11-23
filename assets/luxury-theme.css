@@ -1,0 +1,820 @@
+
+/* =========================================================================
+   AOS BULLETPROOF FALLBACK & SAFE VISIBILITY
+   All sections are rendered visibly by default; AOS smoothly animates them
+   ========================================================================= */
+html, body {
+  overflow-x: clip !important;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--header-height, 74px) + 20px);
+}
+
+/* Fallback: Ensure content is ALWAYS visible, preventing blank white areas */
+[data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Active animation state when AOS JS is present and running */
+html.js-ready:not(.aos-disabled):not(.aos-fallback-active) [data-aos]:not(.aos-animate) {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.35, 1), transform 0.6s cubic-bezier(0.25, 1, 0.35, 1);
+}
+
+html.js-ready:not(.aos-disabled):not(.aos-fallback-active) [data-aos].aos-animate {
+  opacity: 1;
+  transform: none;
+}
+
+/* ==========================================================================
+   JAIPUR RUGS LUXURY EDITORIAL DESIGN SYSTEM
+   File: assets/luxury-theme.css
+   Inspired by Jaipur Rugs: Warm neutrals, generous white space, refined
+   serif headings, clean typography, subtle motion.
+   ========================================================================== */
+
+:root {
+  /* --- Color Palette --- */
+  --luxury-bg: #FBF9F5;
+  --luxury-bg-rgb: 251, 249, 245;
+  --luxury-bg-secondary: #F4EFEA;
+  --luxury-bg-secondary-rgb: 244, 239, 234;
+  --luxury-bg-card: #FFFFFF;
+  --luxury-text: #1E1E1E;
+  --luxury-text-rgb: 30, 30, 30;
+  --luxury-text-muted: #6E6862;
+  --luxury-text-light: #948E87;
+  --luxury-border: #E8E2D8;
+  --luxury-border-light: #F0ECE4;
+  --luxury-border-dark: #C8BEB0;
+  
+  /* --- Brand Accent (Jaipur Terracotta / Rich Ochre) --- */
+  --luxury-accent: #9E583A;
+  --luxury-accent-rgb: 158, 88, 58;
+  --luxury-accent-hover: #82442A;
+  --luxury-gold: #C2A26F;
+  --luxury-sand: #EADBCC;
+
+  /* --- Typography --- */
+  --luxury-font-heading: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --luxury-font-body: 'Jost', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --luxury-heading-letter-spacing: -0.01em;
+  --luxury-eyebrow-letter-spacing: 0.16em;
+  --luxury-button-letter-spacing: 0.12em;
+
+  /* --- Spacing Scale --- */
+  --luxury-space-2xs: 0.25rem; /* 4px */
+  --luxury-space-xs: 0.5rem;   /* 8px */
+  --luxury-space-sm: 1rem;     /* 16px */
+  --luxury-space-md: 2rem;     /* 32px */
+  --luxury-space-lg: 3.5rem;   /* 56px */
+  --luxury-space-xl: 5.5rem;   /* 88px */
+  --luxury-space-2xl: 8rem;    /* 128px */
+
+  /* --- Border Radius (Subtle luxury crispness) --- */
+  --luxury-radius-xs: 1px;
+  --luxury-radius-sm: 2px;
+  --luxury-radius-md: 4px;
+  --luxury-radius-lg: 8px;
+  --luxury-radius-pill: 9999px;
+
+  /* --- Transition & Easing --- */
+  --luxury-ease: cubic-bezier(0.25, 1, 0.35, 1);
+  --luxury-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --luxury-transition-fast: 0.2s var(--luxury-ease);
+  --luxury-transition-base: 0.4s var(--luxury-ease);
+  --luxury-transition-slow: 0.75s var(--luxury-ease);
+
+  /* --- Elevation Shadows --- */
+  --luxury-shadow-sm: 0 2px 8px rgba(30, 30, 30, 0.04);
+  --luxury-shadow-md: 0 8px 24px rgba(30, 30, 30, 0.06);
+  --luxury-shadow-lg: 0 16px 40px rgba(30, 30, 30, 0.09);
+  --luxury-shadow-header: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* --------------------------------------------------------------------------
+   GLOBAL STYLES & LUXURY RESET
+   -------------------------------------------------------------------------- */
+body {
+  background-color: var(--luxury-bg);
+  color: var(--luxury-text);
+  font-family: var(--luxury-font-body);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.editorial-heading {
+  font-family: var(--luxury-font-heading);
+  font-weight: 500;
+  letter-spacing: var(--luxury-heading-letter-spacing);
+  color: var(--luxury-text);
+  line-height: 1.15;
+}
+
+.editorial-eyebrow {
+  font-family: var(--luxury-font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--luxury-eyebrow-letter-spacing);
+  color: var(--luxury-accent);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.editorial-subtext {
+  font-family: var(--luxury-font-body);
+  color: var(--luxury-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 650px;
+}
+
+/* --------------------------------------------------------------------------
+   LUXURY BUTTONS
+   -------------------------------------------------------------------------- */
+.luxury-btn,
+.button:not(.button--secondary):not(.button--tertiary) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 2.2rem;
+  font-family: var(--luxury-font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: var(--luxury-button-letter-spacing);
+  text-transform: uppercase;
+  background-color: var(--luxury-text);
+  color: #FFFFFF !important;
+  border: 1px solid var(--luxury-text);
+  border-radius: var(--luxury-radius-xs);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.4s var(--luxury-ease);
+}
+
+.luxury-btn:hover,
+.button:not(.button--secondary):not(.button--tertiary):hover {
+  background-color: var(--luxury-accent);
+  border-color: var(--luxury-accent);
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(158, 88, 58, 0.25);
+}
+
+/* Secondary outline button */
+.luxury-btn--outline,
+.button.button--secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 2.2rem;
+  font-family: var(--luxury-font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: var(--luxury-button-letter-spacing);
+  text-transform: uppercase;
+  background-color: transparent;
+  color: var(--luxury-text) !important;
+  border: 1px solid var(--luxury-text);
+  border-radius: var(--luxury-radius-xs);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.4s var(--luxury-ease);
+}
+
+.luxury-btn--outline:hover,
+.button.button--secondary:hover {
+  background-color: var(--luxury-text);
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+}
+
+/* White button variant for dark hero/imagery */
+.luxury-btn--white {
+  background-color: #FFFFFF;
+  color: var(--luxury-text) !important;
+  border-color: #FFFFFF;
+}
+
+.luxury-btn--white:hover {
+  background-color: var(--luxury-accent);
+  color: #FFFFFF !important;
+  border-color: var(--luxury-accent);
+}
+
+.luxury-btn--outline-white {
+  background-color: transparent;
+  color: #FFFFFF !important;
+  border-color: #FFFFFF;
+}
+
+.luxury-btn--outline-white:hover {
+  background-color: #FFFFFF;
+  color: var(--luxury-text) !important;
+}
+
+/* --------------------------------------------------------------------------
+   GLOBAL LINK HOVER UNDERLINE SLIDE
+   -------------------------------------------------------------------------- */
+a.luxury-link,
+.link-editorial,
+.announcement-bar__link,
+.header__menu-item,
+.footer__list-menu a {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+a.luxury-link::after,
+.link-editorial::after,
+.header__menu-item::after,
+.footer__list-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--luxury-ease);
+}
+
+a.luxury-link:hover::after,
+.link-editorial:hover::after,
+.header__menu-item:hover::after,
+.footer__list-menu a:hover::after {
+  transform: scaleX(1);
+}
+
+/* --------------------------------------------------------------------------
+   STICKY HEADER SCROLL STATE
+   -------------------------------------------------------------------------- */
+.header-wrapper--sticky-transparent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background-color 0.4s var(--luxury-ease), box-shadow 0.4s var(--luxury-ease), transform 0.4s var(--luxury-ease);
+}
+
+.header-wrapper--sticky-transparent.scrolled-past-threshold {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--luxury-border-light);
+  box-shadow: var(--luxury-shadow-header);
+}
+
+.header-wrapper--sticky-transparent.scrolled-past-threshold .header__menu-item,
+.header-wrapper--sticky-transparent.scrolled-past-threshold .header__icon {
+  color: var(--luxury-text) !important;
+}
+
+/* --------------------------------------------------------------------------
+   BACK TO TOP BUTTON
+   -------------------------------------------------------------------------- */
+.luxury-back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--luxury-border);
+  color: var(--luxury-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--luxury-shadow-md);
+  cursor: pointer;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 0.35s var(--luxury-ease);
+}
+
+.luxury-back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.luxury-back-to-top:hover {
+  background: var(--luxury-text);
+  color: #FFFFFF;
+  border-color: var(--luxury-text);
+  transform: translateY(-3px);
+}
+
+/* --------------------------------------------------------------------------
+   GENEROUS WHITE SPACE UTILITIES
+   -------------------------------------------------------------------------- */
+.luxury-section-padding {
+  padding-top: clamp(3rem, 7vw, 6.5rem);
+  padding-bottom: clamp(3rem, 7vw, 6.5rem);
+}
+
+.luxury-section-padding--large {
+  padding-top: clamp(4.5rem, 9vw, 9rem);
+  padding-bottom: clamp(4.5rem, 9vw, 9rem);
+}
+
+.luxury-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: clamp(1rem, 4vw, 3.5rem);
+  padding-right: clamp(1rem, 4vw, 3.5rem);
+}
+
+/* ==========================================================================
+   HEADER, MEGA MENU & MOBILE DRAWER (JAIPUR RUGS STYLE)
+   ========================================================================== */
+
+/* Header layout & typography */
+.header {
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  transition: padding 0.3s var(--luxury-ease);
+}
+
+.scrolled-past-threshold .header {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+.header__heading-link {
+  font-family: var(--luxury-font-heading);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.header__menu-item {
+  font-family: var(--luxury-font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.8rem 1.4rem;
+  transition: color 0.25s ease;
+}
+
+.header__icon {
+  transition: transform 0.3s var(--luxury-ease), color 0.3s ease;
+}
+
+.header__icon:hover {
+  transform: scale(1.08);
+}
+
+.cart-count-bubble {
+  background-color: var(--luxury-accent, #9E583A);
+  color: #FFFFFF;
+  font-family: var(--luxury-font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0.4rem;
+  right: 0.4rem;
+  box-shadow: 0 2px 6px rgba(158, 88, 58, 0.35);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Mega Menu Enhancement */
+.mega-menu[open] .mega-menu__content {
+  animation: megaMenuFadeDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--luxury-border);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+  padding: 3.5rem 0;
+}
+
+@keyframes megaMenuFadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.luxury-mega-menu-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 3.5rem;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.luxury-mega-menu__columns {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2.5rem 2rem;
+}
+
+.luxury-mega-menu__column-title {
+  font-family: var(--luxury-font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--luxury-text);
+  margin-bottom: 1.2rem;
+  display: inline-block;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.luxury-mega-menu__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.luxury-mega-menu__link {
+  font-family: var(--luxury-font-body);
+  font-size: 0.88rem;
+  color: var(--luxury-text-muted);
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+  display: inline-block;
+}
+
+.luxury-mega-menu__link:hover {
+  color: var(--luxury-accent);
+  transform: translateX(3px);
+}
+
+.luxury-mega-menu__promo {
+  width: 320px;
+  flex-shrink: 0;
+  background: var(--luxury-bg);
+  border-radius: var(--luxury-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--luxury-border-light);
+  transition: box-shadow 0.4s var(--luxury-ease), transform 0.4s var(--luxury-ease);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.luxury-mega-menu__promo:hover {
+  box-shadow: var(--luxury-shadow-md);
+  transform: translateY(-3px);
+}
+
+.luxury-mega-menu__promo-image-box {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  position: relative;
+}
+
+.luxury-mega-menu__promo-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--luxury-ease);
+}
+
+.luxury-mega-menu__promo:hover .luxury-mega-menu__promo-image-box img {
+  transform: scale(1.06);
+}
+
+.luxury-mega-menu__promo-content {
+  padding: 1.2rem 1.4rem;
+}
+
+.luxury-mega-menu__promo-heading {
+  font-family: var(--luxury-font-heading);
+  font-size: 1.2rem;
+  margin: 0 0 0.4rem;
+  color: var(--luxury-text);
+}
+
+.luxury-mega-menu__promo-subtext {
+  font-family: var(--luxury-font-body);
+  font-size: 0.82rem;
+  color: var(--luxury-text-muted);
+  margin: 0 0 0.8rem;
+  line-height: 1.4;
+}
+
+.luxury-mega-menu__promo-cta {
+  font-family: var(--luxury-font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--luxury-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Mobile Drawer Staggered Entrance */
+.menu-drawer {
+  background-color: var(--luxury-bg) !important;
+  border-right: 1px solid var(--luxury-border);
+}
+
+.menu-drawer__menu-item {
+  font-family: var(--luxury-font-body);
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+  transition: color 0.25s ease, padding-left 0.25s ease;
+}
+
+.menu-drawer__menu-item:hover {
+  color: var(--luxury-accent);
+  padding-left: 0.5rem;
+}
+
+details[open] > .menu-drawer__submenu {
+  animation: megaMenuFadeDown 0.3s ease forwards;
+}
+
+/* ==========================================================================
+   LUXURY EDITORIAL FOOTER STYLING
+   ========================================================================== */
+.footer {
+  background-color: var(--luxury-text, #1C1B1A) !important;
+  color: #FAF7F2 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer .page-width {
+  max-width: 1440px;
+}
+
+.footer-block__heading {
+  font-family: var(--luxury-font-heading, 'Cormorant Garamond', serif) !important;
+  font-size: 1.25rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  color: #FFFFFF !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.footer-block__details-content .list-menu__item--link,
+.footer-block__details-content a {
+  font-family: var(--luxury-font-body, 'Jost', sans-serif) !important;
+  font-size: 0.88rem !important;
+  color: rgba(250, 247, 242, 0.7) !important;
+  line-height: 2 !important;
+  transition: color 0.3s ease, transform 0.3s ease !important;
+  position: relative !important;
+  display: inline-block !important;
+}
+
+.footer-block__details-content a:hover {
+  color: #FFFFFF !important;
+  transform: translateX(4px);
+}
+
+.footer__column--info {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 2rem;
+  margin-top: 3.5rem;
+}
+
+.footer__payment {
+  margin-top: 1rem;
+}
+
+.footer__payment .list-payment__item {
+  opacity: 0.75;
+  transition: opacity 0.3s ease;
+}
+
+.footer__payment .list-payment__item:hover {
+  opacity: 1;
+}
+
+.footer__copyright {
+  font-family: var(--luxury-font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ==========================================================================
+   PRODUCT PAGE: JAIPUR RUGS EDITORIAL LUXURY ENHANCEMENTS
+   ========================================================================== */
+
+/* Sticky column on desktop */
+@media screen and (min-width: 990px) {
+  .product__column-sticky {
+    position: sticky !important;
+    top: 100px !important;
+    height: fit-content !important;
+  }
+}
+
+/* Architectural Pill Variant Selectors */
+fieldset.product-form__input .form__label {
+  font-family: var(--luxury-font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--luxury-text);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+fieldset.product-form__input input[type='radio'] + label {
+  border: 1px solid var(--luxury-border, #E8E2D8) !important;
+  border-radius: var(--luxury-radius-xs, 1px) !important;
+  background-color: #FFFFFF !important;
+  color: var(--luxury-text, #1E1E1E) !important;
+  font-family: var(--luxury-font-body) !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.06em !important;
+  padding: 0.75rem 1.4rem !important;
+  margin: 0.3rem 0.4rem 0.3rem 0 !important;
+  transition: all 0.25s var(--luxury-ease) !important;
+  cursor: pointer !important;
+}
+
+fieldset.product-form__input input[type='radio']:checked + label {
+  background-color: var(--luxury-text, #1E1E1E) !important;
+  color: #FFFFFF !important;
+  border-color: var(--luxury-text, #1E1E1E) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+fieldset.product-form__input input[type='radio']:hover + label {
+  border-color: var(--luxury-accent, #9E583A) !important;
+}
+
+/* Quantity input refinement */
+.quantity {
+  border: 1px solid var(--luxury-border, #E8E2D8) !important;
+  border-radius: var(--luxury-radius-xs) !important;
+  background-color: #FFFFFF !important;
+}
+
+.quantity__input {
+  font-family: var(--luxury-font-body) !important;
+  font-weight: 500 !important;
+  color: var(--luxury-text) !important;
+}
+
+/* Add to Cart Button Loading & Success Animation */
+.product-form__submit {
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.4s var(--luxury-ease) !important;
+}
+
+.product-form__submit.is-loading {
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.product-form__submit.is-loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: spinnerRotate 0.6s linear infinite;
+}
+
+@keyframes spinnerRotate {
+  to { transform: rotate(360deg); }
+}
+
+.product-form__submit.is-success {
+  background-color: #2D6A4F !important;
+  border-color: #2D6A4F !important;
+}
+
+/* Accordions (Description, Specs, Care, Shipping) */
+.product__accordion .accordion__title {
+  font-family: var(--luxury-font-heading, 'Cormorant Garamond', serif) !important;
+  font-size: 1.15rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  color: var(--luxury-text) !important;
+}
+
+.product__accordion details {
+  border-bottom: 1px solid var(--luxury-border-light, #F0ECE4) !important;
+  padding: 1.2rem 0 !important;
+}
+
+.product__accordion .accordion__content {
+  font-family: var(--luxury-font-body) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.75 !important;
+  color: var(--luxury-text-muted) !important;
+}
+
+/* ==========================================================================
+   COLLECTION PAGE: STICKY FILTERS, HOVER SWAP & GRID ANIMATION
+   ========================================================================== */
+
+/* Sticky Filter Bar */
+@media screen and (min-width: 750px) {
+  .facets-vertical-sort {
+    position: sticky;
+    top: 76px;
+    z-index: 20;
+    background: rgba(251, 249, 245, 0.96) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--luxury-border-light, #F0ECE4);
+    padding: 0.8rem 0;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Second-image crossfade on product cards in collection */
+.media--hover-effect > img + img {
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s var(--luxury-ease) !important;
+}
+
+.card-wrapper:hover .media--hover-effect > img:first-child:not(:only-child) {
+  opacity: 0;
+  transform: scale(1.06);
+}
+
+.card-wrapper:hover .media--hover-effect > img + img {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+/* Fade-in for newly loaded items */
+@keyframes collectionItemFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#product-grid .grid__item {
+  animation: collectionItemFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Skeleton Loading State for AJAX filtering */
+.collection.loading {
+  position: relative;
+  min-height: 400px;
+}
+
+.collection.loading::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(251, 249, 245, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 10;
+}

@@ -1,0 +1,464 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "custom_css": [
+        "h1 {display: none;}"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_banner_qMyrA4": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify://shop_images/BANNER_-_Copy_copy1_e347a775-2155-4430-8155-9140df906df6.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "rich_text_9qdDtD": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MTjyBY": {
+          "type": "heading",
+          "settings": {
+            "heading": "Read what our customers say on our different portals",
+            "heading_size": "h1"
+          }
+        },
+        "heading_8kDUhT": {
+          "type": "heading",
+          "settings": {
+            "heading": "1. Aaliyah  ★★★★★",
+            "heading_size": "h2"
+          }
+        },
+        "text_WNz9r8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Rug fits perfectly in my bedroom and makes me happy everytime</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MTjyBY",
+        "heading_8kDUhT",
+        "text_WNz9r8"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_EgMJAg": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_TPnw8z": {
+          "type": "heading",
+          "settings": {
+            "heading": "2. Mikhail  ★★★★★",
+            "heading_size": "h2"
+          }
+        },
+        "text_9FRtBT": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Wonderful rug, very professional seller. Shipping was great. Thanks!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_TPnw8z",
+        "text_9FRtBT"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_8iEiM7": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_VHGh8Q": {
+          "type": "heading",
+          "settings": {
+            "heading": "3. <a>Marjoleine </a>★★★★★",
+            "heading_size": "h2"
+          }
+        },
+        "text_iDUE7V": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Great rug! Fast delivery and good contact with this seller. Definitely highly recommended.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VHGh8Q",
+        "text_iDUE7V"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_eqHTqB": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_H8eWJ6": {
+          "type": "heading",
+          "settings": {
+            "heading": "4. Terrah ★★★★★",
+            "heading_size": "h2"
+          }
+        },
+        "text_4grVLP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>I'm in love with my new rug, it's absolutely my favourite and brings so much colour into our living room! Shipping was great and didn't take too long at all.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_H8eWJ6",
+        "text_4grVLP"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_NNg83V": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_PiykD4": {
+          "type": "heading",
+          "settings": {
+            "heading": "5. Emilie Meyer ★★★★★",
+            "heading_size": "h2"
+          }
+        },
+        "text_Fnc4hE": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Very good purchase. Sellers are responsive and helpful. However I paid a customs fee of 37 euros more. To be taken into account in a future order.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_PiykD4",
+        "text_Fnc4hE"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_DLffVi": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_4wd487": {
+          "type": "heading",
+          "settings": {
+            "heading": "6. Simona Cozzi ★★★★★",
+            "heading_size": "h2"
+          }
+        },
+        "text_UMHwqT": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Beautiful carpet, more beautiful than in the photo</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_4wd487",
+        "text_UMHwqT"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_LF7t8t": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_VW9QiF": {
+          "type": "heading",
+          "settings": {
+            "heading": "7. Lydia ★★★★★",
+            "heading_size": "h2"
+          }
+        },
+        "text_R3QkJy": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The rug is really beautiful and the fibers much softer than I was expecting!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VW9QiF",
+        "text_R3QkJy"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_9YrG3d": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_JazaCQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "8. Beverly ★★★★★",
+            "heading_size": "h2"
+          }
+        },
+        "text_y9Dpxz": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Love this rug. The pink is a little more neon than expected but overall great rug.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JazaCQ",
+        "text_y9Dpxz"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_GAbGfJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_a9CTjR": {
+          "type": "heading",
+          "settings": {
+            "heading": "9. Jennifer ★★★★★",
+            "heading_size": "h2"
+          }
+        },
+        "text_tBWm3M": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Beautiful rug and the shipping was surprisingly fast; can’t wait to buy another one! Thank you!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_a9CTjR",
+        "text_tBWm3M"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_Yi34Hk": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_6ENqhm": {
+          "type": "heading",
+          "settings": {
+            "heading": "10. Erika ★★★★★",
+            "heading_size": "h2"
+          }
+        },
+        "text_re4DR3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Beautiful rugs! Thank you!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_6ENqhm",
+        "text_re4DR3"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_rM8xmT": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_HxwiVA": {
+          "type": "heading",
+          "settings": {
+            "heading": "11. Robert ★★★★★",
+            "heading_size": "h2"
+          }
+        },
+        "text_jbXUnL": {
+          "type": "text",
+          "settings": {
+            "text": "<p>I love it!! Slightly different color than I thought. But I ac like it even better.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_HxwiVA",
+        "text_jbXUnL"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_6JzaXx": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_ief7U6": {
+          "type": "heading",
+          "settings": {
+            "heading": "12. Meredith ★★★★★",
+            "heading_size": "h2"
+          }
+        },
+        "text_nhthbt": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Excellent quality. Exactly what I wanted.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ief7U6",
+        "text_nhthbt"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_Rmzwiq": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3VDETf": {
+          "type": "heading",
+          "settings": {
+            "heading": "13. Janet ★★★★★",
+            "heading_size": "h2"
+          }
+        },
+        "text_JDAWYd": {
+          "type": "text",
+          "settings": {
+            "text": "<p>I love my rug! It was made with care and heart💖</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3VDETf",
+        "text_JDAWYd"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_a6XjyP": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<head>\n        <meta charset=\"UTF-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <title>Image Slider</title>\n        <style>\n            .slider-container {\n                width: 80%;\n                margin: 0 auto;\n                overflow: hidden;\n                position: relative;\n            }\n            .slider {\n                display: flex;\n                gap: 20px;\n                transition: transform 0.5s ease;\n                animation: scroll 400s linear infinite; /* New: Continuous scrolling animation */\n            }\n            .slide {\n                flex: 0 0 25%; /* Displaying 4 images at a time */\n                max-width: 25%;\n                border-radius: 50px;\n            }\n            .slide img {\n                width: 100%;\n                height: auto;\n                border-radius: 10px;\n            }\n            \n            /* New: Continuous scrolling animation keyframes */\n            @keyframes scroll {\n                0% {\n                    transform: translateX(0);\n                }\n                100% {\n                    transform: translateX(calc(-100% * 21));\n                }\n            }\n        </style>\n        </head>\n        <body>\n        \n        <div class=\"slider-container\">\n        <h3>Review photos from our buyers. </h3>\n            <div class=\"slider\">\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/JHGD-10.png?v=1713776945\" alt=\"Image 1\"title=\"Rugs\" ></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/HGD-110.png?v=1713776946\" alt=\"Image 2\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/JHGD-10_2.png?v=1713776945\" alt=\"Image 3\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/JHGD-17.png?v=1713776946\" alt=\"Image 5\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/HGD-161A_2.png?v=1713776945\" alt=\"Image 7\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/PHOTO-26.png?v=1713776945\" alt=\"Image 8\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/HGD-161AS.png?v=1713776945\" alt=\"Image 9\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/jute_VI-68B.jpg?v=1713776945\" alt=\"Image 10\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/PHOTO_-20.png?v=1713776945\" alt=\"Image 11\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/pic.jpg?v=1713776942\" alt=\"Image 12\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/HGD-161A-01.jpg?v=1713776942\" alt=\"Image 13\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/HP-60-Jeff_Jessica_Review_Photo.jpg?v=1713776942\" alt=\"Image 14\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/STK-13-Review-Photo.jpg?v=1713776943\" alt=\"Image 15\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/PHOTO_-24.png?v=1713776944\" alt=\"Image 16\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/STK-13.jpg?v=1713776944\" alt=\"Image 17\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/JHGD-14.jpg?v=1713776944\" alt=\"Image 18\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/VI-15.jpg?v=1713776945\" alt=\"Image 19\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/STK-63.jpg?v=1713776944\" alt=\"Image 20\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/HGD-161A_3.jpg?v=1713776945\" alt=\"Image 21\"title=\"Rugs\"></div>\n                <div class=\"slide\"><img src=\"https://cdn.shopify.com/s/files/1/0648/2188/7176/files/STK-26B-Andrew_s_Review.jpg?v=1713776945\" alt=\"Image 22\"title=\"Rugs\"></div>\n            </div>\n        </div>\n        </body>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_qMyrA4",
+    "rich_text_9qdDtD",
+    "rich_text_EgMJAg",
+    "rich_text_8iEiM7",
+    "rich_text_eqHTqB",
+    "rich_text_NNg83V",
+    "rich_text_DLffVi",
+    "rich_text_LF7t8t",
+    "rich_text_9YrG3d",
+    "rich_text_GAbGfJ",
+    "rich_text_Yi34Hk",
+    "rich_text_rM8xmT",
+    "rich_text_6JzaXx",
+    "rich_text_Rmzwiq",
+    "custom_liquid_a6XjyP"
+  ]
+}

@@ -1,0 +1,183 @@
+<section class="luxury-about-team luxury-section-padding">
+  <div class="luxury-container">
+    <div class="luxury-about-team__header" data-aos="fade-up">
+      <span class="editorial-eyebrow">{{ section.settings.eyebrow | default: 'Custodians of Craft' }}</span>
+      <h2 class="editorial-heading" style="font-size: clamp(2.2rem, 4vw, 3.5rem);">
+        {{ section.settings.heading | default: 'Leadership & Guild Mentors' }}
+      </h2>
+      <p class="editorial-subtext" style="margin: 0 auto;">
+        {{ section.settings.subtext | default: 'Meet the passionate designers, textile historians, and artisan advocates steering our collective vision.' }}
+      </p>
+    </div>
+
+    <div class="luxury-about-team__grid">
+      {%- for block in section.blocks -%}
+        <div class="luxury-about-team__card" data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 120 }}" {{ block.shopify_attributes }}>
+          <div class="luxury-about-team__media hover-zoom-container">
+            <img
+              src="{{ block.settings.image | image_url: width: 600 | default: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80' }}"
+              alt="{{ block.settings.name | escape }}"
+              loading="lazy"
+            >
+          </div>
+          <div class="luxury-about-team__info">
+            <h3 class="luxury-about-team__name">{{ block.settings.name }}</h3>
+            <span class="luxury-about-team__role">{{ block.settings.role }}</span>
+            <p class="luxury-about-team__bio">{{ block.settings.bio }}</p>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .luxury-about-team {
+    background-color: #FFFFFF;
+  }
+  .luxury-about-team__header {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 4.5rem;
+  }
+  .luxury-about-team__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  .luxury-about-team__card {
+    text-align: center;
+  }
+  .luxury-about-team__media {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: var(--luxury-radius-sm, 2px);
+    margin-bottom: 1.5rem;
+    background: #EBE5DE;
+  }
+  .luxury-about-team__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+  .luxury-about-team__name {
+    font-family: var(--luxury-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--luxury-text, #1E1E1E);
+    margin: 0 0 0.35rem;
+  }
+  .luxury-about-team__role {
+    display: block;
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--luxury-accent, #9E583A);
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+  }
+  .luxury-about-team__bio {
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.92rem;
+    color: var(--luxury-text-muted, #6E6862);
+    line-height: 1.65;
+    margin: 0;
+  }
+  @media (max-width: 991px) {
+    .luxury-about-team__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .luxury-about-team__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About — Team & Mentors",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Custodians of Craft"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Leadership & Guild Mentors"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Meet the passionate designers, textile historians, and artisan advocates steering our collective vision."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Portrait Photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Full Name",
+          "default": "Aarav Sharma"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role / Title",
+          "default": "Founder & Creative Director"
+        },
+        {
+          "type": "textarea",
+          "id": "bio",
+          "label": "Brief Biography",
+          "default": "Over two decades spent exploring desert hamlets to preserve heritage hand-knotted knotting patterns."
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "member",
+        "settings": {
+          "name": "Aarav Sharma",
+          "role": "Founder & Creative Director",
+          "bio": "Dedicated to elevating Indian master knotters on global architectural stages."
+        }
+      },
+      {
+        "type": "member",
+        "settings": {
+          "name": "Meera Rathore",
+          "role": "Head of Textile Preservation",
+          "bio": "Textile conservator specialized in botanical mineral dye baths and museum revivals."
+        }
+      },
+      {
+        "type": "member",
+        "settings": {
+          "name": "Devendra Singh",
+          "role": "Artisan Guild Liaison",
+          "bio": "Coordinates direct doorstep material deliveries and fair trade compensation across 600 villages."
+        }
+      }
+    ]
+  }
+}
+{% endschema %}

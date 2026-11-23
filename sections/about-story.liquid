@@ -1,0 +1,180 @@
+<section class="luxury-about-story luxury-section-padding">
+  <div class="luxury-container">
+    <div class="luxury-about-story__grid{% if section.settings.layout == 'image_second' %} luxury-about-story__grid--reverse{% endif %}">
+      <!-- Media with Decorative Offset Frame -->
+      <div class="luxury-about-story__media-col" data-aos="fade-right">
+        <div class="luxury-about-story__frame-wrap">
+          <div class="luxury-about-story__frame"></div>
+          <div class="luxury-about-story__img-wrap hover-zoom-container">
+            <img
+              src="{{ section.settings.image | image_url: width: 1200 | default: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=900&q=80' }}"
+              alt="{{ section.settings.heading | escape }}"
+              loading="lazy"
+              class="luxury-about-story__img"
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Narrative Text Column -->
+      <div class="luxury-about-story__text-col" data-aos="fade-left" data-aos-delay="150">
+        <span class="editorial-eyebrow">{{ section.settings.eyebrow | default: 'Ancestral Origins' }}</span>
+        <h2 class="editorial-heading" style="font-size: clamp(2.2rem, 3.8vw, 3.5rem);">
+          {{ section.settings.heading | default: 'Weaving Dignity, Knot by Sacred Knot' }}
+        </h2>
+        <div class="luxury-about-story__body rte">
+          {{ section.settings.story_text | default: '<p>Founded with a foundational reverence for the rural artisans of Rajasthan and Uttar Pradesh, Indian Rug Store was conceived not merely as a rug merchant, but as a bridge honoring one of humanity’s oldest continuous craft cultures.</p><p>Every carpet in our curation is an unhurried, months-long conversation between the spinner, the master dyer, and the weaver. By bringing economic dignity directly to artisan doorsteps, we empower generational weaving families to preserve their timeless heritage while infusing contemporary spaces across the globe with tactile soul.</p>' }}
+        </div>
+        {%- if section.settings.quote != blank -%}
+          <blockquote class="luxury-about-story__quote">
+            <p>&ldquo;{{ section.settings.quote }}&rdquo;</p>
+            {%- if section.settings.quote_author != blank -%}
+              <cite>&mdash; {{ section.settings.quote_author }}</cite>
+            {%- endif -%}
+          </blockquote>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .luxury-about-story {
+    background-color: var(--luxury-bg, #FBF9F5);
+    overflow: hidden;
+  }
+  .luxury-about-story__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 6.5rem);
+    align-items: center;
+  }
+  .luxury-about-story__grid--reverse {
+    direction: rtl;
+  }
+  .luxury-about-story__grid--reverse > * {
+    direction: ltr;
+  }
+  .luxury-about-story__frame-wrap {
+    position: relative;
+    padding: 2.2rem 2.2rem 0 0;
+  }
+  .luxury-about-story__frame {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 88%;
+    height: 92%;
+    border: 2px solid var(--luxury-accent, #9E583A);
+    border-radius: var(--luxury-radius-sm, 2px);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.55;
+    transition: transform 0.6s ease;
+  }
+  .luxury-about-story__frame-wrap:hover .luxury-about-story__frame {
+    transform: translate(8px, -8px);
+  }
+  .luxury-about-story__img-wrap {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: var(--luxury-radius-sm, 2px);
+    aspect-ratio: 4 / 5;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  }
+  .luxury-about-story__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.9s cubic-bezier(0.25, 1, 0.35, 1);
+  }
+  .luxury-about-story__body p {
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--luxury-text-muted, #6E6862);
+    margin-bottom: 1.4rem;
+  }
+  .luxury-about-story__quote {
+    margin: 2rem 0 0;
+    padding: 1.25rem 1.6rem;
+    border-left: 3px solid var(--luxury-accent, #9E583A);
+    background: rgba(158, 88, 58, 0.05);
+    font-family: var(--luxury-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--luxury-text, #1E1E1E);
+    line-height: 1.45;
+  }
+  .luxury-about-story__quote cite {
+    display: block;
+    margin-top: 0.6rem;
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.82rem;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--luxury-accent, #9E583A);
+  }
+  @media (max-width: 991px) {
+    .luxury-about-story__grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About — Our Story",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Story Image"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Image Placement",
+      "options": [
+        { "value": "image_first", "label": "Image Left, Text Right" },
+        { "value": "image_second", "label": "Text Left, Image Right" }
+      ],
+      "default": "image_first"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Ancestral Origins"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Weaving Dignity, Knot by Sacred Knot"
+    },
+    {
+      "type": "richtext",
+      "id": "story_text",
+      "label": "Narrative Text",
+      "default": "<p>Founded with a foundational reverence for the rural artisans of Rajasthan and Uttar Pradesh, Indian Rug Store was conceived not merely as a rug merchant, but as a bridge honoring one of humanity’s oldest continuous craft cultures.</p><p>Every carpet in our curation is an unhurried, months-long conversation between the spinner, the master dyer, and the weaver. By bringing economic dignity directly to artisan doorsteps, we empower generational weaving families to preserve their timeless heritage while infusing contemporary spaces across the globe with tactile soul.</p>"
+    },
+    {
+      "type": "text",
+      "id": "quote",
+      "label": "Featured Quote (Optional)",
+      "default": "A rug is not merely wool on cotton; it is the heartbeat and dreams of a family manifested in pattern."
+    },
+    {
+      "type": "text",
+      "id": "quote_author",
+      "label": "Quote Author",
+      "default": "Master Weaver Radheshyam, Dausa Village"
+    }
+  ]
+}
+{% endschema %}

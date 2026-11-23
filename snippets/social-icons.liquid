@@ -1,0 +1,111 @@
+{% comment %}
+  Renders social icons.
+  Accepts:
+  - class: {String} a class to be added to the <ul> element (optional).
+
+  Usage:
+  {% render 'social-icons',
+    class: 'my-class'
+  %}
+{% endcomment %}
+
+<ul class="list-unstyled list-social{% if class %} {{ class}}{% endif %}" role="list">
+  {%- if settings.social_facebook_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_facebook_link }}" class="link list-social__link">
+        {%- render 'icon-facebook' -%}
+        <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_instagram_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_instagram_link }}" class="link list-social__link">
+        {%- render 'icon-instagram' -%}
+        <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_youtube_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_youtube_link }}" class="link list-social__link">
+        {%- render 'icon-youtube' -%}
+        <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_tiktok_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_tiktok_link }}" class="link list-social__link">
+        {%- render 'icon-tiktok' -%}
+        <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_twitter_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_twitter_link }}" class="link list-social__link">
+        {%- render 'icon-twitter' -%}
+        <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_pinterest_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_pinterest_link }}" class="link list-social__link">
+        {%- render 'icon-pinterest' -%}
+        <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  <li class="list-social__item">
+  <a
+    href="https://wa.me/9782533367"
+    class="link list-social__link"
+    target="_blank"
+    rel="noopener"
+    aria-label="WhatsApp"
+  >
+
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      class="icon icon-whatsapp"
+      viewBox="0 0 32 32"
+      width="20"
+      height="20"
+      fill="currentColor"
+    >
+      <path d="M16.002 3C8.821 3 3 8.821 3 16.002c0 2.573.754 5.089 2.183 7.245L3 29l5.918-2.122A12.95 12.95 0 0 0 16.002 29C23.18 29 29 23.179 29 16.002 29 8.821 23.18 3 16.002 3zm0 23.636a10.56 10.56 0 0 1-5.381-1.474l-.385-.229-3.511 1.259 1.285-3.423-.251-.396a10.55 10.55 0 0 1-1.636-5.371c0-5.842 4.752-10.594 10.594-10.594 5.842 0 10.594 4.752 10.594 10.594 0 5.842-4.752 10.634-10.594 10.634zm5.811-7.901c-.316-.158-1.869-.923-2.159-1.028-.29-.105-.501-.158-.712.158-.211.316-.817 1.028-1.001 1.239-.184.211-.369.237-.685.079-.316-.158-1.333-.491-2.54-1.565-.939-.837-1.574-1.869-1.758-2.185-.184-.316-.02-.487.138-.645.142-.141.316-.369.474-.554.158-.184.211-.316.316-.527.105-.211.053-.395-.026-.554-.079-.158-.711-1.712-.975-2.344-.257-.617-.517-.533-.711-.543l-.606-.01c-.211 0-.554.079-.843.395s-1.107 1.081-1.107 2.634 1.133 3.054 1.291 3.265c.158.211 2.229 3.404 5.401 4.773.755.326 1.344.52 1.803.665.757.241 1.446.207 1.991.126.607-.091 1.869-.764 2.133-1.501.264-.738.264-1.37.184-1.501-.079-.132-.29-.211-.606-.369z"/>
+    </svg>
+
+    <span class="visually-hidden">WhatsApp</span>
+
+  </a>
+</li>
+  {%- if settings.social_snapchat_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_snapchat_link }}" class="link list-social__link">
+        {%- render 'icon-snapchat' -%}
+        <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_tumblr_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_tumblr_link }}" class="link list-social__link">
+        {%- render 'icon-tumblr' -%}
+        <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_vimeo_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_vimeo_link }}" class="link list-social__link">
+        {%- render 'icon-vimeo' -%}
+        <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+</ul>

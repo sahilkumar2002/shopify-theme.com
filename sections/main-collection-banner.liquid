@@ -1,0 +1,140 @@
+{{ 'component-collection-hero.aio.min.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .luxury-collection-banner {
+    position: relative;
+    padding-top: {{ section.settings.padding_top | default: 70 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 60 }}px;
+    background-color: {{ section.settings.bg_color | default: '#FBF9F5' }};
+    border-bottom: 1px solid var(--luxury-border-light, #F0ECE4);
+    text-align: center;
+  }
+
+  .luxury-collection-banner__container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .luxury-collection-banner__eyebrow {
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--luxury-accent, #9E583A);
+    margin-bottom: 0.75rem;
+    display: inline-block;
+  }
+
+  .luxury-collection-banner__title {
+    font-family: var(--luxury-font-heading, 'Cormorant Garamond', serif);
+    font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--luxury-text, #1E1E1E);
+    margin: 0 0 1rem;
+    line-height: 1.12;
+  }
+
+  .luxury-collection-banner__desc {
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--luxury-text-muted, #6E6862);
+    margin: 0 auto;
+    max-width: 680px;
+  }
+
+  .luxury-collection-banner__image-box {
+    margin-top: 2.5rem;
+    width: 100%;
+    max-height: 380px;
+    border-radius: var(--luxury-radius-sm, 2px);
+    overflow: hidden;
+    background: #EAE5DC;
+  }
+
+  .luxury-collection-banner__image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+{%- endstyle -%}
+
+<div class="luxury-collection-banner color-{{ section.settings.color_scheme }} gradient" data-aos="fade-up">
+  <div class="luxury-collection-banner__container">
+    <span class="luxury-collection-banner__eyebrow">Artisanal Rug Gallery</span>
+    <h1 class="luxury-collection-banner__title">{{ collection.title | escape }}</h1>
+
+    {%- if section.settings.show_collection_description and collection.description != blank -%}
+      <div class="luxury-collection-banner__desc rte">
+        {{ collection.description }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_collection_image and collection.image -%}
+      <div class="luxury-collection-banner__image-box hover-zoom-container">
+        {{ collection.image | image_url: width: 1800 | image_tag:
+          loading: 'eager',
+          widths: '750, 1100, 1500, 1800',
+          alt: collection.title | escape
+        }}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Banner (Jaipur)",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Banner Background Color",
+      "default": "#FBF9F5"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ]
+}
+{% endschema %}

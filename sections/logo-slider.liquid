@@ -1,0 +1,121 @@
+{% schema %}
+{
+  "name": "Logo Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Our Partners"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo Image"
+        },
+        {
+          "type": "text",
+          "id": "logo_alt",
+          "label": "Alt Text",
+          "default": "Logo"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Logo Slider"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="logo-slider-section">
+  {% if section.settings.section_title != blank %}
+    <h2>{{ section.settings.section_title }}</h2>
+  {% endif %}
+
+  <div class="logo-slider">
+    <div class="slide-track">
+      {% for block in section.blocks %}
+        <div class="slide">
+          {% if block.settings.logo_image %}
+            <img src="{{ block.settings.logo_image | img_url: '400x' }}" alt="{{ block.settings.logo_alt }}">
+          {% endif %}
+        </div>
+      {% endfor %}
+      {% comment %}
+        Duplicate the blocks for seamless infinite scroll
+      {% endcomment %}
+      {% for block in section.blocks %}
+        <div class="slide">
+          {% if block.settings.logo_image %}
+            <img src="{{ block.settings.logo_image | img_url: '400x' }}" alt="{{ block.settings.logo_alt }}">
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.logo-slider-section {
+  width: 100%;
+  padding: 0px 0;
+  text-align: center;
+}
+
+.logo-slider {
+  overflow: hidden;
+  width: 80%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.slide-track {
+  display: flex;
+  width: calc(250px * {{ section.blocks | size }} * 2);
+  animation: scroll 20s linear infinite;
+}
+
+.slide {
+  flex: 0 0 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.slide img {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .slide {
+    flex: 0 0 180px;
+    padding: 0 10px;
+  }
+
+  .slide img {
+    max-height: 60px;
+  }
+}
+</style>

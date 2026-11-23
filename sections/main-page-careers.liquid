@@ -1,0 +1,322 @@
+{{ 'luxury-theme.css' | asset_url | stylesheet_tag }}
+
+<div class="luxury-page-careers">
+  <!-- Breadcrumbs -->
+  <nav class="luxury-breadcrumbs" aria-label="Breadcrumb" style="background: #FBF9F5; border-bottom: 1px solid var(--luxury-border-light); padding: 1rem 0;">
+    <div class="luxury-container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+      <ol style="display: flex; align-items: center; list-style: none; gap: 0.6rem; margin: 0; padding: 0; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase;">
+        <li><a href="{{ routes.root_url }}" class="underline-slide" style="color: var(--luxury-text-muted); text-decoration: none;">Home</a></li>
+        <li style="color: var(--luxury-border-medium);">&bull;</li>
+        <li style="color: var(--luxury-accent); font-weight: 600;">Careers &amp; Guild</li>
+      </ol>
+      <span style="font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--luxury-gold);">Jaipur Atelier Opportunities</span>
+    </div>
+  </nav>
+
+  <!-- 1. Editorial Hero -->
+  <section class="luxury-section-padding--large" style="background-color: #FFFFFF; text-align: center;">
+    <div class="luxury-container">
+      <div style="max-width: 860px; margin: 0 auto;" data-aos="fade-up">
+        {% if section.settings.eyebrow != blank %}
+          <span class="editorial-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+        {% endif %}
+        <h1 class="editorial-heading" style="font-size: clamp(2.8rem, 5.2vw, 4.8rem); line-height: 1.1; margin-bottom: 1.6rem;">
+          {{ section.settings.heading | escape }}
+        </h1>
+        <p class="editorial-subtext" style="font-size: clamp(1.05rem, 1.3vw, 1.25rem); line-height: 1.8; color: #5C554E; margin: 0 auto 2.5rem;">
+          {{ section.settings.subheading | escape }}
+        </p>
+        <div style="display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;">
+          <a href="#open-positions" class="luxury-btn luxury-btn--dark button-shine" style="padding: 1rem 2.4rem; font-size: 0.84rem;">
+            Explore Open Positions &darr;
+          </a>
+          <a href="#culture-values" class="luxury-btn luxury-btn--outline-dark button-shine" style="padding: 1rem 2.4rem; font-size: 0.84rem;">
+            Our Guild Values &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Impact Metrics -->
+  <section style="background-color: var(--luxury-bg-alt); border-top: 1px solid var(--luxury-border-light); border-bottom: 1px solid var(--luxury-border-light); padding: 3.5rem 0;">
+    <div class="luxury-container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; text-align: center;">
+        <div data-aos="fade-up" data-aos-delay="0">
+          <div style="font-family: var(--luxury-font-heading); font-size: clamp(2.6rem, 3.8vw, 3.6rem); color: var(--luxury-accent); line-height: 1; margin-bottom: 0.4rem;" data-counter-target="40000" data-counter-suffix="+">40,000+</div>
+          <div style="font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: #4E4740; font-weight: 600;">Generational Artisans</div>
+          <div style="font-size: 0.82rem; color: #7A746E; margin-top: 0.3rem;">Directly empowered across Rajasthan</div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div style="font-family: var(--luxury-font-heading); font-size: clamp(2.6rem, 3.8vw, 3.6rem); color: var(--luxury-accent); line-height: 1; margin-bottom: 0.4rem;" data-counter-target="85" data-counter-suffix="%+">85%+</div>
+          <div style="font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: #4E4740; font-weight: 600;">Women Weaver Leaders</div>
+          <div style="font-size: 0.82rem; color: #7A746E; margin-top: 0.3rem;">Financial autonomy & village leadership</div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <div style="font-family: var(--luxury-font-heading); font-size: clamp(2.6rem, 3.8vw, 3.6rem); color: var(--luxury-accent); line-height: 1; margin-bottom: 0.4rem;" data-counter-target="600" data-counter-suffix="+">600+</div>
+          <div style="font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: #4E4740; font-weight: 600;">Weaver Villages</div>
+          <div style="font-size: 0.82rem; color: #7A746E; margin-top: 0.3rem;">Preserving ancestral loom genealogies</div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="300">
+          <div style="font-family: var(--luxury-font-heading); font-size: clamp(2.6rem, 3.8vw, 3.6rem); color: var(--luxury-accent); line-height: 1; margin-bottom: 0.4rem;" data-counter-target="45" data-counter-suffix="+">45+</div>
+          <div style="font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: #4E4740; font-weight: 600;">Countries Adorned</div>
+          <div style="font-size: 0.82rem; color: #7A746E; margin-top: 0.3rem;">From Jaipur lofts to global architecture</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Guild Pillars -->
+  <section id="culture-values" class="luxury-section-padding" style="background-color: var(--luxury-bg);">
+    <div class="luxury-container">
+      <div style="text-align: center; max-width: 780px; margin: 0 auto 4rem;" data-aos="fade-up">
+        <span class="editorial-eyebrow">The Atelier Culture</span>
+        <h2 class="editorial-heading" style="font-size: clamp(2.2rem, 3.8vw, 3.4rem);">Why Build Your Career With Us</h2>
+        <p class="editorial-subtext" style="margin: 0 auto;">We operate at the rare intersection of uncompromising ancestral artistry, conscious social justice, and contemporary architectural elegance.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        <div class="careers-perk-card" data-aos="fade-up">
+          <h3 style="font-family: var(--luxury-font-heading); font-size: 1.65rem; margin-bottom: 0.8rem; color: #1E1E1E;">Ancestral Artistry &amp; Modern Design</h3>
+          <p style="font-size: 0.92rem; line-height: 1.7; color: #6E6862; margin: 0;">Collaborate with legendary master weavers and architects using highland Ghazni wool, botanical indigo, and raw mulberry silk.</p>
+        </div>
+        <div class="careers-perk-card" data-aos="fade-up" data-aos-delay="100">
+          <h3 style="font-family: var(--luxury-font-heading); font-size: 1.65rem; margin-bottom: 0.8rem; color: #1E1E1E;">Grassroots Human Dignity</h3>
+          <p style="font-size: 0.92rem; line-height: 1.7; color: #6E6862; margin: 0;">Directly touch the lives of 40,000+ rural artisans and 600 villages across Rajasthan with fair living wages and women's self-help guilds.</p>
+        </div>
+        <div class="careers-perk-card" data-aos="fade-up" data-aos-delay="200">
+          <h3 style="font-family: var(--luxury-font-heading); font-size: 1.65rem; margin-bottom: 0.8rem; color: #1E1E1E;">Unhurried Excellence</h3>
+          <p style="font-size: 0.92rem; line-height: 1.7; color: #6E6862; margin: 0;">We reject fast-fashion rush and burnout cycles. We celebrate deep focus, tactile research, and pieces crafted to endure for generations.</p>
+        </div>
+        <div class="careers-perk-card" data-aos="fade-up" data-aos-delay="300">
+          <h3 style="font-family: var(--luxury-font-heading); font-size: 1.65rem; margin-bottom: 0.8rem; color: #1E1E1E;">Global Sanctuary Footprint</h3>
+          <p style="font-size: 0.92rem; line-height: 1.7; color: #6E6862; margin: 0;">Work from our Mansarovar design studios in Jaipur, international trade outposts, or flexible hybrid home studios with white-glove collaborative support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Open Positions -->
+  <section id="open-positions" class="luxury-section-padding" style="background-color: #FFFFFF;">
+    <div class="luxury-container">
+      <div style="text-align: center; max-width: 780px; margin: 0 auto 3.5rem;" data-aos="fade-up">
+        <span class="editorial-eyebrow">Available Opportunities</span>
+        <h2 class="editorial-heading" style="font-size: clamp(2.4rem, 4vw, 3.6rem);">Current Open Positions</h2>
+        <p class="editorial-subtext" style="margin: 0 auto;">Select an opening below to explore the role requirements, or apply directly to our curatorial talent desk.</p>
+      </div>
+
+      <div style="max-width: 1040px; margin: 0 auto;">
+        {% for block in section.blocks %}
+          {% if block.type == 'job' %}
+            <div class="careers-job-card" data-aos="fade-up" {{ block.shopify_attributes }}>
+              <div class="careers-job-card__header">
+                <div>
+                  <h3 class="careers-job-card__title">{{ block.settings.title | escape }}</h3>
+                  <div class="careers-job-card__meta">
+                    <span>{{ block.settings.location | escape }}</span>
+                    <span>&bull;</span>
+                    <span>{{ block.settings.type | escape }}</span>
+                    <span>&bull;</span>
+                    <span>{{ block.settings.department | escape }}</span>
+                  </div>
+                </div>
+                <span class="careers-job-card__badge">{{ block.settings.badge | escape }}</span>
+              </div>
+              <p class="careers-job-card__desc">
+                {{ block.settings.description | escape }}
+              </p>
+              <div class="careers-job-card__footer">
+                <a href="#apply-form-section" class="luxury-btn luxury-btn--dark button-shine" style="padding: 0.6rem 1.4rem; font-size: 0.78rem;" onclick="if (document.getElementById('appPositionSelect')) { document.getElementById('appPositionSelect').value = '{{ block.settings.title | escape }}'; }">
+                  Apply for this Position &rarr;
+                </a>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Application Form -->
+  <section id="apply-form-section" class="luxury-section-padding--large" style="background-color: var(--luxury-bg);">
+    <div class="luxury-container">
+      <div style="max-width: 860px; margin: 0 auto; background: #FFFFFF; border: 1px solid var(--luxury-border-medium); border-radius: 2px; padding: clamp(2rem, 5vw, 4rem); box-shadow: 0 15px 45px rgba(0,0,0,0.03);" data-aos="fade-up">
+        <div style="text-align: center; margin-bottom: 2.8rem;">
+          <span class="editorial-eyebrow">Direct Atelier Application</span>
+          <h2 class="editorial-heading" style="font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 0.8rem;">Begin Your Journey with Our Guild</h2>
+          <p style="font-size: 0.95rem; color: #6E6862; margin: 0 auto; line-height: 1.6; max-width: 600px;">
+            Submit your credentials and reflections on craftsmanship. Every application is reviewed individually by our senior curatorial team in Jaipur.
+          </p>
+        </div>
+
+        {% form 'contact' %}
+          {% if form.posted_successfully? %}
+            <div style="text-align: center; padding: 2.5rem; background: #E8F5E9; border-radius: 2px; color: #2E7D32;">
+              <h3 style="font-family: var(--luxury-font-heading); font-size: 1.8rem; margin-bottom: 0.5rem;">Application Sacredly Received</h3>
+              <p style="margin: 0; font-size: 0.95rem;">Thank you for sharing your path with our atelier. A curatorial director will reach out within 48 hours.</p>
+            </div>
+          {% else %}
+            {% if form.errors %}
+              <div style="padding: 1rem; background: #FFEBEE; color: #C62828; margin-bottom: 1.5rem; font-size: 0.9rem;">
+                {{ form.errors | default_errors }}
+              </div>
+            {% endif %}
+
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; color: #4E4740; font-weight: 600;">Desired Position *</label>
+              <select name="contact[position]" id="appPositionSelect" required style="width: 100%; padding: 0.95rem 1.2rem; border: 1px solid var(--luxury-border-medium); border-radius: 2px; font-family: inherit; font-size: 0.95rem; background: #FFFFFF; color: #1E1E1E; box-sizing: border-box;">
+                <option value="Senior Textile & Rug Designer">Senior Textile &amp; Rug Designer</option>
+                <option value="Artisan Community & Loom Outreach Manager">Artisan Community &amp; Loom Outreach Manager</option>
+                <option value="Private Client Concierge & Trade Specialist">Private Client Concierge &amp; Trade Specialist</option>
+                <option value="Visual Storyteller & Editorial Content Lead">Visual Storyteller &amp; Editorial Content Lead</option>
+                <option value="Master Loom Apprenticeship Coordinator">Master Loom Apprenticeship Coordinator</option>
+                <option value="General Spontaneous Application">General Spontaneous Fellowship / Other Role</option>
+              </select>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 1.5rem;">
+              <div>
+                <label style="display: block; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; color: #4E4740; font-weight: 600;">Full Name *</label>
+                <input type="text" name="contact[name]" placeholder="e.g. Radhika Sharma" required style="width: 100%; padding: 0.95rem 1.2rem; border: 1px solid var(--luxury-border-medium); border-radius: 2px; font-family: inherit; font-size: 0.95rem; background: #FFFFFF; box-sizing: border-box;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; color: #4E4740; font-weight: 600;">Email Address *</label>
+                <input type="email" name="contact[email]" placeholder="radhika@example.com" required style="width: 100%; padding: 0.95rem 1.2rem; border: 1px solid var(--luxury-border-medium); border-radius: 2px; font-family: inherit; font-size: 0.95rem; background: #FFFFFF; box-sizing: border-box;">
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 1.5rem;">
+              <div>
+                <label style="display: block; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; color: #4E4740; font-weight: 600;">Telephone / WhatsApp *</label>
+                <input type="tel" name="contact[phone]" placeholder="+91 98000 00000" required style="width: 100%; padding: 0.95rem 1.2rem; border: 1px solid var(--luxury-border-medium); border-radius: 2px; font-family: inherit; font-size: 0.95rem; background: #FFFFFF; box-sizing: border-box;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; color: #4E4740; font-weight: 600;">Portfolio / LinkedIn URL</label>
+                <input type="url" name="contact[portfolio]" placeholder="https://linkedin.com/in/... or portfolio" style="width: 100%; padding: 0.95rem 1.2rem; border: 1px solid var(--luxury-border-medium); border-radius: 2px; font-family: inherit; font-size: 0.95rem; background: #FFFFFF; box-sizing: border-box;">
+              </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <label style="display: block; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; color: #4E4740; font-weight: 600;">Why Does Generational Craftsmanship Matter to You? *</label>
+              <textarea name="contact[body]" rows="4" placeholder="Briefly share your perspective on heritage textiles, social impact, or unhurried design..." required style="width: 100%; padding: 0.95rem 1.2rem; border: 1px solid var(--luxury-border-medium); border-radius: 2px; font-family: inherit; font-size: 0.95rem; background: #FFFFFF; box-sizing: border-box; line-height: 1.6;"></textarea>
+            </div>
+
+            <button type="submit" class="luxury-btn luxury-btn--dark button-shine" style="width: 100%; padding: 1.1rem; font-size: 0.88rem; letter-spacing: 0.14em; text-transform: uppercase;">
+              Submit Application to Jaipur Atelier &rarr;
+            </button>
+          {% endif %}
+        {% endform %}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Careers Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Craftsmanship & Human Purpose"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Join Our Design & Artisan Sanctuary"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "At Indian Rug Store, we cultivate human dignity, preserve a 2,500-year-old Rajasthani weaving heritage, and craft bespoke museum-grade heirlooms for architectural spaces worldwide."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "job",
+      "name": "Job Opening",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Job Title",
+          "default": "Senior Textile & Rug Designer"
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "Jaipur Atelier / Hybrid"
+        },
+        {
+          "type": "text",
+          "id": "type",
+          "label": "Employment Type",
+          "default": "Full-Time"
+        },
+        {
+          "type": "text",
+          "id": "department",
+          "label": "Department",
+          "default": "Design & Architecture Guild"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "default": "Design Guild"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Role Description",
+          "default": "Lead bespoke rug commissions for top-tier global architects and interior firms. Translate spatial blueprints into intricate knot-by-knot graph schemes (Naksha), formulate botanical dye palettes, and oversee prototype development alongside village guild masters."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Careers Page",
+      "blocks": [
+        {
+          "type": "job",
+          "settings": {
+            "title": "Senior Textile & Rug Designer",
+            "location": "Jaipur Atelier / Hybrid",
+            "type": "Full-Time",
+            "department": "Design Guild",
+            "badge": "Design Guild",
+            "description": "Lead bespoke rug commissions for top-tier global architects and interior firms. Translate spatial blueprints into intricate knot-by-knot graph schemes (Naksha)."
+          }
+        },
+        {
+          "type": "job",
+          "settings": {
+            "title": "Artisan Community & Loom Outreach Manager",
+            "location": "Rajasthan Weaver Hubs",
+            "type": "Full-Time · Field",
+            "department": "Community & Sourcing",
+            "badge": "Grassroots Field",
+            "description": "Serve as the crucial empathetic bridge between our Jaipur design sanctuary and 600+ rural weaving villages."
+          }
+        },
+        {
+          "type": "job",
+          "settings": {
+            "title": "Private Client Concierge & Trade Specialist",
+            "location": "New York / London / Hybrid",
+            "type": "Full-Time",
+            "department": "Client Concierge",
+            "badge": "Trade Concierge",
+            "description": "Manage high-touch relationships with discerning private collectors, luxury hospitality developers, and interior design firms."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

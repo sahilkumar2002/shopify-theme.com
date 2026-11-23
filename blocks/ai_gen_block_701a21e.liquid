@@ -1,0 +1,134 @@
+{% doc %}
+  @prompt
+    Create a fully customizable Shopify Online Store 2.0 "Projects Grid" section inspired by the attached reference.
+    
+    Section layout:
+    - Customizable heading
+    - Customizable description/paragraph
+    - Responsive grid: 3 columns desktop, 2 tablet, 1 mobile
+    - Clean, premium and minimal design
+    
+    For EACH grid item/block, allow me to customize:
+    - Image
+    - Title/text
+    - Shopify Page URL / page picker -it picks the pages selection option from shopify
+    - Optional open link in new tab
+    - Image aspect ratio
+    - Image border radius
+    - Image hover effect
+    
+    I should be able to click "Add Project" and create unlimited grid items. Every item must have completely independent image, text and URL settings.
+    
+    Section customization:
+    - Background color
+    - Heading color and size
+    - Paragraph color and size
+    - Grid columns
+    - Grid gap
+    - Section width
+    - Top/bottom/left/right padding
+    - Mobile spacing
+    - Text alignment
+    
+    The image and title of each project should be clickable and open its selected Shopify page.
+    
+    Use Shopify Liquid + CSS, fully responsive, accessible, and scoped to this section. Do not hardcode any content, images, URLs or colors.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% style %}
+.ai-projects-{{ ai_gen_id }}{display:block;width:100%;box-sizing:border-box;background:{{ block.settings.background_color }};padding:{{ block.settings.padding_top }}px {{ block.settings.padding_right }}px {{ block.settings.padding_bottom }}px {{ block.settings.padding_left }}px}
+.ai-projects-{{ ai_gen_id }} *{box-sizing:border-box}
+.ai-projects-{{ ai_gen_id }}__inner{width:{{ block.settings.desktop_width_percent }}%;max-width:100%;margin:0 auto}
+.ai-projects-{{ ai_gen_id }}__intro{text-align:{{ block.settings.text_alignment }};margin-bottom:{{ block.settings.grid_gap }}px}
+.ai-projects-{{ ai_gen_id }}__heading{color:{{ block.settings.heading_color }};font-size:{{ block.settings.heading_size }}px;line-height:1.15;margin:0 0 12px}
+.ai-projects-{{ ai_gen_id }}__description{color:{{ block.settings.paragraph_color }};font-size:{{ block.settings.paragraph_size }}px;line-height:1.6}
+.ai-projects-{{ ai_gen_id }}__description>*{margin:0}
+.ai-projects-{{ ai_gen_id }}__grid{display:grid;grid-template-columns:repeat({{ block.settings.columns_desktop }},minmax(0,1fr));gap:{{ block.settings.grid_gap }}px}
+.ai-projects-{{ ai_gen_id }}__card{min-width:0;text-align:{{ block.settings.text_alignment }}}
+.ai-projects-{{ ai_gen_id }}__media{display:block;overflow:hidden;aspect-ratio:var(--project-ratio);border-radius:var(--project-radius);background:#f0ebe3}
+.ai-projects-{{ ai_gen_id }}__media img,.ai-projects-{{ ai_gen_id }}__placeholder svg{display:block;width:100%;height:100%;object-fit:cover}
+.ai-projects-{{ ai_gen_id }}__media img{transition:transform .3s ease,filter .3s ease}
+{% if block.settings.hover_effect == 'zoom' %}.ai-projects-{{ ai_gen_id }}__card:hover .ai-projects-{{ ai_gen_id }}__media img{transform:scale(1.04)}{% elsif block.settings.hover_effect == 'darken' %}.ai-projects-{{ ai_gen_id }}__card:hover .ai-projects-{{ ai_gen_id }}__media img{filter:brightness(.88)}{% endif %}
+.ai-projects-{{ ai_gen_id }}__title{color:{{ block.settings.heading_color }};font-size:18px;line-height:1.35;margin:14px 0 0}
+.ai-projects-{{ ai_gen_id }}__link{color:inherit;text-decoration:none}
+.ai-projects-{{ ai_gen_id }}__link:hover{text-decoration:underline;text-underline-offset:3px}
+.ai-projects-{{ ai_gen_id }}__link:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+.ai-projects-{{ ai_gen_id }}__placeholder{position:relative;display:flex;width:100%;height:100%;align-items:center;justify-content:center}
+.ai-projects-{{ ai_gen_id }}__placeholder svg{background:#f0ebe3;color:#514a40}
+.ai-projects-{{ ai_gen_id }}__empty{position:absolute;bottom:12px;left:8px;right:8px;text-align:center;color:#39352f;font-size:13px}
+@media(min-width:750px) and (max-width:989px){.ai-projects-{{ ai_gen_id }}__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:749px){.ai-projects-{{ ai_gen_id }}{padding:{{ block.settings.mobile_spacing }}px}.ai-projects-{{ ai_gen_id }}__inner{width:100%}.ai-projects-{{ ai_gen_id }}__grid{grid-template-columns:1fr;gap:{{ block.settings.grid_gap | at_least: 8 }}px}.ai-projects-{{ ai_gen_id }}__heading{font-size:{{ block.settings.heading_size | at_most: 36 }}px}}
+@media(prefers-reduced-motion:reduce){.ai-projects-{{ ai_gen_id }}__media img{transition:none}}
+{% endstyle %}
+<div class="ai-projects-{{ ai_gen_id }}" {{ block.shopify_attributes }}><div class="ai-projects-{{ ai_gen_id }}__inner">
+{% if block.settings.heading != blank or block.settings.description != blank %}<div class="ai-projects-{{ ai_gen_id }}__intro">{% if block.settings.heading != blank %}<h2 class="ai-projects-{{ ai_gen_id }}__heading">{{ block.settings.heading | escape }}</h2>{% endif %}{% if block.settings.description != blank %}<div class="ai-projects-{{ ai_gen_id }}__description">{{ block.settings.description }}</div>{% endif %}</div>{% endif %}
+<div class="ai-projects-{{ ai_gen_id }}__grid">
+{% for i in (1..6) %}
+{% liquid
+assign image_key = 'project_' | append: i | append: '_image'
+assign title_key = 'project_' | append: i | append: '_title'
+assign page_key = 'project_' | append: i | append: '_page'
+assign tab_key = 'project_' | append: i | append: '_new_tab'
+assign ratio_key = 'project_' | append: i | append: '_ratio'
+assign radius_key = 'project_' | append: i | append: '_radius'
+assign project_image = block.settings[image_key]
+assign project_title = block.settings[title_key]
+assign project_page = block.settings[page_key]
+assign project_tab = block.settings[tab_key]
+assign project_ratio = block.settings[ratio_key]
+assign project_radius = block.settings[radius_key]
+if project_title == blank and project_page != blank
+assign project_title = project_page.title
+endif
+%}
+{% if project_image != blank or project_title != blank or project_page != blank %}<article class="ai-projects-{{ ai_gen_id }}__card">
+{% if project_page != blank %}<a class="ai-projects-{{ ai_gen_id }}__link" href="{{ project_page.url }}" {% if project_tab %}target="_blank" rel="noopener noreferrer"{% endif %} aria-label="{{ project_title | default: 'View project' | escape }}">{% endif %}
+<div class="ai-projects-{{ ai_gen_id }}__media" style="--project-ratio:{{ project_ratio }};--project-radius:{{ project_radius }}px">{% if project_image != blank %}<img src="{{ project_image | image_url: width: 1400 }}" alt="{{ project_image.alt | default: project_title | escape }}" loading="lazy" width="{{ project_image.width }}" height="{{ project_image.height }}">{% else %}<div class="ai-projects-{{ ai_gen_id }}__placeholder">{{ 'image' | placeholder_svg_tag }}<span class="ai-projects-{{ ai_gen_id }}__empty">Add an image for this project</span></div>{% endif %}</div>
+{% if project_page != blank %}</a>{% endif %}
+{% if project_title != blank %}<h3 class="ai-projects-{{ ai_gen_id }}__title">{% if project_page != blank %}<a class="ai-projects-{{ ai_gen_id }}__link" href="{{ project_page.url }}" {% if project_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ project_title | escape }}</a>{% else %}{{ project_title | escape }}{% endif %}</h3>{% endif %}</article>{% endif %}
+{% endfor %}
+</div></div></div>
+{% schema %}
+{
+"name":"Projects grid",
+"settings":[
+{"type":"header","content":"Content"},
+{"type":"text","id":"heading","label":"Heading"},
+{"type":"richtext","id":"description","label":"Description"},
+{"type":"select","id":"text_alignment","label":"Text alignment","options":[{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}],"default":"left"},
+{"type":"header","content":"Layout"},
+{"type":"range","id":"desktop_width_percent","label":"Section width","min":50,"max":100,"step":5,"unit":"%","default":100},
+{"type":"select","id":"columns_desktop","label":"Desktop columns","options":[{"value":"2","label":"2"},{"value":"3","label":"3"},{"value":"4","label":"4"}],"default":"3"},
+{"type":"range","id":"grid_gap","label":"Grid gap","min":8,"max":48,"step":4,"unit":"px","default":24},
+{"type":"header","content":"Colors and type"},
+{"type":"color","id":"background_color","label":"Background","default":"#FFFFFF"},
+{"type":"color","id":"heading_color","label":"Heading and titles","default":"#121212"},
+{"type":"range","id":"heading_size","label":"Heading size","min":20,"max":60,"step":2,"unit":"px","default":36},
+{"type":"color","id":"paragraph_color","label":"Paragraph","default":"#333333"},
+{"type":"range","id":"paragraph_size","label":"Paragraph size","min":12,"max":24,"step":1,"unit":"px","default":16},
+{"type":"header","content":"Spacing"},
+{"type":"range","id":"padding_top","label":"Top padding","min":0,"max":100,"step":4,"unit":"px","default":48},
+{"type":"range","id":"padding_bottom","label":"Bottom padding","min":0,"max":100,"step":4,"unit":"px","default":48},
+{"type":"range","id":"padding_left","label":"Left padding","min":0,"max":100,"step":4,"unit":"px","default":24},
+{"type":"range","id":"padding_right","label":"Right padding","min":0,"max":100,"step":4,"unit":"px","default":24},
+{"type":"range","id":"mobile_spacing","label":"Mobile spacing","min":8,"max":40,"step":4,"unit":"px","default":16},
+{"type":"header","content":"Project image style"},
+{"type":"select","id":"hover_effect","label":"Image hover effect","options":[{"value":"none","label":"None"},{"value":"zoom","label":"Subtle zoom"},{"value":"darken","label":"Darken"}],"default":"none"},
+{"type":"header","content":"Project 1"},
+{"type":"image_picker","id":"project_1_image","label":"Image"},{"type":"text","id":"project_1_title","label":"Title"},{"type":"page","id":"project_1_page","label":"Page"},{"type":"checkbox","id":"project_1_new_tab","label":"Open in new tab","default":false},{"type":"select","id":"project_1_ratio","label":"Image aspect ratio","options":[{"value":"1 / 1","label":"Square"},{"value":"4 / 3","label":"Landscape"},{"value":"3 / 4","label":"Portrait"},{"value":"16 / 9","label":"Wide"}],"default":"4 / 3"},{"type":"range","id":"project_1_radius","label":"Image border radius","min":0,"max":32,"step":2,"unit":"px","default":0},
+{"type":"header","content":"Project 2"},
+{"type":"image_picker","id":"project_2_image","label":"Image"},{"type":"text","id":"project_2_title","label":"Title"},{"type":"page","id":"project_2_page","label":"Page"},{"type":"checkbox","id":"project_2_new_tab","label":"Open in new tab","default":false},{"type":"select","id":"project_2_ratio","label":"Image aspect ratio","options":[{"value":"1 / 1","label":"Square"},{"value":"4 / 3","label":"Landscape"},{"value":"3 / 4","label":"Portrait"},{"value":"16 / 9","label":"Wide"}],"default":"4 / 3"},{"type":"range","id":"project_2_radius","label":"Image border radius","min":0,"max":32,"step":2,"unit":"px","default":0},
+{"type":"header","content":"Project 3"},
+{"type":"image_picker","id":"project_3_image","label":"Image"},{"type":"text","id":"project_3_title","label":"Title"},{"type":"page","id":"project_3_page","label":"Page"},{"type":"checkbox","id":"project_3_new_tab","label":"Open in new tab","default":false},{"type":"select","id":"project_3_ratio","label":"Image aspect ratio","options":[{"value":"1 / 1","label":"Square"},{"value":"4 / 3","label":"Landscape"},{"value":"3 / 4","label":"Portrait"},{"value":"16 / 9","label":"Wide"}],"default":"4 / 3"},{"type":"range","id":"project_3_radius","label":"Image border radius","min":0,"max":32,"step":2,"unit":"px","default":0},
+{"type":"header","content":"Project 4"},
+{"type":"image_picker","id":"project_4_image","label":"Image"},{"type":"text","id":"project_4_title","label":"Title"},{"type":"page","id":"project_4_page","label":"Page"},{"type":"checkbox","id":"project_4_new_tab","label":"Open in new tab","default":false},{"type":"select","id":"project_4_ratio","label":"Image aspect ratio","options":[{"value":"1 / 1","label":"Square"},{"value":"4 / 3","label":"Landscape"},{"value":"3 / 4","label":"Portrait"},{"value":"16 / 9","label":"Wide"}],"default":"4 / 3"},{"type":"range","id":"project_4_radius","label":"Image border radius","min":0,"max":32,"step":2,"unit":"px","default":0},
+{"type":"header","content":"Project 5"},
+{"type":"image_picker","id":"project_5_image","label":"Image"},{"type":"text","id":"project_5_title","label":"Title"},{"type":"page","id":"project_5_page","label":"Page"},{"type":"checkbox","id":"project_5_new_tab","label":"Open in new tab","default":false},{"type":"select","id":"project_5_ratio","label":"Image aspect ratio","options":[{"value":"1 / 1","label":"Square"},{"value":"4 / 3","label":"Landscape"},{"value":"3 / 4","label":"Portrait"},{"value":"16 / 9","label":"Wide"}],"default":"4 / 3"},{"type":"range","id":"project_5_radius","label":"Image border radius","min":0,"max":32,"step":2,"unit":"px","default":0},
+{"type":"header","content":"Project 6"},
+{"type":"image_picker","id":"project_6_image","label":"Image"},{"type":"text","id":"project_6_title","label":"Title"},{"type":"page","id":"project_6_page","label":"Page"},{"type":"checkbox","id":"project_6_new_tab","label":"Open in new tab","default":false},{"type":"select","id":"project_6_ratio","label":"Image aspect ratio","options":[{"value":"1 / 1","label":"Square"},{"value":"4 / 3","label":"Landscape"},{"value":"3 / 4","label":"Portrait"},{"value":"16 / 9","label":"Wide"}],"default":"4 / 3"},{"type":"range","id":"project_6_radius","label":"Image border radius","min":0,"max":32,"step":2,"unit":"px","default":0}
+],
+"presets":[{"name":"Projects grid"}],
+"tag":null,
+"class":"projects-grid-block"
+}
+{% endschema %}

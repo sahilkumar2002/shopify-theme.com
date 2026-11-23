@@ -1,0 +1,234 @@
+{% doc %}
+  @prompt
+    Create a clean, minimal 3-column feature/benefits section for a Shopify store.
+    
+    Layout:
+    - Full-width horizontal section with a very light warm beige/off-white background (#F7F3ED).
+    - Three evenly spaced columns across the width of the page.
+    - Center-align all content within each column.
+    - Keep the section compact with generous horizontal spacing and moderate vertical padding.
+    - On mobile, stack the three columns vertically.
+    
+    Each column should contain:
+    1. A simple thin-line black icon at the top.
+    2. A bold black heading directly underneath the icon.
+    3. A small circular "i" information icon positioned immediately to the right of the heading.
+    4. A smaller regular-weight black/dark-gray description underneath.
+    
+    Column 1:
+    - Icon: minimalist delivery/shipping van with motion lines.
+    - Heading: "Free and Fast shipping"
+    - Info icon next to heading.
+    - Description: "Delivery time: 3 - 5 workdays"
+    
+    Column 2:
+    - Icon: minimalist door/package delivery icon showing a package being delivered to a doorway.
+    - Heading: "Home delivery"
+    - Info icon next to heading.
+    - Description: "Delivery to your doorstep"
+    
+    Column 3:
+    - Icon: minimalist curved return arrow.
+    - Heading: "Free returns"
+    - Info icon next to heading.
+    - Description: "30 day money back guarantee"
+    
+    Design style:
+    - Premium, modern, minimalist ecommerce aesthetic.
+    - Icons should be simple black outline icons with thin strokes, not filled icons.
+    - Heading font should be bold/semibold, approximately 14–15px.
+    - Description should be approximately 13–14px.
+    - Information icons should be small outlined circles with a lowercase/uppercase "i".
+    - No borders, cards, shadows, buttons, or dividers.
+    - Maintain plenty of whitespace.
+    - The overall appearance should closely resemble a luxury fashion/home goods ecommerce website.
+    - Make the section fully responsive and customizable in the Shopify theme editor, including background color, text color, spacing, icon size, column gap, and typography.
+    Use inline SVG icons or Shopify-compatible icon markup so the three icons visually match the reference: shipping van with motion lines, door/package delivery, and curved return arrow. Keep all icons approximately 38–42px tall and use a thin 1.5–2px black stroke.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-benefits-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    padding: {{ block.settings.vertical_padding }}px 24px;
+  }
+
+  .ai-benefits-{{ ai_gen_id }}__grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: {{ block.settings.column_gap }}px;
+    align-items: start;
+  }
+
+  .ai-benefits-{{ ai_gen_id }}__item {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .ai-benefits-{{ ai_gen_id }}__icon {
+    width: {{ block.settings.icon_size }}px;
+    height: 42px;
+    margin-bottom: 12px;
+    color: {{ block.settings.icon_color }};
+  }
+
+  .ai-benefits-{{ ai_gen_id }}__icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .ai-benefits-{{ ai_gen_id }}__heading-row {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 5px;
+  }
+
+  .ai-benefits-{{ ai_gen_id }}__heading {
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    font-family: {{ block.settings.heading_font.family }};
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .ai-benefits-{{ ai_gen_id }}__info {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    color: {{ block.settings.text_color }};
+    font-family: {{ block.settings.body_font.family }};
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .ai-benefits-{{ ai_gen_id }}__description {
+    max-width: 240px;
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    font-family: {{ block.settings.body_font.family }};
+    font-size: {{ block.settings.description_size }}px;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-benefits-{{ ai_gen_id }} {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .ai-benefits-{{ ai_gen_id }}__grid {
+      grid-template-columns: 1fr;
+      gap: {{ block.settings.mobile_row_gap }}px;
+    }
+  }
+{% endstyle %}
+
+<benefits-section-{{ ai_gen_id }} class="ai-benefits-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-benefits-{{ ai_gen_id }}__grid">
+    <div class="ai-benefits-{{ ai_gen_id }}__item">
+      <div class="ai-benefits-{{ ai_gen_id }}__icon" aria-hidden="true">
+        <svg viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 29H7M1 24H7M9 18H32V31H9V18Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M32 22H38L44 28V31H32V22Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15 31C15 33.2091 13.2091 35 11 35C8.79086 35 7 33.2091 7 31M38 31C38 33.2091 36.2091 35 34 35C31.7909 35 30 33.2091 30 31" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M38 22V17H34" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="ai-benefits-{{ ai_gen_id }}__heading-row">
+        <h3 class="ai-benefits-{{ ai_gen_id }}__heading">{{ block.settings.heading_1 }}</h3>
+        <span class="ai-benefits-{{ ai_gen_id }}__info" aria-label="More information">i</span>
+      </div>
+      <p class="ai-benefits-{{ ai_gen_id }}__description">{{ block.settings.description_1 }}</p>
+    </div>
+
+    <div class="ai-benefits-{{ ai_gen_id }}__item">
+      <div class="ai-benefits-{{ ai_gen_id }}__icon" aria-hidden="true">
+        <svg viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 35V9H31V35M9 35H39V18H31M9 35H5M31 18H39L44 23V35H39" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15 15H25M15 21H25" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M26 25L33 29L40 25L33 21L26 25Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="M26 25V32L33 36L40 32V25M33 29V36" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="ai-benefits-{{ ai_gen_id }}__heading-row">
+        <h3 class="ai-benefits-{{ ai_gen_id }}__heading">{{ block.settings.heading_2 }}</h3>
+        <span class="ai-benefits-{{ ai_gen_id }}__info" aria-label="More information">i</span>
+      </div>
+      <p class="ai-benefits-{{ ai_gen_id }}__description">{{ block.settings.description_2 }}</p>
+    </div>
+
+    <div class="ai-benefits-{{ ai_gen_id }}__item">
+      <div class="ai-benefits-{{ ai_gen_id }}__icon" aria-hidden="true">
+        <svg viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M39 14C35 8 28 5 21 6C12 7 6 14 6 23C6 32 13 37 22 37H28" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M34 8L39 14L32 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 37L22 31M28 37L22 42" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="ai-benefits-{{ ai_gen_id }}__heading-row">
+        <h3 class="ai-benefits-{{ ai_gen_id }}__heading">{{ block.settings.heading_3 }}</h3>
+        <span class="ai-benefits-{{ ai_gen_id }}__info" aria-label="More information">i</span>
+      </div>
+      <p class="ai-benefits-{{ ai_gen_id }}__description">{{ block.settings.description_3 }}</p>
+    </div>
+  </div>
+</benefits-section-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    if (!customElements.get('benefits-section-{{ ai_gen_id }}')) {
+      customElements.define('benefits-section-{{ ai_gen_id }}', class extends HTMLElement {});
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Benefits row",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "heading_1", "label": "Heading 1", "default": "Free and Fast shipping" },
+    { "type": "text", "id": "description_1", "label": "Description 1", "default": "Delivery time: 3 - 5 workdays" },
+    { "type": "text", "id": "heading_2", "label": "Heading 2", "default": "Home delivery" },
+    { "type": "text", "id": "description_2", "label": "Description 2", "default": "Delivery to your doorstep" },
+    { "type": "text", "id": "heading_3", "label": "Heading 3", "default": "Free returns" },
+    { "type": "text", "id": "description_3", "label": "Description 3", "default": "30 day money back guarantee" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "vertical_padding", "label": "Vertical padding", "min": 10, "max": 60, "step": 5, "unit": "px", "default": 30 },
+    { "type": "range", "id": "column_gap", "label": "Column gap", "min": 20, "max": 160, "step": 10, "unit": "px", "default": 70 },
+    { "type": "range", "id": "mobile_row_gap", "label": "Mobile row gap", "min": 20, "max": 80, "step": 5, "unit": "px", "default": 40 },
+    { "type": "header", "content": "Style" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#F7F3ED" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#1A1A1A" },
+    { "type": "color", "id": "icon_color", "label": "Icons", "default": "#1A1A1A" },
+    { "type": "font_picker", "id": "heading_font", "label": "Heading font", "default": "assistant_n4" },
+    { "type": "font_picker", "id": "body_font", "label": "Body font", "default": "assistant_n4" },
+    { "type": "range", "id": "heading_size", "label": "Heading size", "min": 12, "max": 20, "step": 1, "unit": "px", "default": 15 },
+    { "type": "range", "id": "description_size", "label": "Description size", "min": 11, "max": 18, "step": 1, "unit": "px", "default": 14 },
+    { "type": "range", "id": "icon_size", "label": "Icon size", "min": 30, "max": 52, "step": 2, "unit": "px", "default": 42 }
+  ],
+  "presets": [{ "name": "Benefits row" }],
+  "tag": null,
+  "class": "benefits-row-block"
+}
+{% endschema %}

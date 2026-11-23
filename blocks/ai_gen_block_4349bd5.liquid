@@ -1,0 +1,261 @@
+{% doc %}
+  @prompt
+    DESIGN:
+    - Create a single horizontal navigation bar.
+    - Place the navigation links centered horizontally on the page.
+    - Use these menu items:
+      HOSPITALITY
+      RETAIL
+      AVIATION
+      YACHT
+      RESIDENTIAL
+      ALL
+    - Use uppercase text for every menu item.
+    - Use a clean, modern, minimal sans-serif font.
+    - Font size: approximately 12–13px.
+    - Font weight: normal/light (around 400).
+    - Letter spacing: approximately 0.2px.
+    - The "HOSPITALITY" link should be black/dark and slightly more prominent because it represents the active page.
+    - All inactive links should use a muted warm gray/taupe color.
+    - Add approximately 28–34px of horizontal spacing between each navigation item.
+    - The menu should sit around the vertical center of a white header.
+    - Header height should be approximately 60px.
+    - No logo, icons, borders, dropdown arrows, background images, or shadows.
+    
+    BEHAVIOR:
+    - Each menu item must be clickable.
+    - Allow the merchant to configure the URL for every menu item through the Shopify theme editor.
+    - The active menu item should automatically be detected based on the current Shopify page/URL and displayed in dark text.
+    - On hover, inactive links should transition smoothly to dark/black.
+    - Add a subtle 0.2–0.3 second color transition.
+    - Keep the navigation on one line on desktop.
+    
+    RESPONSIVE DESIGN:
+    - On mobile, keep the same minimalist appearance.
+    - Allow horizontal scrolling if the links cannot fit on one line.
+    - Hide the scrollbar while preserving horizontal scrolling.
+    - Do not wrap the menu items onto multiple lines.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-project-nav-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    height: 60px;
+    background: #ffffff;
+    font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+  }
+
+  .ai-project-nav-{{ ai_gen_id }}__scroller {
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .ai-project-nav-{{ ai_gen_id }}__scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ai-project-nav-{{ ai_gen_id }}__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    width: max-content;
+    min-width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0 16px;
+    list-style: none;
+    white-space: nowrap;
+  }
+
+  .ai-project-nav-{{ ai_gen_id }}__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: {{ block.settings.inactive_color }};
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+  }
+
+  .ai-project-nav-{{ ai_gen_id }}__link:hover,
+  .ai-project-nav-{{ ai_gen_id }}__link[aria-current="page"] {
+    color: #121212;
+  }
+
+  .ai-project-nav-{{ ai_gen_id }}__link:focus-visible {
+    outline: 2px solid #121212;
+    outline-offset: 3px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-project-nav-{{ ai_gen_id }}__list {
+      justify-content: center;
+      gap: 28px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ai-project-nav-{{ ai_gen_id }}__link {
+      transition: none;
+    }
+  }
+{% endstyle %}
+
+<nav class="ai-project-nav-{{ ai_gen_id }}" aria-label="Project categories" style="width: {{ block.settings.desktop_width_percent }}%;" {{ block.shopify_attributes }}>
+  <div class="ai-project-nav-{{ ai_gen_id }}__scroller">
+    <ul class="ai-project-nav-{{ ai_gen_id }}__list">
+      {% for i in (1..6) %}
+        {% liquid
+          assign label_key = 'item_' | append: i | append: '_label'
+          assign url_key = 'item_' | append: i | append: '_url'
+          assign label = block.settings[label_key]
+          assign item_url = block.settings[url_key]
+          assign current_path = request.path | remove_last: '/'
+          assign target_path = item_url | remove: shop.url | remove_last: '/'
+          assign is_active = false
+          if item_url != blank and current_path == target_path
+            assign is_active = true
+          endif
+        %}
+        {% if label != blank %}
+          <li>
+            <a class="ai-project-nav-{{ ai_gen_id }}__link" href="{% if item_url != blank %}{{ item_url }}{% else %}#{% endif %}"{% if is_active %} aria-current="page"{% endif %}>{{ label | escape }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "Project navigation",
+  "settings": [
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "inactive_color",
+      "label": "Inactive link color",
+      "default": "#766F67"
+    },
+    {
+      "type": "header",
+      "content": "Hospitality"
+    },
+    {
+      "type": "text",
+      "id": "item_1_label",
+      "label": "Label",
+      "default": "HOSPITALITY"
+    },
+    {
+      "type": "url",
+      "id": "item_1_url",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Retail"
+    },
+    {
+      "type": "text",
+      "id": "item_2_label",
+      "label": "Label",
+      "default": "RETAIL"
+    },
+    {
+      "type": "url",
+      "id": "item_2_url",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Aviation"
+    },
+    {
+      "type": "text",
+      "id": "item_3_label",
+      "label": "Label",
+      "default": "AVIATION"
+    },
+    {
+      "type": "url",
+      "id": "item_3_url",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Yacht"
+    },
+    {
+      "type": "text",
+      "id": "item_4_label",
+      "label": "Label",
+      "default": "YACHT"
+    },
+    {
+      "type": "url",
+      "id": "item_4_url",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Residential"
+    },
+    {
+      "type": "text",
+      "id": "item_5_label",
+      "label": "Label",
+      "default": "RESIDENTIAL"
+    },
+    {
+      "type": "url",
+      "id": "item_5_url",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "All"
+    },
+    {
+      "type": "text",
+      "id": "item_6_label",
+      "label": "Label",
+      "default": "ALL"
+    },
+    {
+      "type": "url",
+      "id": "item_6_url",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Project navigation"
+    }
+  ],
+  "tag": null,
+  "class": "project-navigation-block"
+}
+{% endschema %}

@@ -1,0 +1,44 @@
+{
+  "sections": {
+    "manifesto": {
+      "type": "story-manifesto",
+      "blocks": {
+        "chapter_1": {
+          "type": "chapter",
+          "settings": {
+            "chapter_label": "Chapter I",
+            "title": "Two Rustic Looms & A Defiant Dream",
+            "body_text": "<p>In 1986, in an arid courtyard in rural Rajasthan, our founder observed a profound injustice: ancient Indian carpet weaving was being exploited by predatory intermediaries. He borrowed a small sum, built two vertical timber looms, and made an unprecedented pact: to work directly with rural families at their doorstep.</p>",
+            "reverse_layout": false,
+            "cta_label": "Discover Artisan Genealogies",
+            "cta_link": "\/pages\/about-us"
+          }
+        },
+        "chapter_2": {
+          "type": "chapter",
+          "settings": {
+            "chapter_label": "Chapter II",
+            "title": "The Manchaha Movement: Artisans as Fine Artists",
+            "body_text": "<p>In 2012, we introduced Manchaha ('from the heart')—giving rural weavers leftover yarn and absolute artistic freedom to design rugs without presets. They wove village monsoons, starry desert skies, and ancestral stories. The tapestries stunned international collectors at Milan Design Week.</p>",
+            "reverse_layout": true,
+            "cta_label": "Explore Manchaha Creations",
+            "cta_link": "\/collections\/all"
+          }
+        }
+      },
+      "block_order": [
+        "chapter_1",
+        "chapter_2"
+      ],
+      "settings": {
+        "bg_color": "#FBF9F5",
+        "eyebrow": "The Manifesto & Soul",
+        "heading": "Every Knot a Heartbeat, Every Rug a Genealogic Tapestry",
+        "subtext": "We believe true luxury is slow, conscious, and human. In an age of ephemeral mass production, an Indian Rug Store creation stands as an enduring heirloom—hand-tied by rural artisans who weave memory, devotion, and landscape into every square inch."
+      }
+    }
+  },
+  "order": [
+    "manifesto"
+  ]
+}

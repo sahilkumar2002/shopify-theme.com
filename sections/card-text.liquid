@@ -1,0 +1,112 @@
+{% schema %}
+{
+  "name": "Custom Image Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Our Featured Hotels"
+    },
+    {
+      "type": "number",
+      "id": "columns",
+      "label": "Number of columns",
+      "default": 3
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Default Title Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_card",
+      "name": "Image Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "color",
+          "id": "title_color_override",
+          "label": "Title Color (optional)",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Image Grid"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="custom-image-grid-section">
+  {% if section.settings.section_title != blank %}
+    <h2>{{ section.settings.section_title }}</h2>
+  {% endif %}
+
+  <div class="image-grid-wrapper">
+    <div class="image-grid" style="grid-template-columns: repeat({{ section.settings.columns }}, 1fr);">
+      {% for block in section.blocks %}
+        <div class="image-card">
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | img_url: '800x' }}" alt="{{ block.settings.title }}">
+          {% endif %}
+          {% if block.settings.title %}
+            <h3 style="color: {% if block.settings.title_color_override != blank %}{{ block.settings.title_color_override }}{% else %}{{ section.settings.title_color }}{% endif %}">
+              {{ block.settings.title }}
+            </h3>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.custom-image-grid-section {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.image-grid-wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.image-grid {
+  display: grid;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.image-card {
+  text-align: left; /* titles left-aligned */
+}
+
+.image-card img {
+  width: 100%;
+  height: auto; /* natural height */
+  border-radius: 10px;
+}
+
+.image-card h3 {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: normal;
+}
+</style>

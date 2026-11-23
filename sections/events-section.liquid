@@ -1,0 +1,346 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+.page-container{
+width:60%;
+margin:40px auto;
+}
+
+/* Filters */
+
+.events-filters{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.filter-tabs{
+display:flex;
+gap:15px;
+}
+
+.filter-tabs button{
+background:#f1f1f1;
+padding:8px 16px;
+border:none;
+cursor:pointer;
+font-size:14px;
+border-radius:5px;
+}
+
+.filter-tabs button.active{
+background:#007bff;
+color:#fff;
+}
+
+/* Search */
+
+.search-bar input{
+padding:8px 12px;
+border-radius:5px;
+border:1px solid #ddd;
+width:220px;
+}
+
+/* Grid */
+
+.custom-events-section{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+}
+
+/* Card */
+
+.event-card{
+display:flex;
+gap:15px;
+padding:12px;
+border:1px solid #ddd;
+border-radius:8px;
+background:{{ section.settings.card_bg_color }};
+color:{{ section.settings.card_text_color }};
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+position:relative;
+}
+
+.event-card img{
+width:120px;
+border-radius:6px;
+}
+
+/* Title */
+
+.event-content h3{
+font-size:16px;
+margin-bottom:10px;
+}
+
+/* Info rows */
+
+.event-info{
+display:flex;
+align-items:center;
+gap:6px;
+font-size:13px;
+margin-bottom:10px;
+}
+
+.event-info:last-child{
+margin-bottom:0;
+}
+
+/* Badge */
+
+.status-badge{
+position:absolute;
+top:8px;
+right:8px;
+font-size:10px;
+padding:3px 8px;
+border-radius:12px;
+color:white;
+}
+
+.status-badge.upcoming{
+background:{{ section.settings.status_upcoming_color }};
+}
+
+.status-badge.past{
+background:{{ section.settings.status_past_color }};
+}
+
+/* Hidden */
+
+.hidden{
+display:none;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.custom-events-section{
+grid-template-columns:1fr;
+}
+
+.page-container{
+width:90%;
+}
+
+}
+
+</style>
+
+
+<div class="page-container">
+
+<!-- FILTERS -->
+
+<div class="events-filters">
+
+<div class="filter-tabs">
+
+<button class="filter-tab active" onclick="filterEvents('all',this)">
+All Events
+</button>
+
+<button class="filter-tab" onclick="filterEvents('upcoming',this)">
+Upcoming
+</button>
+
+<button class="filter-tab" onclick="filterEvents('past',this)">
+Past
+</button>
+
+</div>
+
+<div class="search-bar">
+<input type="text" id="searchInput" placeholder="Search events..." onkeyup="searchEvents()">
+</div>
+
+</div>
+
+
+<!-- EVENT GRID -->
+
+<div class="custom-events-section">
+
+{% for block in section.blocks %}
+
+<div class="event-card" data-status="{{ block.settings.status }}">
+
+<span class="status-badge {{ block.settings.status }}">
+{{ block.settings.status | capitalize }}
+</span>
+
+{% if block.settings.image != blank %}
+<img src="{{ block.settings.image | image_url: width: 120 }}" alt="{{ block.settings.name }}">
+{% endif %}
+
+<div class="event-content">
+
+<h3>{{ block.settings.name }}</h3>
+
+<div class="event-info">
+<i class="fa-solid fa-location-dot"></i>
+<span>{{ block.settings.location }}</span>
+</div>
+
+<div class="event-info">
+<i class="fa-solid fa-calendar-days"></i>
+<span>{{ block.settings.date }}</span>
+</div>
+
+<div class="event-info">
+<i class="fa-solid fa-globe"></i>
+<span>{{ block.settings.country }}</span>
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+
+<script>
+
+function filterEvents(status,btn){
+
+const cards=document.querySelectorAll('.event-card')
+const tabs=document.querySelectorAll('.filter-tab')
+
+tabs.forEach(tab=>tab.classList.remove('active'))
+
+btn.classList.add('active')
+
+cards.forEach(card=>{
+
+if(status==='all'){
+card.classList.remove('hidden')
+}
+else if(card.dataset.status!==status){
+card.classList.add('hidden')
+}
+else{
+card.classList.remove('hidden')
+}
+
+})
+
+}
+
+
+function searchEvents(){
+
+const input=document.getElementById('searchInput').value.toLowerCase()
+
+const cards=document.querySelectorAll('.event-card')
+
+cards.forEach(card=>{
+
+const text=card.innerText.toLowerCase()
+
+if(text.includes(input)){
+card.classList.remove('hidden')
+}
+else{
+card.classList.add('hidden')
+}
+
+})
+
+}
+
+</script>
+
+
+{% schema %}
+{
+"name": "Event Section",
+"settings": [
+{
+"type": "color",
+"id": "card_bg_color",
+"label": "Card Background Color",
+"default": "#ffffff"
+},
+{
+"type": "color",
+"id": "card_text_color",
+"label": "Text Color",
+"default": "#000000"
+},
+{
+"type": "color",
+"id": "status_upcoming_color",
+"label": "Upcoming Badge Color",
+"default": "#4CAF50"
+},
+{
+"type": "color",
+"id": "status_past_color",
+"label": "Past Badge Color",
+"default": "#f44336"
+}
+],
+"blocks": [
+{
+"type": "event",
+"name": "Event",
+"settings": [
+{
+"type": "text",
+"id": "name",
+"label": "Event Name"
+},
+{
+"type": "text",
+"id": "location",
+"label": "Location"
+},
+{
+"type": "text",
+"id": "date",
+"label": "Date"
+},
+{
+"type": "text",
+"id": "country",
+"label": "Country"
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Event Image"
+},
+{
+"type": "radio",
+"id": "status",
+"label": "Event Status",
+"options": [
+{ "value": "upcoming", "label": "Upcoming" },
+{ "value": "past", "label": "Past" }
+],
+"default": "upcoming"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Event Section"
+}
+]
+}
+{% endschema %}
+

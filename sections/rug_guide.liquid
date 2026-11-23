@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Slider + Section</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      margin: 0px;
+
+    }
+
+    #rugFaqSection_v1 {
+      background: #f3f3f3;
+      padding: 60px 20px;
+    }
+
+    .rugFaqContainer_v1 {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 40px;
+    }
+
+    .rugFaqTitle_v1 {
+      font-size: 22px;
+      margin-bottom: 25px;
+    }
+
+    .rugFaqItem_v1 {
+      border-bottom: 1px solid #dcdcdc;
+    }
+
+    .rugFaqQuestion_v1 {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 0;
+      text-align: left;
+      font-size: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .rugFaqIcon_v1 {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .rugFaqAnswer_v1 {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .rugFaqAnswer_v1 p {
+      margin: 0 0 15px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .rugFaqItem_v1.active_v1 .rugFaqAnswer_v1 {
+      max-height: 200px;
+    }
+
+    .rugFaqItem_v1.active_v1 .rugFaqIcon_v1 {
+      transform: rotate(45deg);
+    }
+
+    #rugCompareSection_v1 {
+      max-width: 1100px;
+      margin: auto;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Top Layout */
+    .rugCompare_topWrap_v1 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .rugCompare_headingBox_v1 {
+      flex: 1;
+    }
+
+    #rugCompare_heading_v1 {
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* Products */
+    .rugCompare_productsWrap_v1 {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .rugCompare_productCard_v1 {
+      text-align: center;
+    }
+
+    .rugCompare_productCard_v1 img {
+      width: 200px;
+      border-radius: 6px;
+    }
+
+    .rugCompare_productCard_v1 h3 {
+      margin: 10px 0 5px;
+    }
+
+    .rugCompare_productCard_v1 p {
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* Table */
+    .rugCompare_table_v1 {
+      width: 100%;
+    }
+
+    .rugCompare_row_v1 {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      align-items: center;
+      padding: 20px;
+      background: #f3f1ee;
+      margin-bottom: 10px;
+    }
+
+    .rugCompare_label_v1 {
+      text-align: left;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: #777;
+    }
+
+    .rugCompare_cell_v1 {
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .rugCompare_cell_v1 small {
+      font-size: 12px;
+      color: #777;
+    }
+
+    .rugCompare_icons_v1 div {
+      margin: 5px 0;
+    }
+
+    /* Buttons */
+    .rugCompare_btnWrap_v1 {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .rugCompare_btn_v1 {
+      padding: 12px 22px;
+      margin: 10px;
+      background: #8b4b2c;
+      color: #fff;
+      border: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    .rugCompare_btn_v1:hover {
+      background: #6f3a21;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .rugCompare_topWrap_v1 {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .rugCompare_headingBox_v1 {
+        text-align: center;
+      }
+
+      .rugCompare_productsWrap_v1 {
+        flex-direction: column;
+      }
+
+      .rugCompare_row_v1 {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .rugCompare_label_v1 {
+        margin-bottom: 10px;
+      }
+    }
+
+    /* ===== SLIDER ===== */
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      padding: 40px;
+      margin-right: 100px;
+      margin-left: 100px;
+
+    }
+
+    .slider {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+    }
+
+    .slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      min-width: 180px;
+      background: #e9e6e2;
+      border-radius: 10px;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+
+
+    .card img {
+      width: 100%;
+      height: 100px;
+      object-fit: contain;
+    }
+
+    .card-title {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .underline {
+      height: 4px;
+      background: transparent;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transition: background 0.3s;
+    }
+
+    .card:hover .underline,
+    .card.active .underline {
+      background: #a0522d !important;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+
+    }
+
+    .nav-left {
+      left: 10px;
+    }
+
+    .nav-right {
+      right: 10px;
+    }
+
+    /* ===== SECTION ===== */
+    .section {
+      display: flex;
+      min-height: 60vh;
+    }
+
+    .left {
+      width: 50%;
+      padding: 80px;
+      background: #eae6df;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .left h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #1f1f1f;
+      font-family: Georgia, serif;
+    }
+
+    .left p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+      max-width: 500px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #8b4a2f;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+      width: fit-content;
+    }
+
+    .right {
+      width: 50%;
+    }
+
+    .right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 900px) {
+      .section {
+        flex-direction: column;
+      }
+
+      .left,
+      .right {
+        width: 100%;
+      }
+
+      .left {
+        padding: 40px;
+      }
+
+      .left h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<h1 style="font-family: Arial, sans-serif; font-size: 36px; text-align: center; color: #333;">Rug Size Guide</h1>
+    <p style="font-family: Arial, sans-serif; font-size: 18px; text-align: center; color: #666;">Scroll to select your room:</p>
+  <!-- SLIDER -->
+  <div class="slider-container">
+    <button class="nav-btn nav-left" onclick="scrollLeftBtn()">&#8592;</button>
+    <div class="slider" id="slider"></div>
+    <button class="nav-btn nav-right" onclick="scrollRightBtn()">&#8594;</button>
+  </div>
+
+  <!-- SECTION -->
+  <section class="section">
+    <div class="left">
+      <h1 id="title"></h1>
+      <p id="desc"></p>
+      <a href="https://indianrugstore.com/collections/all-products" class="btn" id="btnText"></a>
+    </div>
+    <div class="right">
+      <img id="mainImage" src="" alt="Room">
+    </div>
+  </section>
+
+  <script>
+
+    const slider = document.getElementById('slider');
+
+    /* ================= DATA ================= */
+    const data = [
+      {
+        title: "Living Room Rugs",
+        desc: "Start with your furniture as a guide for placement—a room’s center isn’t always the prime location. Then, ensure that the front legs of your seating fit on the rug (without cramping the space) or size down so no legs touch the rug.",
+        btn: "SHOP LIVING ROOM RUGS",
+        img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/LivingRoom.avif?v=1774441450",
+        cards: [
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/7.avif?v=1774271657", title: "10'x14' Rugs", desc: "A 10’x14’ rug fits in a large room that is at least 11.5’x15.5’— allowing 18” to 36” of visible floor space between the perimeter of the rug and the wall. Pro Tip: Make sure all major furniture pieces are touching the rug.", link: "https://indianrugstore.com/collections/all-products?filter.v.option.size=10%27x14%27&filter.v.price.gte=&filter.v.price.lte=&sort_by=best-selling" } ,        
+
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/1.avif?v=1774271657", title: "9'x12' Rugs", desc: "A 9'x12' rug fits perfectly in a 12'x18' or larger living room, or in an open floor plan space. This rug should be large enough to accommodate most of your furniture, accessories, and decor elements, giving your space a more unified look.", link: "https://indianrugstore.com/collections/9x12" } ,        
+
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/3.avif?v=1774271657", title: "8'x10' Rugs", desc: "An 8'x10' rug fits nicely in an 11'x13' or slightly larger room, or in an open floor plan space. In a defined living area, the best layout leaves a 12” to 18 layout leaves a 12” to 18 border of flooring around your rug.  ", link: "https://indianrugstore.com/collections/8x10" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/4.avif?v=1774271657", title: "6'x9' Rugs", desc: "A 6'x9' rug works best in an 11'x13' or smaller living room. This leaves about 2' of flooring bordering the rug on each side.", link: "https://indianrugstore.com/collections/6x9" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/5.avif?v=1774271657", title: "5'x8' Rugs", desc: "In a small living room, a 5'x7' rug will fit underneath a coffee table, or in front of a fireplace with two comfy chairs sitting almost completely on the rug.", link: "https://indianrugstore.com/collections/5x8" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/6.avif?v=1774271657", title: "4'x6' Rugs", desc: "A 4’x6’ rug should be big enough to cover most of the floor area of a small, apartment-size living room. It’s also a great addition to any other living space, such as the area under the coffee table in front of the couch (front legs off the rug) in medium-size living rooms.", link: "https://indianrugstore.com/collections/4x6" }         
+
+        ]
+      },
+
+      {
+        title: "Bedroom Rugs",
+        desc: "Let your bed size kick-start the planning. Ground the room by placing a large area rug under the foot of the bed, or use a smaller rug next to the bed as a style accent to soften your first morning step.",
+        btn: "SHOP Bedroom Rugs",
+        img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Bedroom.avif?v=1774441450",
+        cards: [
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/King_Bed.avif?v=1774499839", title: "King Bed", desc: "A 9'x12' or 10'x14' rug works best with a king bed. The rug sits almost completely under the bed and nightstands, leaving about 2' of soft rug underfoot around the bed.", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Queen_Bed.avif?v=1774499839", title: "Queen Bed", desc: "An 8'x10' rug covers a queen bed and nightstands, with 3' of rug on either side of the bed, while a 6'x9' rug gives an 18 border on each side.", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Full_Bed.avif?v=1774499839", title: "Full Bed", desc: "A 6'x9' rug fits nicely under a full bed, or opt for two 3'x5' rugs on either side of the bed for added cushioning."
+
+, link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Twin_Bed.avif?v=1774499839", title: "Twin Bed", desc: "An 8'x10', 6'x9', or 5'x7' rug all fit nicely under a twin bed, leaving ample room around the border. Two 3'x5' or smaller rugs also work perfectly on either side of the bed.", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Double_Twins.avif?v=1774499839", title: "Double Twins", desc: "For kids rooms, guest rooms, or dorm rooms, the best option is to place a 3'x5' rug between the two beds. Alternatively, place a 2.5'x7' or 2.5'x10' runner rug across the middle of the beds.", link: "#" }
+
+        ]
+      },
+
+      {
+        title: "Kitchen Rugs",
+        desc: "Practicality rules the kitchen. A well-placed washable runner or rug near the sink adds comfort and peace of mind for spills. Try a cushioned rug pad for an extra layer of support.",
+        btn: "SHOP Kitchen Rugs",
+        img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Kitchen.avif?v=1774441450",
+        cards: [
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Large_Kitchen.avif?v=1774500562", title: "Large Kitchen", desc: "A larger kitchen can most likely handle a 4'x6' or 5'x7' rug. If you have a kitchen island, position a 3'x5', 4'x6', 5'x7', or runner rug under the island’s casters or flanking the sides.", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Galley_Kitchen.avif?v=1774500561", title: "Galley Kitchen", desc: "For a long, galley-style kitchen, a 2.5’x7’, 2.5’x10’, or 2.5'x12' runner rug along the sink side of the kitchen works best. If the galley is more narrow, position the runner in the center of the kitchen.", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Island_Kitchen.avif?v=1774500562", title: "Island Kitchen", desc: "Depending on your layout, a smaller 3'x5' or 4'x6' rug in front of the sink, may work best.", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/C_or_L_Shaped_Kitchen.avif?v=1774500561", title: "C or L Shaped Kitchen", desc: "A small kitchen can easily feel cluttered. Depending on your layout, opt for a 2'x3' or 3'x5' rug in front of the sink.", link: "#" }
+
+        ]
+      },
+
+      {
+        title: "Dining Room Rugs",
+        desc: "A good rule of thumb is to select a rug that's four feet longer and wider than your dining table. For ideal comfort and flow, your rug should be large enough for all dining chairs to sit entirely on the rug, even when pulled out.",
+        btn: "SHOP Dining Room Rugs",
+        img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/DiningRoom.avif?v=1774441450",
+        cards: [
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Large_Table_8.avif?v=1774501145", title: "Large Table (8+)", desc: "A table for eight or more fits best on a 9'x12' or 10'x14' rug, offering enough room for all chairs to be on the rug when seated.", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Medium_Table_6.avif?v=1774501145", title: "Medium Table (6)", desc: "A table for six fits best on an 8'x10' or 6'x9' rug. This leaves room on all sides for the dining chairs to be moved easily while staying on the rug.", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Small_Table_4.avif?v=1774501144", title: "Small Table (4)", desc: "A table for four fits best on an 8' round rug. You can also float the table and chairs in the center of a 6'x9' rug.", link: "#" }
+        ]
+      },
+
+      {
+        title: "Bathroom Rugs",
+        desc: "Don’t overlook your bathroom style. While these small spaces are ruled by their fixtures, choosing the correct rug size can bring cohesion and help avoid slippage. ",
+        btn: "SHOP Bathroom Rugs",
+        img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Bathroom.avif?v=1774441449",
+        cards: [
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Single_Vanity.avif?v=1774502215", title: "Single Vanity", desc: "Our bath mats (or 2’x3’ rugs) can be easily placed in powder rooms and bathrooms, at the base of toilets or beneath single and pedestal sinks. ", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Double_Vanity.avif?v=1774502216", title: "Double Vanity", desc: "For double sinks, opt for side-by-side 22x32” bath mats. Depending on your layout, a small 2’x3’ rug or runner can be used for seamless comfort.", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Bath_Mat_Placement.avif?v=1774502216", title: "Bath Mat Placement", desc: "Place absorbent bath mats and rugs in splash-prone areas near showers and bathtubs. Create a cohesive look by adding additional bath mats by sinks or vanities.", link: "#" }
+        ]
+      },
+
+      {
+        title: "Entryway Rugs",
+        desc: "A first impression and conversation starter. Available in two sizes, our doormats can be placed indoors or outdoors to help keep high-traffic areas clean and add character.",
+        btn: "SHOP Entryway Rugs",
+        img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Entryway.avif?v=1774441450",
+        cards: [
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Single_Door.avif?v=1774502799", title: "Single Door", desc: "Our standard doormats are 2’x3’x0.5’, making them ideal for apartments, single front doors, and entryways between 3’ to 5’ wide. ", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Double_Door.avif?v=1774502799", title: "Double Door", desc: "At 2.5'x4.5’x0.5’, our estate doormats are a perfect size for double doors, as well as patios and porches wider than 6’.", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Layering.avif?v=1774502799", title: "Layering", desc: "Layer our standard-sized doormat on top of a 3’x5’ outdoor rug for extra coverage and cozy style.", link: "#" }
+        ]
+      },
+
+      {
+        title: "Outdoor Rugs",
+        desc: "Bring easy-to-clean charm to outdoor spaces. Let furniture layout and the dimensions of your patio, deck, or porch guide the size of an outdoor rug. For the best look, leave 12” to 24” of visible floor space around your rug.",
+        btn: "SHOP Outdoor Rugs",
+        img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Outdoor.avif?v=1774441451",
+        cards: [
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Small_Outdoor_Spaces.avif?v=1774503257", title: "Small Outdoor Spaces", desc: "For smaller spaces, a 3'x5' rug will fit nicely underneath a small patio table and two chairs. You can also opt for a 2'x3' doormat by the entryway for a more streamlined look.", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Medium_Outdoor_Spaces.avif?v=1774503258", title: "Medium Outdoor Spaces", desc: "For more spacious patios and decks with outdoor seating or dining sets, opt for a larger area rug in 5'x7', 6'x9', 8'x10', or 9'x12'. Choose a size that’s large enough to frame the furniture you want to highlight.", link: "#" },
+          { img: "https://cdn.shopify.com/s/files/1/0648/2188/7176/files/Large_Outdoor_Spaces.avif?v=1774503257", title: "Large Outdoor Spaces", desc: "For more spacious patios and decks with outdoor seating or dining sets, opt for a larger area rug in 5'x7', 6'x9', 8'x10', or 9'x12'. Choose a size that’s large enough to frame the furniture you want to highlight.", link: "#" }
+        ]
+      }
+    ];
+    window.onload = function () {
+      renderCards();
+
+      // ✅ default first tab FULL load
+      selectCard(0);
+    };
+
+    /* ================= SLIDER ================= */
+    function renderCards() {
+      slider.innerHTML = '';
+
+      data.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        // ✅ first tab active by default
+        if (index === 0) card.classList.add('active');
+
+        card.innerHTML = `
+      <img src="${item.img}" />
+      <div class="card-title">${item.title}</div>
+      <div class="underline"></div>
+    `;
+
+        card.onclick = () => selectCard(index);
+        slider.appendChild(card);
+      });
+    }
+
+    /* ================= DYNAMIC RUG SECTION ================= */
+    function renderSection(cards, btnText) {
+      const container = document.getElementById('cardContainer');
+      const btn = document.getElementById('sectionBtn');
+
+      container.innerHTML = '';
+
+      cards.forEach(item => {
+        container.innerHTML += `
+      <div>
+        <img src="${item.img}" style="width:100%;" />
+        <h3>${item.title}</h3>
+        <p style="font-size:13px; color:#555;">${item.desc}</p>
+        <a href="${item.link}" style="font-size:12px; letter-spacing:1px;">SHOP NOW</a>
+      </div>
+    `;
+      });
+
+      btn.innerText = btnText;
+    }
+
+    /* ================= MAIN SELECT FUNCTION ================= */
+    function selectCard(index) {
+      const cards = document.querySelectorAll('.card');
+
+      cards.forEach(c => c.classList.remove('active'));
+      cards[index].classList.add('active');
+
+      const item = data[index];
+
+      // Left section update
+      document.getElementById('title').innerText = item.title;
+      document.getElementById('desc').innerText = item.desc;
+      document.getElementById('btnText').innerText = item.btn;
+      document.getElementById('mainImage').src = item.img;
+
+      // ✅ Dynamic rug section FULL update
+      renderSection(item.cards, item.btn);
+    }
+
+    /* ================= SCROLL ================= */
+    function scrollLeftBtn() {
+      slider.scrollBy({ left: -200, behavior: 'smooth' });
+    }
+
+    function scrollRightBtn() {
+      slider.scrollBy({ left: 200, behavior: 'smooth' });
+    }
+
+    /* ================= INIT ================= */
+    renderCards();
+    selectCard(0);
+
+  </script>
+
+
+
+  <section id="dynamicSection" style="padding:60px 40px;">
+    <div id="cardContainer"
+      style="display:grid; grid-template-columns:repeat(3,1fr); gap:40px; max-width:1100px; margin:auto;">
+    </div>
+
+    <div style="text-align:center; margin-top:40px;">
+      <a href="https://indianrugstore.com/collections/all-products" id="sectionBtn"
+        style="background:#8b4a2f; color:white; padding:15px 30px; text-decoration:none; font-weight:bold;">
+      </a>
+    </div>
+  </section>
+
+
+  <section id="rugCompareSection_v1">
+
+    <!-- Top Section -->
+    <div class="rugCompare_topWrap_v1">
+
+      <div class="rugCompare_headingBox_v1">
+        <h2 id="rugCompare_heading_v1">Compare Our All-in-One Rugs</h2>
+      </div>
+
+      <div class="rugCompare_productsWrap_v1">
+
+        <div class="rugCompare_productCard_v1">
+          <img src="https://cdn.shopify.com/s/files/1/0648/2188/7176/files/last.avif?v=1774345162" alt="">
+          <h3>Tufted</h3>
+          <p>Textured feel with extra cushioning.</p>
+        </div>
+
+        <div class="rugCompare_productCard_v1">
+          <img src="https://cdn.shopify.com/s/files/1/0648/2188/7176/files/last1.avif?v=1774345162" alt="">
+          <h3>Plush</h3>
+          <p>Cozy and indulgently soft.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="rugCompare_table_v1">
+
+      <div class="rugCompare_row_v1">
+        <div class="rugCompare_label_v1">RUG SYSTEM</div>
+        <div class="rugCompare_cell_v1">⬦<br>1-Piece System<br><small>(All-in-One)</small></div>
+        <div class="rugCompare_cell_v1">⬦<br>1-Piece System<br><small>(All-in-One)</small></div>
+      </div>
+
+      <div class="rugCompare_row_v1">
+        <div class="rugCompare_label_v1">NEED A PAD?</div>
+        <div class="rugCompare_cell_v1">✕<br><small>No</small><br>Built-in nonslip backing</div>
+        <div class="rugCompare_cell_v1">✕<br><small>No</small><br>Built-in nonslip backing</div>
+      </div>
+
+      <div class="rugCompare_row_v1">
+        <div class="rugCompare_label_v1">FEEL</div>
+        <div class="rugCompare_cell_v1">☁<br>Soft</div>
+        <div class="rugCompare_cell_v1">☁<br>Ultra Soft</div>
+      </div>
+
+      <div class="rugCompare_row_v1">
+        <div class="rugCompare_label_v1">WASHABILITY</div>
+        <div class="rugCompare_cell_v1">
+          🧺<br><small>Compatible with home washers, up to 8×10</small>
+        </div>
+        <div class="rugCompare_cell_v1">
+          🧺<br><small>Compatible with home washers, up to 6×9</small>
+        </div>
+      </div>
+
+      <div class="rugCompare_row_v1">
+        <div class="rugCompare_label_v1">PERFECT FOR</div>
+        <div class="rugCompare_cell_v1 rugCompare_icons_v1">
+          <div>🏃 Runners</div>
+          <div>🛋 Living / Dining</div>
+          <div>🧸 Kids Room</div>
+        </div>
+        <div class="rugCompare_cell_v1 rugCompare_icons_v1">
+          <div>🛏 Bedroom</div>
+          <div>🛋 Living Room</div>
+          <div>🧸 Kids Room</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Buttons -->
+    <div class="rugCompare_btnWrap_v1">
+  <button class="rugCompare_btn_v1" onclick="window.location.href='https://indianrugstore.com/collections/all-products'">SHOP TUFTED ALL-IN-ONE</button>
+  <button class="rugCompare_btn_v1" onclick="window.location.href='https://indianrugstore.com/collections/all-products'">SHOP PLUSH ALL-IN-ONE</button>
+</div>
+
+  </section>
+
+
+
+
+
+</body>
+
+</html>

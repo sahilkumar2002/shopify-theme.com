@@ -1,0 +1,118 @@
+{%- assign faq_content = product.metafields.custom.faqs | metafield_tag -%}
+
+{%- if faq_content == blank -%}
+  {%- capture faq_content -%}
+    <details class="faq-sub-accordion">
+      <summary class="faq-sub-summary">
+        <span>Custom and personalised orders</span>
+        <span class="faq-arrow"></span>
+      </summary>
+      <div class="faq-sub-content">
+        <p>We all have a dream home with a beautiful and unique design. Carpets work to enhance that beauty further. We are also able to manufacture carpets of your choice, taking care of your preferences.</p>
+      </div>
+    </details>
+
+    <details class="faq-sub-accordion">
+      <summary class="faq-sub-summary">
+        <span>Sizing details</span>
+        <span class="faq-arrow"></span>
+      </summary>
+      <div class="faq-sub-content">
+        <p>We are capable of making the design of your choice as well as making the size of the carpet as per your requirement.</p>
+      </div>
+    </details>
+  {%- endcapture -%}
+{%- endif -%}
+
+<details class="custom-delivery-accordion" open>
+  <summary class="accordion-summary">
+    <span class="accordion-title">FAQs</span>
+    <span class="delivery-arrow"></span>
+  </summary>
+  <div class="accordion-content">
+    <div class="faq-content" style="padding-top: 5px;">
+      {{ faq_content }}
+    </div>
+  </div>
+</details>
+
+<style>
+  .custom-delivery-accordion {
+    /*border-bottom: 1px solid #e5e5e5;*/
+  }
+  .custom-delivery-accordion summary {
+    border-radius:25px;
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     padding: 15px 0px 15px 28px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #000;
+  }
+
+.custom-delivery-accordion summary:hover {
+  background-color: #f5f5f5 !important;
+}
+
+  .custom-delivery-accordion summary::-webkit-details-marker,
+  .faq-sub-accordion summary::-webkit-details-marker {
+    display: none;
+  }
+  .delivery-arrow,
+  .faq-arrow {
+    width: 7px;
+    height: 7px;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    transform: rotate(45deg);
+    transition: transform .3s ease;
+    margin-right: 15px;
+    flex-shrink: 0;
+  }
+  .custom-delivery-accordion[open] > summary .delivery-arrow {
+    transform: rotate(-135deg);
+  }
+  .accordion-content {
+    padding: 0px 0 25px 0;
+    font-size: 16px;
+    color: #555;
+  }
+
+  /* FAQ Nested Styles with Indentation */
+  .faq-sub-accordion {
+    /*border-top: 1px solid #eee;*/
+  }
+  .faq-sub-summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 10px 12px 15px;
+    font-weight: 500;
+    font-size: 15px;
+    color: #222;
+    text-indent: 15px;
+  }
+  .faq-sub-accordion[open] > summary .faq-arrow {
+    transform: rotate(-135deg);
+  }
+  .faq-sub-content {
+    padding: 0 15px 15px 25px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+  }
+  .faq-sub-content p {
+    margin: 0;
+  }
+
+  @media(max-width: 749px) {
+    .custom-delivery-accordion summary {
+      font-size: 16px;
+    }
+  }
+</style>

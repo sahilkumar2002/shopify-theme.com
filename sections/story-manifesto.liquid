@@ -1,0 +1,161 @@
+{%- comment -%}
+  Section: story-manifesto.liquid
+  Brand Story Manifesto with 40-year heritage narrative, Manchaha initiative, and living traditions.
+{%- endcomment -%}
+
+<div class="luxury-story-page" style="background-color: {{ section.settings.bg_color }}; padding: 4.5rem 0 6rem;">
+  <div class="luxury-container">
+    <div style="text-align: center; max-width: 860px; margin: 0 auto 4.5rem;" data-aos="fade-up">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="editorial-eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      <h1 class="editorial-heading" style="font-size: clamp(2.8rem, 5.2vw, 4.6rem); line-height: 1.1; margin-bottom: 1.5rem;">
+        {{ section.settings.heading | escape }}
+      </h1>
+      {%- if section.settings.subtext != blank -%}
+        <p class="editorial-subtext" style="font-size: clamp(1.05rem, 1.35vw, 1.25rem); line-height: 1.85; margin: 0 auto; color: #5C554E;">
+          {{ section.settings.subtext }}
+        </p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.hero_image != blank -%}
+      <div style="position: relative; max-width: 1200px; margin: 0 auto 6rem;" data-aos="zoom-in">
+        <div style="position: absolute; top: -16px; left: -16px; width: 100%; height: 100%; border: 1px solid #D9D2C7; pointer-events: none; z-index: 1;"></div>
+        <div style="position: relative; overflow: hidden; border-radius: 2px; aspect-ratio: 16/9; max-height: 580px; z-index: 2; box-shadow: 0 25px 60px rgba(0,0,0,0.12);">
+          <img src="{{ section.settings.hero_image | image_url: width: 1800 }}" alt="{{ section.settings.heading | escape }}" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'chapter' -%}
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4.5rem; max-width: 1180px; margin: 0 auto 6.5rem; align-items: center;" {{ block.shopify_attributes }}>
+            <div data-aos="{% cycle 'fade-right', 'fade-left' %}" style="{% if block.settings.reverse_layout %}order: 2;{% endif %}">
+              {%- if block.settings.chapter_label != blank -%}
+                <span class="editorial-eyebrow">{{ block.settings.chapter_label }}</span>
+              {%- endif -%}
+              <h2 class="editorial-heading" style="font-size: clamp(2.2rem, 3.5vw, 3.2rem); margin-bottom: 1.5rem;">
+                {{ block.settings.title | escape }}
+              </h2>
+              <div style="font-size: 1.05rem; line-height: 1.85; color: #4E4740;">
+                {{ block.settings.body_text }}
+              </div>
+              {%- if block.settings.cta_label != blank and block.settings.cta_link != blank -%}
+                <div style="margin-top: 2rem;">
+                  <a href="{{ block.settings.cta_link }}" class="luxury-btn luxury-btn--dark button-shine">
+                    {{ block.settings.cta_label }} &rarr;
+                  </a>
+                </div>
+              {%- endif -%}
+            </div>
+            <div style="position: relative; {% if block.settings.reverse_layout %}order: 1;{% endif %}" data-aos="{% cycle 'fade-left', 'fade-right' %}">
+              {%- if block.settings.image != blank -%}
+                <div style="position: relative; overflow: hidden; border-radius: 2px; aspect-ratio: 4/5; box-shadow: 0 15px 45px rgba(0,0,0,0.08);">
+                  <img src="{{ block.settings.image | image_url: width: 900 }}" alt="{{ block.settings.title | escape }}" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Brand Story Manifesto",
+  "tag": "section",
+  "class": "section-story-manifesto",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FBF9F5"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "The Manifesto & Soul"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Every Knot a Heartbeat, Every Rug a Genealogic Tapestry"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "We believe true luxury is slow, conscious, and human. In an age of ephemeral mass production, an Indian Rug Store creation stands as an enduring heirloom—hand-tied by rural artisans who weave memory, devotion, and landscape into every square inch."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Editorial Banner Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "chapter",
+      "name": "Story Chapter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "chapter_label",
+          "label": "Chapter Label",
+          "default": "Chapter I"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Two Rustic Looms & A Defiant Dream"
+        },
+        {
+          "type": "richtext",
+          "id": "body_text",
+          "label": "Body Text",
+          "default": "<p>In 1986, in a modest courtyard in rural Rajasthan, our founder observed a profound injustice: ancient Indian carpet weaving was being strangled by predatory intermediaries. He borrowed a small sum, purchased two simple vertical timber looms, and made an unprecedented pact: to work directly with rural families, delivering raw wool to their doorsteps and honoring their craft with complete financial autonomy.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Chapter Image"
+        },
+        {
+          "type": "boolean",
+          "id": "reverse_layout",
+          "label": "Reverse Image / Text Side",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "Button Label",
+          "default": "Explore Our Heritage"
+        },
+        {
+          "type": "url",
+          "id": "cta_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Story Manifesto",
+      "blocks": [
+        {
+          "type": "chapter"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

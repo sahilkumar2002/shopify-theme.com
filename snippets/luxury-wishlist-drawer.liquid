@@ -1,0 +1,19 @@
+{% comment %}
+  Renders luxury editorial slide-in wishlist drawer from the right.
+{% endcomment %}
+
+<div class="luxury-wishlist-drawer" id="LuxuryWishlistDrawer" role="dialog" aria-modal="true" aria-label="Treasured Wishlist">
+  <div class="luxury-cart-drawer__header">
+    <div style="display: flex; align-items: baseline; gap: 0.6rem;">
+      <h2 class="luxury-cart-drawer__title">Your Saved Pieces</h2>
+      <span class="luxury-header__badge luxury-wishlist-count-badge" style="position: static; font-size: 0.72rem;">0</span>
+    </div>
+    <button type="button" class="luxury-cart-drawer__close" id="LuxuryWishlistCloseBtn" aria-label="Close wishlist">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+
+  <div class="luxury-wishlist-drawer__items" id="LuxuryWishlistItems">
+    <!-- Populated dynamically via assets/wishlist.js -->
+  </div>
+</div>

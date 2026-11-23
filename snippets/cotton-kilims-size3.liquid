@@ -1,0 +1,137 @@
+<details class="custom-highlights-accordion" open>
+
+  <summary class="highlights-summary">
+    <span class="highlights-title">Highlights</span>
+    <span class="highlights-arrow"></span>
+  </summary>
+
+  <div class="highlights-content">
+
+    <ul class="highlights-list">
+
+      <li>Materials: Cotton</li>
+
+      <li>Width x Length: 
+          Round 3', 
+Round 4',  
+Round 5',  
+Round 6', 
+Round 7', 
+Round 8', 
+Round 9', 
+Round 10', 
+Round 11', 
+Round 12'
+      </li>
+
+      <p>Gift wrapping available</p>
+
+    </ul>
+
+  </div>
+
+</details>
+
+
+<style>
+
+  .custom-highlights-accordion {
+    /*border-top: 1px solid #e5e5e5;*/
+    padding: 0;
+    margin: 0;
+  }
+
+  .custom-highlights-accordion summary {
+    border-radius: 25px;
+    list-style: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 0 15px 28px;
+
+    font-weight: 600;
+    font-size: 15px;
+
+    color: #000;
+  }
+
+   .highlights-summary:hover {
+  background-color: #f5f5f5 !important;
+}
+  
+  .custom-highlights-accordion summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .highlights-title {
+    line-height: 1.4;
+  }
+
+  .highlights-arrow {
+    width: 7px;
+    height: 7px;
+
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+
+    transform: rotate(45deg);
+
+    transition: transform .3s ease;
+
+    margin-right: 15px;
+
+    flex-shrink: 0;
+  }
+
+  .custom-highlights-accordion[open] .highlights-arrow {
+    transform: rotate(-135deg);
+  }
+
+  .highlights-content {
+    padding: 0 0 25px 0;
+
+    font-size: 16px;
+
+    color: #17213a;
+  }
+
+  .highlights-list {
+    margin: 0;
+
+    padding-left: 28px;
+
+    list-style-type: decimal;
+  }
+
+  .highlights-list li {
+    margin: 0 0 12px 0;
+
+    padding-left: 3px;
+
+    line-height: 1.5;
+  }
+
+  .highlights-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+
+    .custom-highlights-accordion summary {
+      font-size: 16px;
+    }
+
+    .highlights-content {
+      font-size: 14px;
+    }
+
+    .highlights-list li {
+      margin-bottom: 11px;
+    }
+
+  }
+
+</style>

@@ -1,0 +1,177 @@
+{%- assign delivery_content = product.metafields.custom.delivery_information | metafield_tag -%}
+
+{%- if delivery_content == blank -%}
+
+  {%- assign today_timestamp = 'now' | date: '%s' -%}
+  {%- assign start_timestamp = today_timestamp | plus: 604800 -%}
+  {%- assign end_timestamp = today_timestamp | plus: 1209600 -%}
+
+  {%- assign delivery_start = start_timestamp | date: '%d' -%}
+  {%- assign delivery_end = end_timestamp | date: '%d' -%}
+  {%- assign delivery_month = end_timestamp | date: '%b' -%}
+
+  {%- capture delivery_content -%}
+    <ul>
+      <li>
+        📅 Order today to get by
+        <b class="underline">{{ delivery_start }}-{{ delivery_end }} {{ delivery_month }}</b>
+      </li>
+
+      <li>
+        📦 
+        <span class="tooltip-container">
+          <span class="underline tooltip-trigger">Returns & exchanges accepted</span> within 14 days
+          <span class="tooltip-box">
+            Buyers are responsible for return postage costs. If the item is not returned in its original condition, the buyer is responsible for any loss in value.
+          </span>
+        </span>
+      </li>
+
+      <li>🚚 Free delivery</li>
+      <li>📍 Sent from: <b>India</b></li>
+    </ul>
+  {%- endcapture -%}
+
+{%- endif -%}
+
+<details class="custom-delivery-accordion" open>
+  <summary class="accordion-summary">
+    <span class="accordion-title">Delivery and return policies</span>
+    <span class="delivery-arrow"></span>
+  </summary>
+
+  <div class="accordion-content">
+    <div class="metafield-text">
+      {{ delivery_content }}
+    </div>
+  </div>
+</details>
+
+
+
+<style>
+  .underline {
+    color: #1f2937;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  .custom-delivery-accordion {
+    /*border-bottom: 1px solid #e5e5e5;*/
+    padding: 0;
+    margin: 0;
+  }
+  .custom-delivery-accordion summary {
+    border-radius:25px;
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0px 15px 28px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #000;
+  }
+
+.custom-delivery-accordion summary:hover {
+  background-color: #f5f5f5 !important;
+}
+
+  .custom-delivery-accordion summary::-webkit-details-marker {
+    display: none;
+  }
+  .delivery-arrow {
+    width: 7px;
+    height: 7px;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    transform: rotate(45deg);
+    transition: transform .3s ease;
+    margin-right: 15px;
+    flex-shrink: 0;
+  }
+  .custom-delivery-accordion[open] .delivery-arrow {
+    transform: rotate(-135deg);
+  }
+  .accordion-content {
+    padding: 0px 0 25px 0;
+    font-size: 16px;
+    color: #555;
+  }
+  .accordion-content ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+  .accordion-content li {
+    display: block;
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+  .accordion-content li:last-child {
+    margin-bottom: 0;
+  }
+  .accordion-content img, 
+  .accordion-content svg {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    object-fit: contain;
+  }
+
+  /* Tooltip Popup Styles */
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+  .tooltip-trigger {
+    cursor: pointer;
+  }
+  .tooltip-box {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 0;
+    z-index: 100;
+    width: 280px;
+    padding: 15px;
+    background: #fff;
+    color: #333;
+    font-size: 13px;
+    line-height: 1.5;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    font-weight: normal;
+  }
+  .tooltip-box::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 20px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+  }
+  .tooltip-container:hover .tooltip-box {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  @media(max-width: 749px) {
+    .custom-delivery-accordion summary {
+      font-size: 16px;
+    }
+    .accordion-content li {
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 14px;
+    }
+    .tooltip-box {
+      width: 240px;
+    }
+  }
+</style>

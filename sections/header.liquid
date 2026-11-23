@@ -1,0 +1,326 @@
+{{ 'header.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign is_transparent_header = false
+  if section.settings.enable_transparent_header and template.name == 'index'
+    assign is_transparent_header = true
+  endif
+-%}
+
+<div
+  class="luxury-header-wrapper{% if is_transparent_header %} is-transparent{% else %} is-solid{% endif %}{% if section.settings.enable_sticky_header %} is-sticky{% endif %}"
+  id="LuxuryHeaderWrapper"
+  data-transparent="{{ is_transparent_header }}"
+  data-sticky="{{ section.settings.enable_sticky_header }}"
+  data-template="{{ template.name }}"
+>
+  <header class="luxury-header luxury-header--logo-{{ section.settings.logo_position | default: 'left' }}">
+    <!-- Mobile Hamburger Trigger -->
+    <button type="button" class="luxury-header__hamburger" id="LuxuryHamburgerBtn" aria-label="Open navigation menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+
+    <!-- Brand Logo -->
+    <div class="luxury-header__logo-box">
+      <a href="{{ routes.root_url }}" class="luxury-header__logo-link">
+        {%- if settings.logo != blank -%}
+          <!-- Dark Logo for Solid Background -->
+          <img
+            src="{{ settings.logo | image_url: width: 400 }}"
+            alt="{{ shop.name | escape }}"
+            class="luxury-header__logo-img luxury-header__logo-img--dark"
+            width="{{ section.settings.logo_width | default: 180 }}"
+            loading="eager"
+          >
+          <!-- Optional Light Logo for Transparent Hero State -->
+          {%- if section.settings.logo_transparent != blank -%}
+            <img
+              src="{{ section.settings.logo_transparent | image_url: width: 400 }}"
+              alt="{{ shop.name | escape }}"
+              class="luxury-header__logo-img luxury-header__logo-img--light"
+              width="{{ section.settings.logo_width | default: 180 }}"
+              loading="eager"
+            >
+          {%- endif -%}
+        {%- else -%}
+          <span class="luxury-header__logo-text">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+
+    <!-- Desktop Navigation (Small, Attractive, Non-Wrapping Editorial Typography) -->
+    <nav class="luxury-header__nav" aria-label="Main Navigation">
+      <ul class="luxury-header__menu-list">
+        {%- for link in section.settings.menu.links -%}
+          {%- liquid
+            assign has_children = false
+            if link.links != blank
+              assign has_children = true
+            endif
+
+            assign promo_block = nil
+            assign link_title_down = link.title | downcase | strip
+            for block in section.blocks
+              if block.type == 'mega_menu_promo'
+                assign block_title_down = block.settings.menu_item | downcase | strip
+                if block_title_down == link_title_down
+                  assign promo_block = block
+                  break
+                endif
+              endif
+            endfor
+          -%}
+
+          <li class="luxury-header__menu-item{% if link.current or link.child_current %} is-active{% endif %}">
+            <a href="{{ link.url }}" class="luxury-header__menu-link{% if link.current or link.child_current %} is-active{% endif %}"{% if link.current or link.child_current %} aria-current="page"{% endif %}>
+              <span>{{ link.title }}</span>
+              {%- if has_children -%}
+                <svg class="luxury-header__caret" viewBox="0 0 10 6" fill="none" stroke="currentColor"><path d="M1 1L5 5L9 1"/></svg>
+              {%- endif -%}
+            </a>
+
+            <!-- Mega Menu Dropdown if item has children -->
+            {%- if has_children -%}
+              <div class="luxury-mega-dropdown">
+                <div class="luxury-mega-dropdown__grid">
+                  <div class="luxury-mega-dropdown__cols">
+                    {%- for childlink in link.links -%}
+                      <div class="luxury-mega-dropdown__col">
+                        <a href="{{ childlink.url }}" class="luxury-mega-dropdown__col-title underline-slide{% if childlink.current %} is-active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                          {{ childlink.title }}
+                        </a>
+                        {%- if childlink.links != blank -%}
+                          <ul class="luxury-mega-dropdown__sublinks">
+                            {%- for grandchildlink in childlink.links -%}
+                              <li>
+                                <a href="{{ grandchildlink.url }}" class="luxury-mega-dropdown__link underline-slide{% if grandchildlink.current %} is-active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
+                                  {{ grandchildlink.title }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      </div>
+                    {%- endfor -%}
+                  </div>
+
+                  <!-- Optional Featured Promo Card -->
+                  {%- if promo_block != blank and promo_block.settings.image != blank -%}
+                    <a href="{{ promo_block.settings.link | default: link.url }}" class="luxury-mega-dropdown__promo" {{ promo_block.shopify_attributes }}>
+                      <div class="luxury-mega-dropdown__promo-img-wrap">
+                        {{ promo_block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: promo_block.settings.heading }}
+                      </div>
+                      <div class="luxury-mega-dropdown__promo-body">
+                        <h4 class="luxury-mega-dropdown__promo-heading">{{ promo_block.settings.heading | escape }}</h4>
+                        <p class="luxury-mega-dropdown__promo-sub">{{ promo_block.settings.subtext | escape }}</p>
+                        <span class="luxury-mega-dropdown__promo-cta">Discover Selection &rarr;</span>
+                      </div>
+                    </a>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <!-- Header Action Icons in Exact Requested Order: Search, Wishlist, Account, Cart -->
+    <div class="luxury-header__actions">
+      <!-- 1. Search Icon -->
+      <button type="button" class="luxury-header__icon-btn" id="LuxurySearchBtn" aria-label="Open search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+
+      <!-- 2. Wishlist (Heart) Icon with Live Count -->
+      <button type="button" class="luxury-header__icon-btn" id="LuxuryWishlistBtn" aria-label="Saved Wishlist">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        <span class="luxury-header__badge luxury-wishlist-count-badge" data-count="0">0</span>
+      </button>
+
+      <!-- 3. Account (Profile) Icon with Dropdown -->
+      {% render 'luxury-account-dropdown' %}
+
+      <!-- 4. Cart (Bag) Icon with Live Count Bubble -->
+      <button type="button" class="luxury-header__icon-btn" id="LuxuryCartBtn" aria-label="Sanctuary Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <span class="luxury-header__badge luxury-cart-count-badge" data-count="{{ cart.item_count }}">{{ cart.item_count }}</span>
+      </button>
+    </div>
+  </header>
+</div>
+
+<!-- Backdrop Overlay for Drawers & Modals -->
+<div class="luxury-drawer-overlay" id="LuxuryDrawerOverlay"></div>
+
+<!-- Search Slide-down Modal -->
+{% render 'luxury-header-search' %}
+
+<!-- Slide-in Cart Drawer -->
+{% render 'luxury-cart-drawer' %}
+
+<!-- Slide-in Wishlist Drawer -->
+{% render 'luxury-wishlist-drawer' %}
+
+<!-- Mobile Slide-in Drawer -->
+<div class="luxury-mobile-drawer" id="LuxuryMobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+  <div class="luxury-mobile-drawer__header">
+    <span class="luxury-header__logo-text" style="font-size: 1.3rem;">{{ shop.name }}</span>
+    <button type="button" class="luxury-cart-drawer__close" id="LuxuryMobileCloseBtn" aria-label="Close menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="luxury-mobile-drawer__body">
+    <ul class="luxury-mobile-nav-list">
+      {%- for link in section.settings.menu.links -%}
+        <li class="luxury-mobile-nav-item{% if link.current or link.child_current %} is-active{% endif %}">
+          {%- if link.links != blank -%}
+            <a href="{{ link.url }}" class="luxury-mobile-nav-link luxury-mobile-accordion-trigger{% if link.current or link.child_current %} is-active{% endif %}">
+              <span>{{ link.title }}</span>
+              <svg class="luxury-mobile-arrow" width="12" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor"><path d="M1 1L5 5L9 1"/></svg>
+            </a>
+            <ul class="luxury-mobile-accordion">
+              {%- for childlink in link.links -%}
+                <li>
+                  <a href="{{ childlink.url }}" class="luxury-mobile-sublink{% if childlink.current %} is-active{% endif %}" style="font-weight: 500; color: #1E1E1E;">{{ childlink.title }}</a>
+                  {%- if childlink.links != blank -%}
+                    <ul style="list-style: none; padding-left: 1rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                      {%- for grandchildlink in childlink.links -%}
+                        <li>
+                          <a href="{{ grandchildlink.url }}" class="luxury-mobile-sublink{% if grandchildlink.current %} is-active{% endif %}">{{ grandchildlink.title }}</a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- else -%}
+            <a href="{{ link.url }}" class="luxury-mobile-nav-link{% if link.current %} is-active{% endif %}">{{ link.title }}</a>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+  <div class="luxury-mobile-drawer__footer">
+    <div class="luxury-mobile-drawer__shortcuts">
+      <a href="{{ routes.account_url }}" class="luxury-header__icon-btn" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      </a>
+      <button type="button" class="luxury-header__icon-btn" onclick="window.closeMobileDrawer && window.closeMobileDrawer(); window.openLuxuryWishlist();" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
+      <button type="button" class="luxury-header__icon-btn" onclick="window.closeMobileDrawer && window.closeMobileDrawer(); document.getElementById('LuxurySearchBtn').click();" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'header.js' | asset_url }}" defer></script>
+<script src="{{ 'cart-drawer.js' | asset_url }}" defer></script>
+<script src="{{ 'wishlist.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Header (Luxury Editorial)",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "select",
+      "id": "logo_position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Logo Left, Menu Center, Icons Right"
+        },
+        {
+          "value": "center",
+          "label": "Logo Center, Menu Left, Icons Right"
+        }
+      ],
+      "default": "left",
+      "label": "Desktop Logo Position"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 100,
+      "max": 280,
+      "step": 10,
+      "unit": "px",
+      "label": "Custom logo width",
+      "default": 170
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Main navigation menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_header",
+      "default": true,
+      "label": "Enable sticky header on scroll"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_transparent_header",
+      "default": true,
+      "label": "Enable transparent header over homepage hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_transparent",
+      "label": "Light logo for transparent hero state (optional)"
+    },
+    {
+      "type": "header",
+      "content": "Free Shipping Configuration"
+    },
+    {
+      "type": "number",
+      "id": "free_shipping_threshold",
+      "default": 500,
+      "label": "Free shipping threshold (e.g. 500 for $500)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mega_menu_promo",
+      "name": "Mega Menu Promo Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_item",
+          "label": "Menu Item Title",
+          "info": "Exact title of the top-level link (e.g. 'Collections')"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Featured image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "The Royal Manchaha"
+        },
+        {
+          "type": "text",
+          "id": "subtext",
+          "label": "Subtext",
+          "default": "Designed entirely by master weaver artisans."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link destination"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

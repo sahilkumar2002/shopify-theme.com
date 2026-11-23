@@ -1,0 +1,232 @@
+<section class="luxury-about-process luxury-section-padding">
+  <div class="luxury-container">
+    <div class="luxury-about-process__header" data-aos="fade-up">
+      <span class="editorial-eyebrow">{{ section.settings.eyebrow | default: 'The Creation Journey' }}</span>
+      <h2 class="editorial-heading" style="font-size: clamp(2.2rem, 4vw, 3.5rem);">
+        {{ section.settings.heading | default: 'From Earth to Loom to Living Room' }}
+      </h2>
+      <p class="editorial-subtext" style="margin: 0 auto;">
+        {{ section.settings.subtext | default: 'A sacred, unhurried continuum requiring up to 180 hands and 280 meticulous artisanal hours per square meter.' }}
+      </p>
+    </div>
+
+    <div class="luxury-about-process__timeline">
+      <div class="luxury-about-process__line" aria-hidden="true"></div>
+
+      <div class="luxury-about-process__steps">
+        {%- for block in section.blocks -%}
+          <div class="luxury-about-process__step" data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 150 }}" {{ block.shopify_attributes }}>
+            <div class="luxury-about-process__num-badge">
+              <span>0{{ forloop.index }}</span>
+            </div>
+            {%- if block.settings.image != blank -%}
+              <div class="luxury-about-process__img-wrap hover-zoom-container">
+                <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+              </div>
+            {%- endif -%}
+            <span class="luxury-about-process__step-tag">{{ block.settings.tag | default: 'Phase' }}</span>
+            <h3 class="luxury-about-process__step-title">{{ block.settings.title }}</h3>
+            <p class="luxury-about-process__step-desc">{{ block.settings.desc }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .luxury-about-process {
+    background-color: var(--luxury-bg-alt, #F4EFE6);
+  }
+  .luxury-about-process__header {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 5rem;
+  }
+  .luxury-about-process__timeline {
+    position: relative;
+  }
+  .luxury-about-process__line {
+    position: absolute;
+    top: 25px;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: var(--luxury-border-medium, #D9D2C7);
+    z-index: 1;
+  }
+  .luxury-about-process__steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.2rem;
+    position: relative;
+    z-index: 2;
+  }
+  .luxury-about-process__step {
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+  .luxury-about-process__num-badge {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1.8rem;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 2px solid var(--luxury-accent, #9E583A);
+    color: var(--luxury-accent, #9E583A);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--luxury-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+  .luxury-about-process__img-wrap {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--luxury-radius-sm, 2px);
+    margin-bottom: 1.4rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+    background: #EBE5DE;
+  }
+  .luxury-about-process__img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+  .luxury-about-process__step-tag {
+    display: inline-block;
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--luxury-accent, #9E583A);
+    margin-bottom: 0.4rem;
+  }
+  .luxury-about-process__step-title {
+    font-family: var(--luxury-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: 1.55rem;
+    color: var(--luxury-text, #1E1E1E);
+    margin: 0 0 0.75rem;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+  .luxury-about-process__step-desc {
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.9rem;
+    color: var(--luxury-text-muted, #6E6862);
+    line-height: 1.65;
+    margin: 0;
+  }
+  @media (max-width: 991px) {
+    .luxury-about-process__line {
+      display: none;
+    }
+    .luxury-about-process__steps {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3.5rem 1.8rem;
+    }
+  }
+  @media (max-width: 576px) {
+    .luxury-about-process__steps {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About — Craft Process",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Creation Journey"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "From Earth to Loom to Living Room"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "A sacred, unhurried continuum requiring up to 180 hands and 280 meticulous artisanal hours per square meter."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Process Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Step Photo"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Step Tag",
+          "default": "Phase 01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "Design & Yarn Dyeing"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "Description",
+          "default": "Master artists paint graphical blueprints (Naksha) before wool is carded and dyed in earthen vats."
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "step",
+        "settings": {
+          "tag": "Phase 01",
+          "title": "Design & Natural Dyeing",
+          "desc": "Master draftsmen translate ancestral and modern motifs into point-paper talim maps, followed by botanical yarn immersion."
+        }
+      },
+      {
+        "type": "step",
+        "settings": {
+          "tag": "Phase 02",
+          "title": "Knot-by-Knot Weaving",
+          "desc": "Generations of weavers tie individual knots onto pure cotton warp threads on indigenous upright wooden looms."
+        }
+      },
+      {
+        "type": "step",
+        "settings": {
+          "tag": "Phase 03",
+          "title": "River Washing & Shearing",
+          "desc": "Washed multiple times with natural river water and sun-dried across desert terraces, then hand-sheared for architectural pile."
+        }
+      },
+      {
+        "type": "step",
+        "settings": {
+          "tag": "Phase 04",
+          "title": "White-Glove Delivery",
+          "desc": "Rigorous 18-point quality check, serging, and dispatched with certificate of authenticity directly to your sanctuary."
+        }
+      }
+    ]
+  }
+}
+{% endschema %}

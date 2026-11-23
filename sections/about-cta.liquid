@@ -1,0 +1,114 @@
+<section class="luxury-about-cta luxury-section-padding" style="background-image: url('{{ section.settings.image | image_url: width: 2000 | default: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=80' }}');">
+  <div class="luxury-about-cta__overlay"></div>
+  <div class="luxury-container luxury-about-cta__content" data-aos="fade-up">
+    <span class="editorial-eyebrow" style="color: #E2B77A;">{{ section.settings.eyebrow | default: 'The Living Heirloom' }}</span>
+    <h2 class="editorial-heading luxury-about-cta__heading">
+      {{ section.settings.heading | default: 'Bring Ancestral Poetry to Your Sanctuary' }}
+    </h2>
+    <p class="editorial-subtext luxury-about-cta__sub">
+      {{ section.settings.subtext | default: 'Explore one-of-a-kind museum pieces hand-tied knot by knot by master artisans.' }}
+    </p>
+    <div class="luxury-about-cta__actions">
+      <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="luxury-btn luxury-btn--primary button-shine">
+        {{ section.settings.button_label | default: 'Explore Our Collection' }} &rarr;
+      </a>
+      {%- if section.settings.secondary_link != blank -%}
+        <a href="{{ section.settings.secondary_link }}" class="luxury-btn luxury-btn--outline button-shine">
+          {{ section.settings.secondary_label | default: 'Consult Our Stylists' }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .luxury-about-cta {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: #FFFFFF;
+    text-align: center;
+  }
+  .luxury-about-cta__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(20, 19, 18, 0.78) 0%, rgba(20, 19, 18, 0.88) 100%);
+  }
+  .luxury-about-cta__content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .luxury-about-cta__heading {
+    font-size: clamp(2.4rem, 4.5vw, 4rem);
+    color: #FFFFFF;
+    margin: 0.8rem 0 1.25rem;
+    line-height: 1.15;
+  }
+  .luxury-about-cta__sub {
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0 auto 2.6rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  .luxury-about-cta__actions {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: center;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About — Bottom CTA",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Living Heirloom"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Bring Ancestral Poetry to Your Sanctuary"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Explore one-of-a-kind museum pieces hand-tied knot by knot by master artisans."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Primary Button Label",
+      "default": "Explore Our Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary Button Label",
+      "default": "Consult Our Stylists"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary Button Link"
+    }
+  ]
+}
+{% endschema %}

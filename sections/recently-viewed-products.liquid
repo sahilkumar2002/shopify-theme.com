@@ -1,0 +1,383 @@
+<section class="recently-viewed-products page-width">
+
+  <h2 class="title">
+    Recently Viewed Products
+  </h2>
+
+  <div class="rv-carousel-wrapper">
+
+    <button class="rv-nav prev" type="button">&#10094;</button>
+
+    <div
+      class="recently-viewed-grid"
+      id="recently-viewed-products"
+    ></div>
+
+    <button class="rv-nav next" type="button">&#10095;</button>
+
+  </div>
+
+</section>
+
+<style>
+
+/* SECTION */
+.recently-viewed-products{
+  overflow:hidden;
+}
+
+/* WRAPPER */
+.rv-carousel-wrapper{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+}
+
+/* CAROUSEL ROW */
+.recently-viewed-grid{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-behavior:smooth;
+  padding:5px 0;
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+  -ms-overflow-style:none;
+  scrollbar-width:none;
+}
+
+/* HIDE SCROLLBAR */
+.recently-viewed-grid::-webkit-scrollbar{
+  display:none;
+}
+
+/* DESKTOP - 4 PRODUCTS */
+.recent-product-card{
+  flex:0 0 calc(25% - 12px);
+  display:flex;
+  min-width:0;
+  box-sizing:border-box;
+}
+
+.recent-product-card a{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  height:100%;
+  text-decoration:none;
+  color:inherit;
+}
+
+/* IMAGE */
+.recent-product-card img{
+  width:100%;
+  height:auto;
+  max-height:370px;
+  object-fit:cover;
+  display:block;
+  border-radius:0;
+}
+
+/* TITLE */
+.recent-product-card h3{
+  font-size:16px;
+  margin:17px 0 5px;
+  text-align:center;
+   display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* PRICE */
+.recent-product-card p{
+  margin:0 0 10px;
+  font-weight:bold;
+}
+
+/* ARROWS */
+.rv-nav{
+  position:absolute;
+  top:40%;
+  transform:translateY(-50%);
+  width:40px;
+  height:40px;
+  border:none;
+  cursor:pointer;
+  z-index:10;
+  background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+}
+
+.rv-nav.prev{
+  left:1px;
+}
+
+.rv-nav.next{
+  right:1px;
+}
+
+/* TABLET - 3 PRODUCTS */
+@media (max-width:1024px){
+
+  .recent-product-card{
+    flex:0 0 calc(33.333% - 11px);
+  }
+
+}
+
+/* MOBILE - 1 PRODUCT */
+@media (max-width:768px){
+
+  .recent-product-card{
+    flex:0 0 100%;
+  }
+
+  .recent-product-card img{
+    max-height:100%;
+    object-fit:contain;
+  }
+
+}
+
+/* PREVENT PAGE HORIZONTAL SCROLL */
+html,
+body{
+  overflow-x:hidden;
+}
+</style>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+  const container =
+    document.getElementById("recently-viewed-products");
+
+  if (!container) return;
+
+  let products =
+    JSON.parse(localStorage.getItem("recentlyViewedProducts")) || [];
+
+  products =
+    products.filter(handle => handle !== "{{ product.handle }}");
+
+  products = products.slice(0, 8);
+
+  if (!products.length) {
+    container.innerHTML = "<p>No recently viewed products.</p>";
+    return;
+  }
+
+  // ===================================
+  // FORCE USD FORMAT
+  // ===================================
+
+  function formatMoney(amount) {
+
+    const value = (amount / 100).toFixed(2);
+
+    return `<span class="money">${value} US$</span>`;
+  }
+
+  // ===================================
+  // LOAD PRODUCTS
+  // ===================================
+
+  for (const handle of products) {
+
+    try {
+
+      const response =
+        await fetch(`/products/${handle}.js`);
+
+      const product =
+        await response.json();
+
+      const variant = product.variants?.[0];
+
+      let priceHTML = "";
+
+      // ===================================
+      // PRICE RENDER (SHOPIFY STYLE)
+      // ===================================
+
+      if (variant) {
+
+        const price = variant.price;
+        const compare = variant.compare_at_price;
+
+        const priceText = formatMoney(price);
+        const compareText = compare ? formatMoney(compare) : null;
+
+        // ===================================
+        // SALE PRICE
+        // ===================================
+
+        if (compare && compare > price) {
+
+          priceHTML = `
+            <div class="price price--on-sale">
+
+              <div class="price__container">
+
+                <div class="price__regular">
+
+                  <span class="visually-hidden visually-hidden--inline">
+                    Regular price
+                  </span>
+
+                  <span class="price-item price-item--regular">
+                    From ${priceText}
+                  </span>
+
+                </div>
+
+                <div class="price__sale">
+
+                  <span class="visually-hidden visually-hidden--inline">
+                    Regular price
+                  </span>
+
+                  <span>
+                    <s class="price-item price-item--regular">
+                      ${compareText}
+                    </s>
+                  </span>
+
+                  <span class="visually-hidden visually-hidden--inline">
+                    Sale price
+                  </span>
+
+                  <span class="price-item price-item--sale price-item--last">
+                    From ${priceText}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+          `;
+
+        }
+
+        // ===================================
+        // NORMAL PRICE
+        // ===================================
+
+        else {
+
+          priceHTML = `
+            <div class="price">
+
+              <div class="price__container">
+
+                <div class="price__regular">
+
+                  <span class="price-item price-item--regular">
+                    From ${priceText}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+          `;
+
+        }
+
+      }
+
+      // ===================================
+      // PRODUCT CARD
+      // ===================================
+
+      const productCard =
+        document.createElement("div");
+
+      productCard.className =
+        "recent-product-card";
+
+      productCard.innerHTML = `
+        <a href="/products/${product.handle}">
+
+          <img src="${product.featured_image}" alt="${product.title}">
+
+          <h3>${product.title}</h3>
+
+          <div class="card-information">
+            ${priceHTML}
+          </div>
+
+        </a>
+      `;
+
+      container.appendChild(productCard);
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
+  // ===================================
+  // CAROUSEL NAVIGATION
+  // ===================================
+
+  const prevBtn = document.querySelector(".rv-nav.prev");
+  const nextBtn = document.querySelector(".rv-nav.next");
+
+  function getScrollAmount() {
+    const card = document.querySelector(".recent-product-card");
+    if (!card) return 260;
+
+    const gap =
+      parseInt(window.getComputedStyle(container).gap) || 16;
+
+    return card.offsetWidth + gap;
+  }
+
+  if (prevBtn && nextBtn) {
+
+    prevBtn.addEventListener("click", () => {
+      container.scrollBy({
+        left: -getScrollAmount(),
+        behavior: "smooth"
+      });
+    });
+
+    nextBtn.addEventListener("click", () => {
+      container.scrollBy({
+        left: getScrollAmount(),
+        behavior: "smooth"
+      });
+    });
+
+  }
+
+});
+
+</script> 
+
+{% schema %}
+{
+  "name": "Recently Viewed Products",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Recently Viewed Products"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,364 @@
+/* ==========================================================================
+   JAIPUR RUGS EDITORIAL LUXURY DESIGN SYSTEM - CUSTOM ANIMATIONS
+   File: assets/custom-animations.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. IMAGE HOVER ZOOM (scale 1.08)
+   -------------------------------------------------------------------------- */
+.hover-zoom-container,
+.luxury-card__media-wrapper,
+.product-card__media-wrapper,
+.category-card__image-box {
+  overflow: hidden;
+  position: relative;
+}
+
+.hover-zoom,
+.hover-zoom-container img,
+.luxury-card__media-wrapper img,
+.category-card__image-box img {
+  transition: transform 0.85s cubic-bezier(0.25, 1, 0.35, 1), filter 0.6s ease;
+  will-change: transform;
+}
+
+.hover-zoom:hover,
+.hover-zoom-container:hover img,
+.luxury-card__media-wrapper:hover img,
+.category-card__image-box:hover img {
+  transform: scale(1.08);
+}
+
+/* --------------------------------------------------------------------------
+   2. KEN BURNS EFFECT (Editorial subtle pan & zoom)
+   -------------------------------------------------------------------------- */
+.ken-burns,
+.ken-burns-active {
+  animation: kenBurnsEffect 20s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+@keyframes kenBurnsEffect {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.09) translate(-1%, -1%);
+  }
+  100% {
+    transform: scale(1.05) translate(1%, 0.5%);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. UNDERLINE SLIDE (Left to right smooth expansion)
+   -------------------------------------------------------------------------- */
+.underline-slide {
+  position: relative;
+  text-decoration: none !important;
+  display: inline-block;
+  color: inherit;
+}
+
+.underline-slide::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left bottom;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.underline-slide:hover::after,
+.underline-slide:focus::after,
+.group:hover .underline-slide::after {
+  transform: scaleX(1);
+}
+
+/* Variant: Thick editorial underline */
+.underline-slide--editorial::after {
+  height: 1.5px;
+  background-color: var(--luxury-accent, #9E583A);
+}
+
+/* --------------------------------------------------------------------------
+   4. BUTTON SHINE / SLIDE EFFECT
+   -------------------------------------------------------------------------- */
+.button-shine,
+.luxury-button-primary,
+.luxury-button-secondary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+}
+
+.button-shine::after,
+.luxury-button-primary::after,
+.luxury-button-secondary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: none;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.button-shine:hover::after,
+.luxury-button-primary:hover::after,
+.luxury-button-secondary:hover::after {
+  left: 150%;
+  transition: left 0.75s ease-in-out;
+}
+
+/* Button slide background variant */
+.button-slide-hover {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.button-slide-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--luxury-text, #1E1E1E);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: -1;
+}
+
+.button-slide-hover:hover::before {
+  transform: scaleY(1);
+}
+
+/* --------------------------------------------------------------------------
+   5. MARQUEE (Infinite smooth ticker)
+   -------------------------------------------------------------------------- */
+.luxury-marquee {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  user-select: none;
+  width: 100%;
+}
+
+.luxury-marquee__track {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: var(--marquee-gap, 3rem);
+  animation: marqueeScroll var(--marquee-duration, 35s) linear infinite;
+  will-change: transform;
+}
+
+.luxury-marquee:hover .luxury-marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. COUNTER NUMBERS & CRAFTSMANSHIP STATS
+   -------------------------------------------------------------------------- */
+.counter-number {
+  font-family: var(--luxury-font-heading, 'Cormorant Garamond', serif);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--luxury-text, #1E1E1E);
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+.counter-label {
+  font-family: var(--luxury-font-body, 'Jost', sans-serif);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--luxury-text-muted, #6B6763);
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. WISHLIST HEART POP ANIMATION
+   -------------------------------------------------------------------------- */
+@keyframes heartPop {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.35);
+  }
+  60% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.wishlist-btn.active svg,
+.wishlist-btn:active svg {
+  animation: heartPop 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  fill: var(--luxury-accent, #9E583A);
+  color: var(--luxury-accent, #9E583A);
+}
+
+/* --------------------------------------------------------------------------
+   8. CART ICON BUMP ANIMATION
+   -------------------------------------------------------------------------- */
+@keyframes cartBump {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.25) rotate(-6deg); }
+  50% { transform: scale(1.15) rotate(4deg); }
+  75% { transform: scale(1.05) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.cart-icon-bump {
+  animation: cartBump 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --------------------------------------------------------------------------
+   9. SCROLL DOWN PULSE ARROW
+   -------------------------------------------------------------------------- */
+@keyframes scrollDownBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(10px);
+  }
+  60% {
+    transform: translateY(5px);
+  }
+}
+
+.scroll-down-indicator {
+  animation: scrollDownBounce 2.4s infinite;
+}
+
+/* --------------------------------------------------------------------------
+   10. SKELETON SHIMMER LOADING
+   -------------------------------------------------------------------------- */
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-loading {
+  background: linear-gradient(
+    90deg,
+    #F3EFEA 25%,
+    #EBE5DE 37%,
+    #F3EFEA 63%
+  );
+  background-size: 400% 100%;
+  animation: skeletonShimmer 1.6s ease infinite;
+}
+
+/* --------------------------------------------------------------------------
+   11. ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .hover-zoom:hover,
+  .hover-zoom-container:hover img,
+  .ken-burns,
+  .ken-burns-active,
+  .luxury-marquee__track,
+  .scroll-down-indicator {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Keep content visible even if AOS fails to load or no-js is active */
+html.no-js [data-aos],
+html.aos-disabled [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+/* ==========================================================================
+   AOS BULLETPROOF FALLBACK & SAFE MODE (PREVENTS BLANK SECTIONS)
+   ========================================================================== */
+html.no-js [data-aos],
+html.aos-disabled [data-aos],
+html.aos-fallback-active [data-aos],
+html.aos-safe-mode [data-aos],
+.safe-mode [data-aos],
+[data-aos].force-visible,
+[data-aos].aos-animate {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+html:not(.aos-init) [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}

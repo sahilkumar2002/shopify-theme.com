@@ -1,0 +1,92 @@
+{% comment %}
+  Renders luxury reassurance badges for the product page (Jaipur Rugs style)
+{% endcomment %}
+
+<style>
+  .luxury-trust-badges {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem 1.5rem;
+    padding: 1.8rem 0;
+    margin: 2rem 0;
+    border-top: 1px solid var(--luxury-border-light, #F0ECE4);
+    border-bottom: 1px solid var(--luxury-border-light, #F0ECE4);
+  }
+
+  .luxury-trust-badge-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .luxury-trust-badge-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--luxury-accent, #9E583A);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .luxury-trust-badge-title {
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--luxury-text, #1E1E1E);
+    margin: 0 0 0.2rem;
+    letter-spacing: 0.02em;
+  }
+
+  .luxury-trust-badge-desc {
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.74rem;
+    color: var(--luxury-text-muted, #6E6862);
+    margin: 0;
+    line-height: 1.35;
+  }
+</style>
+
+<div class="luxury-trust-badges">
+  <div class="luxury-trust-badge-item">
+    <svg class="luxury-trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+    </svg>
+    <div>
+      <div class="luxury-trust-badge-title">Hand-Knotted Heritage</div>
+      <p class="luxury-trust-badge-desc">100% authentic artisanal loom weave.</p>
+    </div>
+  </div>
+
+  <div class="luxury-trust-badge-item">
+    <svg class="luxury-trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="1" y="3" width="15" height="13"></rect>
+      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+      <circle cx="5.5" cy="18.5" r="2.5"></circle>
+      <circle cx="18.5" cy="18.5" r="2.5"></circle>
+    </svg>
+    <div>
+      <div class="luxury-trust-badge-title">Insured Delivery</div>
+      <p class="luxury-trust-badge-desc">Complimentary doorstep delivery worldwide.</p>
+    </div>
+  </div>
+
+  <div class="luxury-trust-badge-item">
+    <svg class="luxury-trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+      <polyline points="9 22 9 12 15 12 15 22"></polyline>
+    </svg>
+    <div>
+      <div class="luxury-trust-badge-title">In-Home Sanctuary Trial</div>
+      <p class="luxury-trust-badge-desc">30-day trial in your living space.</p>
+    </div>
+  </div>
+
+  <div class="luxury-trust-badge-item">
+    <svg class="luxury-trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </svg>
+    <div>
+      <div class="luxury-trust-badge-title">Direct Artisan Livelihood</div>
+      <p class="luxury-trust-badge-desc">Fair wages directly to rural weaver families.</p>
+    </div>
+  </div>
+</div>

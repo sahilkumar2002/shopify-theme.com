@@ -1,0 +1,339 @@
+{%- style -%}
+  #LuxuryNewsletter-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | default: 90 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 90 }}px;
+    background-color: {{ section.settings.background_color | default: '#F4EFEA' }};
+    overflow: hidden;
+  }
+
+  .luxury-newsletter-card {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border-radius: var(--luxury-radius-sm, 2px);
+    overflow: hidden;
+    box-shadow: var(--luxury-shadow-lg, 0 16px 40px rgba(30, 30, 30, 0.06));
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 900px) {
+    .luxury-newsletter-card {
+      flex-direction: row;
+      min-height: 480px;
+    }
+
+    .luxury-newsletter__media-col {
+      width: 48%;
+      flex-shrink: 0;
+    }
+
+    .luxury-newsletter__content-col {
+      width: 52%;
+    }
+  }
+
+  .luxury-newsletter__media-col {
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+    background-color: #EAE5DC;
+  }
+
+  .luxury-newsletter__media-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.85s cubic-bezier(0.25, 1, 0.35, 1);
+  }
+
+  .luxury-newsletter-card:hover .luxury-newsletter__media-col img {
+    transform: scale(1.06);
+  }
+
+  .luxury-newsletter__content-col {
+    padding: clamp(2.5rem, 5vw, 4.5rem) clamp(2rem, 5vw, 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .luxury-newsletter__eyebrow {
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--luxury-accent, #9E583A);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .luxury-newsletter__heading {
+    font-family: var(--luxury-font-heading, 'Cormorant Garamond', serif);
+    font-size: clamp(2rem, 3.6vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--luxury-text, #1E1E1E);
+    margin: 0 0 1rem;
+  }
+
+  .luxury-newsletter__subtext {
+    font-family: var(--luxury-font-body, 'Jost', sans-serif);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--luxury-text-muted, #6E6862);
+    margin: 0 0 2rem;
+  }
+
+  /* Form & Attached Button */
+  .luxury-newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .luxury-newsletter-form__input-group {
+    display: flex;
+    position: relative;
+    width: 100%;
+    border: 1px solid var(--luxury-border, #E8E2D8);
+    border-radius: var(--luxury-radius-xs, 1px);
+    overflow: hidden;
+    background: #FFFFFF;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .luxury-newsletter-form__input-group:focus-within {
+    border-color: var(--luxury-accent, #9E583A);
+    box-shadow: 0 0 0 1px var(--luxury-accent, #9E583A);
+  }
+
+  .luxury-newsletter-form__input {
+    flex: 1;
+    border: none;
+    padding: 1.05rem 1.4rem;
+    font-family: var(--luxury-font-body);
+    font-size: 0.9rem;
+    color: var(--luxury-text, #1E1E1E);
+    background: transparent;
+    outline: none;
+  }
+
+  .luxury-newsletter-form__input::placeholder {
+    color: #A39D96;
+    letter-spacing: 0.04em;
+  }
+
+  .luxury-newsletter-form__btn {
+    border: none;
+    background-color: var(--luxury-text, #1E1E1E);
+    color: #FFFFFF;
+    padding: 1.05rem 1.8rem;
+    font-family: var(--luxury-font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s var(--luxury-ease);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .luxury-newsletter-form__btn:hover {
+    background-color: var(--luxury-accent, #9E583A);
+  }
+
+  /* Animated Success State */
+  .luxury-newsletter-success {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.2rem;
+    background-color: #F3FAF4;
+    border: 1px solid #C7E8CE;
+    border-radius: var(--luxury-radius-xs);
+    color: #2D6A4F;
+    animation: successFadeIn 0.5s ease forwards;
+    margin-top: 1rem;
+  }
+
+  @keyframes successFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .luxury-newsletter-success svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+{%- endstyle -%}
+
+<div class="luxury-split-newsletter-section" id="LuxuryNewsletter-{{ section.id }}">
+  <div class="luxury-container">
+    <div class="luxury-newsletter-card" data-aos="fade-up">
+      <!-- Media Half -->
+      <div class="luxury-newsletter__media-col hover-zoom-container">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag:
+            loading: 'lazy',
+            widths: '500, 800, 1200',
+            alt: section.settings.heading | escape
+          }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+      <!-- Content Half -->
+      <div class="luxury-newsletter__content-col">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="luxury-newsletter__eyebrow">{{ section.settings.eyebrow | escape }}</span>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="luxury-newsletter__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.subtext != blank -%}
+          <p class="luxury-newsletter__subtext">{{ section.settings.subtext }}</p>
+        {%- endif -%}
+
+        {% form 'customer', class: 'luxury-newsletter-form' %}
+          <input type="hidden" name="contact[tags]" value="newsletter,connoisseur_club">
+
+          <div class="luxury-newsletter-form__input-group">
+            <input
+              type="email"
+              name="contact[email]"
+              class="luxury-newsletter-form__input"
+              value="{{ form.email }}"
+              placeholder="{{ section.settings.placeholder | default: 'Enter your email address' }}"
+              aria-label="Email address"
+              required
+              autocorrect="off"
+              autocapitalize="off"
+            >
+            <button
+              type="submit"
+              class="luxury-newsletter-form__btn button-shine"
+              name="commit"
+            >
+              {{ section.settings.button_text | default: 'Join' }}
+            </button>
+          </div>
+
+          {%- if form.posted_successfully? -%}
+            <div class="luxury-newsletter-success" role="status">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>{{ section.settings.success_message | default: 'Welcome to our circle. Your invitation has been dispatched.' }}</span>
+            </div>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <div style="color: #9E583A; font-size: 0.85rem; margin-top: 0.5rem;">
+              {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+            </div>
+          {%- endif -%}
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Split Newsletter (Jaipur)",
+  "tag": "section",
+  "class": "section-luxury-split-newsletter",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Editorial Lifestyle Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Outer Background Color",
+      "default": "#F4EFEA"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "The Connoisseur Circle"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Invitations to Private Showings & New Creations"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Receive 10% towards your inaugural heirloom acquisition, private archival previews, and bespoke atelier consultations."
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Input Placeholder",
+      "default": "Enter your email address"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Submit Button Text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success Notification Text",
+      "default": "Welcome to our circle. Your invitation has been dispatched."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 40,
+      "max": 140,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 40,
+      "max": 140,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 90
+    }
+  ],
+  "presets": [
+    {
+      "name": "Split Newsletter (Jaipur)"
+    }
+  ]
+}
+{% endschema %}

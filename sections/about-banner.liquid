@@ -1,0 +1,109 @@
+<div class="luxury-about-banner" style="background-image: url('{{ section.settings.image | image_url: width: 2400 | default: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80' }}');">
+  <div class="luxury-about-banner__overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"></div>
+  <div class="luxury-container luxury-about-banner__content">
+    {% render 'breadcrumbs' %}
+    <span class="editorial-eyebrow" data-aos="fade-up" style="color: #E2B77A;">{{ section.settings.eyebrow | default: 'Our Heritage & Philosophy' }}</span>
+    <h1 class="editorial-heading luxury-about-banner__title" data-aos="fade-up" data-aos-delay="100">
+      {{ section.settings.heading | default: 'The Poetry of Handcrafted Living' }}
+    </h1>
+    {%- if section.settings.subheading != blank -%}
+      <p class="editorial-subtext luxury-about-banner__sub" data-aos="fade-up" data-aos-delay="200">
+        {{ section.settings.subheading }}
+      </p>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .luxury-about-banner {
+    position: relative;
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    color: #FFFFFF;
+    padding: 6rem 0 4rem;
+  }
+  .luxury-about-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(18, 18, 18, 0.72) 0%, rgba(18, 18, 18, 0.55) 100%);
+    pointer-events: none;
+  }
+  .luxury-about-banner__content {
+    position: relative;
+    z-index: 2;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .luxury-about-banner .luxury-breadcrumbs {
+    padding: 0 0 1.5rem;
+    justify-content: center;
+  }
+  .luxury-about-banner .luxury-breadcrumbs__list {
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .luxury-about-banner .luxury-breadcrumbs__link {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .luxury-about-banner .luxury-breadcrumbs__current {
+    color: #FFFFFF;
+  }
+  .luxury-about-banner__title {
+    font-size: clamp(2.4rem, 5vw, 4.4rem);
+    color: #FFFFFF;
+    margin: 0.5rem 0 1.25rem;
+    line-height: 1.1;
+  }
+  .luxury-about-banner__sub {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 auto;
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About — Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner Background Image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 10,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Darkness",
+      "default": 60
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Our Heritage & Philosophy"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "The Poetry of Handcrafted Living"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Bridging centuries of Indian ancestral weaving traditions with modern architectural serenity for the global home."
+    }
+  ]
+}
+{% endschema %}

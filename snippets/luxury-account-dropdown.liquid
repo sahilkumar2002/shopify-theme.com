@@ -1,0 +1,43 @@
+{% comment %}
+  Renders luxury editorial account icon and hover/click dropdown.
+{% endcomment %}
+
+<div class="luxury-account-wrapper">
+  {%- if customer -%}
+    <a href="{{ routes.account_url }}" class="luxury-header__icon-btn" aria-label="Customer Account ({{ customer.first_name }})">
+      <div class="luxury-account-avatar">
+        {{ customer.first_name | slice: 0, 1 | default: 'M' }}
+      </div>
+    </a>
+    <div class="luxury-account-dropdown" role="menu">
+      <div class="luxury-account-dropdown__greeting">
+        Hi, {{ customer.first_name }}
+      </div>
+      <ul class="luxury-account-dropdown__list">
+        <li><a href="{{ routes.account_url }}" class="luxury-account-dropdown__link">My Sanctuary Account</a></li>
+        <li><a href="{{ routes.account_url }}#orders" class="luxury-account-dropdown__link">Loom Orders & Tracking</a></li>
+        <li><a href="#wishlist" class="luxury-account-dropdown__link" onclick="window.openLuxuryWishlist(); return false;">Saved Wishlist</a></li>
+        <li><a href="{{ routes.account_logout_url }}" class="luxury-account-dropdown__link" style="color: #9C4436;">Sign Out</a></li>
+      </ul>
+    </div>
+  {%- else -%}
+    <a href="{{ routes.account_login_url }}" class="luxury-header__icon-btn" aria-label="Customer Sign In">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+    </a>
+    <div class="luxury-account-dropdown" role="menu">
+      <div class="luxury-account-dropdown__greeting" style="font-size: 1.05rem;">
+        Patron Concierge
+      </div>
+      <p style="font-size: 0.8rem; color: var(--luxury-header-text-muted); margin-bottom: 0.8rem; line-height: 1.4;">
+        Sign in to view curated acquisitions, order progress, and saved loom pieces.
+      </p>
+      <a href="{{ routes.account_login_url }}" class="luxury-account-dropdown__btn">
+        Sign In
+      </a>
+      <div style="text-align: center; margin-top: 0.6rem; font-size: 0.78rem;">
+        <span style="color: var(--luxury-header-text-muted);">New patron?</span>
+        <a href="{{ routes.account_register_url }}" style="color: var(--luxury-header-accent); font-weight: 500; text-decoration: underline;">Create Account</a>
+      </div>
+    </div>
+  {%- endif -%}
+</div>

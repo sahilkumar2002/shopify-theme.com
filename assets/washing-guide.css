@@ -1,0 +1,1388 @@
+/* css for washing instructions collapsible row */
+
+.care-guide {
+  padding: 10px 0;
+}
+
+.care-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.care-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.care-item span {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.care-guide-title{
+  font-size: 18px;
+  color:#000;
+}
+
+
+/*css for varient size picker*/
+
+
+/* =========================================
+   VARIANT SIZE PICKER
+   ========================================= */
+
+/* Normal variant labels */
+variant-radios fieldset label,
+variant-selects fieldset label {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Randomly marked MAKE TO ORDER variants */
+.variant-faded {
+  opacity: 0.55 !important;
+  border: 1px solid #000 !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.variant-faded::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  width: 140% !important;
+  height: 2px !important;
+  top: 50% !important;
+  left: 50% !important;
+  background: #000 !important;
+  transform: translate(-50%, -50%) rotate(-25deg) !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+}
+
+/* Completely remove second line */
+.variant-faded::after {
+  content: none !important;
+  display: none !important;
+}
+
+.variant-faded::before {
+  transform: translate(-50%, -50%) rotate(25deg);
+}
+
+.variant-faded::after {
+  transform: translate(-50%, -50%) rotate(-25deg);
+}
+
+/* MAKE TO ORDER label */
+.make-to-order-text {
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  transform: translateX(-50%);
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #000;
+  font-weight: 700;
+  z-index: 3;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Hover effect */
+.variant-faded:hover {
+  opacity: 0.55 !important;
+}
+
+
+/* Exclude Stair Rugs from random variant styling */
+.stair-rug-product .variant-faded {
+  opacity: 1 !important;
+  border-color: inherit !important;
+}
+
+.stair-rug-product .variant-faded::before,
+.stair-rug-product .variant-faded::after,
+.stair-rug-product .make-to-order-text {
+  display: none !important;
+}
+
+
+/* //Enquiry Button 
+.custom-enquiry-btn {
+  display: none;
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+
+  background: #000;
+  color: #fff !important;
+
+  text-align: center;
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  border-radius: 4px;
+  border: 1px solid #000;
+
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+// Hover 
+.custom-enquiry-btn:hover {
+  background: #222;
+  border-color: #222;
+  color: #fff !important;
+}*/
+
+
+/*popup form css*/
+/* Popup Overlay */
+.custom-enquiry-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+/* Active Popup */
+.custom-enquiry-popup.active {
+  display: flex;
+}
+
+/* Popup Box */
+.custom-enquiry-popup-inner {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+/* Heading */
+.custom-enquiry-popup-inner h3 {
+  margin: 0 0 15px;
+  font-size: 24px;
+}
+
+/* Text */
+.popup-text {
+  margin: 15px 0;
+  color: #555;
+}
+
+/* Textarea */
+.custom-enquiry-popup textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 12px;
+  border: 1px solid #000;
+  resize: vertical;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Submit Button */
+.popup-submit-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  background: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Close Button */
+.custom-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/*popup sucess message*/
+.popup-success-message {
+  margin-top: 15px;
+  font-size: 16px;
+  text-align: center;
+  color: #000;
+  font-weight: 600;
+}
+
+.popup-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+
+
+/* This forces the "customize your size" container to not take up the full width */
+/* Styling to make the link look like a "pill" selector */
+.custom-size-link {
+    display: inline-block;
+    margin-top: 7px;
+    margin-left: 0px;
+    margin-bottom: 14px;
+}
+
+@media screen and (max-width:768px){
+.custom-size-link {
+    margin-bottom: 0px;
+}
+}
+
+.custom-size-link a {
+    display: table-cell;
+    padding: 8px 20px; /* Adjust padding for pill size */
+    border: 1px solid #000000; /* Thin black border */
+    border-radius: 0px; /* This makes it pill-shaped */
+    color: #000000;
+    text-decoration: none; /* Removes the underline */
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+/* Hover/Active state to match the selector interaction */
+.custom-size-link a:hover {
+    background-color: #000000;
+    color: #ffffff; /* White text on hover */
+    cursor: pointer;
+}
+
+
+/*anti sleep mats card css*/
+#upsell-checkbox, #anti-stain-checkbox{
+  display:none;
+}
+
+.upsell-card{
+  margin-top:0px;
+  margin-bottom:10px;
+  padding:10px;
+  /*background:#FAFAFA;
+  border:1px solid #ddd;
+  border-radius:8px;*/
+}
+
+.upsell-label{
+  display:flex;
+  align-items:center;
+  font-weight:600;
+  /*justify-content: center;*/
+  gap:10px;
+  cursor:pointer;
+}
+
+/* recently viewed products */
+.recently-viewed-products{
+  margin-top:0px;
+  padding-bottom: 60px !important;
+}
+
+@media screen and (max-width:768px){ 
+.recently-viewed-products{
+  margin-top:0px;
+  padding-bottom: 25px !important;
+}
+}
+
+.recently-viewed-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.recent-product-card img{
+  width:100%;
+  border-radius:8px;
+}
+
+.recent-product-card h3{
+  font-size:16px;
+  margin-top:10px;
+}
+
+.recent-product-card a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.price:not(.price--show-badge) .price-item--last:last-of-type{
+  font-weight: 600;
+}
+
+.price__container{
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.price--on-sale .price-item--regular{
+  font-weight: 500;
+}
+
+.product-form__input--pill input[type=radio]+label{
+  border-radius: 0px!important;
+  padding:10px!important;
+}
+
+.product-form__input .select {
+    max-width: 70%!important;
+}
+
+@media screen and (max-width:768px){
+
+  .recently-viewed-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+
+/*size varient*/
+/* =========================
+SIZE VARIANT DESIGN
+========================= */
+
+.size-ft{
+
+  display:block;
+  font-size:15px;
+  font-weight:500;
+  line-height:1.2;
+
+}
+
+.size-cm{
+
+  display:block;
+  font-size:14px;
+  line-height:1.2;
+  margin-top:4px;
+}
+
+/* SIZE LABEL STYLE */
+
+fieldset input[type="radio"] + label{
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-width:95px;
+  min-height:65px;
+  padding:10px;
+  text-align:center;
+
+}
+
+/* SELECTED */
+
+fieldset input[type="radio"]:checked + label{
+
+  background:#c9b1ad;
+  color:#fff;
+  border-color:#c9b1ad;
+
+}
+
+input[type="checkbox"]:checked {
+    accent-color: #000;
+}
+
+
+/*enquiry form css*/
+#shopify-block-Acjh1cDZxUWxNcnQwS__forms_inline_DH68FG {
+  transition: all 0.3s ease;
+}
+
+
+/*features section custom liquid*/
+.features-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columns */
+  gap: 20px;
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: #f7f5f2; 
+  border-radius: 8px;
+}
+
+.feature-item img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 600px) {
+  .features-container {
+    grid-template-columns: 1fr; /* Stacks to 1 column on small screens */
+  }
+}
+
+/* extra css for responsivness on mobile */
+.title, .title-wrapper-with-link {
+        margin: 0px!important;
+        padding-top: 35px!important;
+        padding-bottom: 15px!important;
+    }
+
+@media screen and (max-width:768px){
+.title, .title-wrapper-with-link {
+        margin: 0px!important;
+        padding-top: 20px!important;
+        padding-bottom: 5px!important;
+    }
+  }
+
+.product__info-container>*+* {
+margin: 10px 0px!important;
+}
+
+@media screen and (max-width:768px){
+.product__info-container>*+* {
+margin: 5px 0px!important;
+  }
+}
+
+.swym-button-bar {
+    margin-top: 0px!important;
+    margin-bottom: 0px!important;
+}
+
+.product__info-container .product-form, .product__info-container .product__description, .product__info-container .icon-with-text {
+    margin-top: 20px!important;
+    margin-bottom: 20px!important;
+}
+
+.mylivechat_collapsed{
+  min-width:auto!important;
+}
+
+/*know your page css*/
+.section-template--18167233118408__custom_liquid_WbqUJK-padding{
+      display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================================
+   UNIVERSAL READ MORE
+   ========================================= */
+
+/* The text area that gets collapsed */
+.read-more-content {
+  overflow: hidden;
+  max-height: 72px;
+  position: relative;
+  transition: max-height 0.4s ease;
+}
+
+/* Expanded text */
+.read-more-content.is-expanded {
+  max-height: 5000px;
+}
+
+
+/* =========================================
+   IMAGE WITH TEXT
+   ========================================= */
+
+.story-read-more .read-more-content {
+  max-height: 90px;
+}
+
+.story-read-more .read-more-content.is-expanded {
+  max-height: 5000px;
+}
+
+
+/* =========================================
+   RICH TEXT
+   ========================================= */
+
+.rich-read-more .read-more-content {
+  max-height: 90px;
+}
+
+.rich-read-more .read-more-content.is-expanded {
+  max-height: 5000px;
+}
+
+
+/* =========================================
+   COLLAPSIBLE CONTENT
+   ========================================= */
+
+.accordion__content .read-more-content {
+  max-height: 72px;
+}
+
+.accordion__content .read-more-content.is-expanded {
+  max-height: 5000px;
+}
+
+
+/* =========================================
+   READ MORE BUTTON
+   ========================================= */
+
+.read-more-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
+/* Hover */
+.read-more-btn:hover {
+  opacity: 0.7;
+}
+
+
+/* Focus */
+.read-more-btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+
+/* =========================================
+   OPTIONAL FADE AT BOTTOM
+   ========================================= */
+
+.read-more-content:not(.is-expanded) {
+  mask-image: linear-gradient(
+    to bottom,
+    black 75%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 75%,
+    transparent 100%
+  );
+}
+
+.read-more-content.is-expanded {
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+/*stair-rugs varients*/
+.select__select{
+  font-size:16px;
+}
+
+/*baskets js*/
+.random-basket-text {
+  font-size: 14px;
+  margin: 10px 0;
+  color: #C7102F;
+}
+
+/* =========================================
+   PRODUCT_DESCRIPTION READ MORE BUTTON
+   ========================================= */
+/* Product description */
+.product__description {
+  position: relative;
+  margin-bottom: 0 !important;
+}
+
+/* EXACTLY 6 LINES */
+.product__description.read-more-enabled {
+  height: 162px !important;
+  max-height: 162px !important;
+  overflow: hidden !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Fade effect */
+.product__description.read-more-enabled::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 65px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5) 25%,
+    rgba(255, 255, 255, 0.9) 65%,
+    #fff 100%
+  );
+}
+
+/* Read More button */
+.product-description-read-more {
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 0 !important;
+  transform: translateX(-50%);
+  z-index: 10 !important;
+  width: max-content !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 8px !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: #fff !important;
+  color: #292929 !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Expanded */
+.product__description.read-more-enabled.is-expanded {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Remove fade */
+.product__description.read-more-enabled.is-expanded::after {
+  display: none;
+}
+
+/* Expanded button */
+.product__description.is-expanded
+.product-description-read-more {
+  position: relative !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: none;
+  margin: 15px auto 0 !important;
+  padding: 8px !important;
+  height: auto !important;
+  background: transparent !important;
+}
+
+/*accordian css*/
+.accordion {
+  border:0px !important;
+}
+
+/* =========================================
+   PRODUCT DETAILS - READ MORE
+   FADE + CENTERED BUTTON
+   ========================================= */
+
+/* Main wrapper */
+.product-details-readmore-active {
+  position: relative !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* =========================================
+   COLLAPSED CONTENT
+   ========================================= */
+
+.product-details-readmore-active
+.product-details-readmore-content {
+  position: relative !important;
+  height: 162px !important;
+  max-height: 162px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+
+/* =========================================
+   FADE EFFECT
+   ========================================= */
+
+.product-details-readmore-active
+.product-details-readmore-fade {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 75px !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+  display: block !important;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.90) 75%,
+    #ffffff 100%
+  ) !important;
+}
+
+
+/* =========================================
+   LEARN MORE BUTTON
+   ========================================= */
+
+.product-details-readmore-active
+.product-details-readmore-button {
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 0 !important;
+  transform: translateX(-50%) !important;
+  z-index: 20 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: max-content !important;
+  min-width: 0 !important;
+  height: 32px !important;
+  margin: 0 !important;
+  padding: 0 8px !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: #ffffff !important;
+  color: #292929 !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+
+
+/* =========================================
+   EXPANDED STATE
+   ========================================= */
+
+.product-details-readmore-active.is-expanded
+.product-details-readmore-content {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+
+/* Remove fade when expanded */
+
+.product-details-readmore-active.is-expanded
+.product-details-readmore-fade {
+  display: none !important;
+}
+
+
+/* Move button below content when expanded */
+
+.product-details-readmore-active.is-expanded
+.product-details-readmore-button {
+  position: relative !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  margin: 15px auto 0 !important;
+  padding: 8px !important;
+  width: max-content !important;
+  height: auto !important;
+  background: transparent !important;
+}
+
+
+/* =========================================
+   ACCORDION
+   ========================================= */
+
+.accordion {
+  border: 0 !important;
+}
+
+
+/* =========================================
+   IMPORTANT:
+   REMOVE DEFAULT ACCORDION CONTENT PADDING
+   ========================================= */
+
+.product-details-readmore-active
+.accordion__content {
+  padding: 0 !important;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media screen and (max-width: 749px) {
+
+  .product-details-readmore-active
+  .product-details-readmore-content {
+    height: 162px !important;
+    max-height: 162px !important;
+  }
+
+  .product-details-readmore-active
+  .product-details-readmore-fade {
+    height: 75px !important;
+  }
+
+  .product-details-readmore-active
+  .product-details-readmore-button {
+    font-size: 14px !important;
+  }
+}
+
+/*accessories menu layout styling*/
+/* ============================================================
+   ACCESSORIES MEGA MENU
+   ============================================================ */
+
+.accessories-menu {
+  position: static;
+}
+
+
+/* ============================================================
+   ACCESSORIES TOP ARROW
+   ============================================================ */
+
+.accessories-menu > summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.accessories-menu > summary .icon-caret {
+  width: 10px;
+  height: 6px;
+  margin: 0;
+  transition: transform 0.2s ease;
+}
+
+.accessories-menu[open] > summary .icon-caret {
+  transform: rotate(180deg);
+}
+
+
+/* ============================================================
+   FULL WIDTH PANEL
+   ============================================================ */
+
+.accessories-menu__panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  width: 100%;
+  background: #ffffff;
+  z-index: 20;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ============================================================
+   INNER
+   ============================================================ */
+
+.accessories-menu__inner {
+  width: 100%;
+  padding: 20px 24px 0;
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
+.accessories-menu__content {
+  width: 100%;
+  background: #ffffff;
+}
+
+
+/* ============================================================
+   SIX CARD GRID
+   ============================================================ */
+
+.accessories-menu__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+}
+
+
+/* ============================================================
+   CARD
+   ============================================================ */
+
+.accessories-menu__card {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 245px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   CARD IMAGE / BACKGROUND
+   ============================================================ */
+
+.accessories-menu__image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  transition: transform 0.35s ease;
+}
+
+
+/* ============================================================
+   IMAGE ZOOM ON HOVER
+   ============================================================ */
+
+.accessories-menu__card:hover .accessories-menu__image {
+  transform: scale(1.02);
+}
+
+
+/* ============================================================
+   DARK OVERLAY
+   ============================================================ */
+
+.accessories-menu__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.22);
+  z-index: 1;
+  transition: background 0.25s ease;
+}
+
+
+/* ============================================================
+   HOVER OVERLAY
+   ============================================================ */
+
+.accessories-menu__card:hover .accessories-menu__overlay {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+
+/* ============================================================
+   CARD TITLE
+   ============================================================ */
+
+.accessories-menu__title {
+  position: absolute;
+  left: 20px;
+  bottom: 68px;
+  z-index: 2;
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 400;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ============================================================
+   ARROW BUTTON
+   ============================================================ */
+
+.accessories-menu__arrow {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: #222222;
+  font-size: 25px;
+  line-height: 1;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+
+/* ============================================================
+   ARROW HOVER
+   ============================================================ */
+
+.accessories-menu__card:hover .accessories-menu__arrow {
+  transform: translateX(3px);
+}
+
+
+/* ============================================================
+   BENEFITS BAR
+   ============================================================ */
+
+.header-benefits-bar {
+  width: 100%;
+  margin-top: 32px;
+  background: #f5f0ea;
+}
+
+
+/* ============================================================
+   BENEFITS INNER
+   ============================================================ */
+
+.header-benefits-bar__inner {
+  width: 100%;
+  min-height: 54px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   BENEFIT
+   ============================================================ */
+
+.header-benefit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #171717;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   BENEFIT ICON
+   ============================================================ */
+
+.header-benefit__icon {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.header-benefit__icon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+
+/* ============================================================
+   LARGE TABLET
+   ============================================================ */
+
+@media screen and (max-width: 1200px) {
+
+  .accessories-menu__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .accessories-menu__card {
+    height: 220px;
+  }
+
+}
+
+
+/* ============================================================
+   TABLET / MOBILE
+   ============================================================ */
+
+@media screen and (max-width: 749px) {
+
+  .accessories-menu__inner {
+    padding: 15px;
+  }
+
+  .accessories-menu__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .accessories-menu__card {
+    height: 200px;
+  }
+
+  .accessories-menu__title {
+    left: 15px;
+    bottom: 60px;
+    font-size: 17px;
+  }
+
+  .accessories-menu__arrow {
+    left: 15px;
+    bottom: 15px;
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
+  }
+
+  .header-benefits-bar {
+    margin-top: 20px;
+  }
+
+  .header-benefits-bar__inner {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 15px;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media screen and (max-width: 480px) {
+
+  .accessories-menu__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .accessories-menu__card {
+    height: 210px;
+  }
+
+}
+
+/*Projects menu layout styling*/
+/* =================================================
+     PROJECTS MEGA MENU STYLES (100% WIDTH FIX)
+     ================================================= */
+  .jaipur-proj-menu {
+    position: absolute !important;
+    top: 100% !important;
+    /* This math perfectly centers it and forces 100% screen width regardless of Shopify's containers */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100vw !important;
+    background: #ffffff;
+    border-top: 1px solid #eaeaea;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.04);
+    z-index: 99999;
+    padding: 10px 0px 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  details[open] > .jaipur-proj-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .jaipur-proj-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    gap: 0;
+    min-height: 450px;
+  }
+
+  .jaipur-proj-nav {
+    flex: 0 0 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding-top: 30px;
+    padding-right: 40px;
+  }
+
+  /* Sub-menu hover links */
+  .jaipur-proj-link {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #111;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 0;
+    display: block;
+    width: fit-content;
+  }
+
+  .jaipur-proj-link:hover, 
+  .jaipur-proj-link.is-active {
+    color: #565454; 
+  }
+
+  /* Distinct View All Link */
+  .jaipur-proj-link-viewall {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #111;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-top: 10px;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .jaipur-proj-link-viewall:hover {
+    color: #565454;
+  }
+
+  .jaipur-proj-content {
+    flex: 0 0 35%;
+    padding: 30px 60px 0 40px;
+    border-left: 1px solid #e0e0e0;
+    transition: opacity 0.3s ease;
+  }
+
+  .jaipur-proj-title {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #111;
+  }
+
+  .jaipur-proj-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+  }
+
+  .jaipur-proj-visual {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .jaipur-proj-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+  }
+
+  /*remove product badge*/
+  .badge.price__badge-sold-out.color-scheme-3,
+.price__badge-sold-out {
+  display: none !important;
+}
+
+
+/* Main product image */
+.product__media-list .product__media {
+  position: relative !important;
+}
+
+.product__media-list .irs-product-logo {
+  position: absolute !important;
+  top: 15px !important;
+  right: 15px !important;
+  left: auto !important;
+  bottom: auto !important;
+  width: 75px !important;
+  height: 75px !important;
+  object-fit: contain !important;
+  z-index: 99 !important;
+  pointer-events: none !important;
+}
+
+@media screen and (max-width: 749px) {
+  .product__media-list .irs-product-logo {
+    top: 10px !important;
+    right: 10px !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+
+/* Add Including Shipping after the displayed product price */
+.price__regular .price-item--regular::after,
+.price__sale .price-item--sale::after {
+    content: " Including Shipping";
+    font-size: inherit;
+    font-weight: 500;
+    color: inherit;
+}

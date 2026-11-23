@@ -1,0 +1,420 @@
+{% comment %}
+  Renders product variant-picker
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} Id of the product form to which the variant picker is associated.
+  - update_url: {Boolean} whether or not to update url when changing variants. If false, the url isn't updated. Default: true (optional).
+  Usage:
+  {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+{% endcomment %}
+{%- unless product.has_only_default_variant -%}
+  <variant-selects
+    id="variant-selects-{{ section.id }}"
+    class="no-js-hidden"
+    data-section="{{ section.id }}"
+    data-url="{{ product.url }}"
+    {% if update_url == false %}
+      data-update-url="false"
+    {% endif %}
+    {{ block.shopify_attributes }}
+  >
+    {%- for option in product.options_with_values -%} 
+
+    
+
+      {%- liquid
+        assign swatch_count = option.values | map: 'swatch' | compact | size
+        assign picker_type = block.settings.picker_type
+
+        if swatch_count > 0 and block.settings.swatch_shape != 'none'
+          if block.settings.picker_type == 'dropdown'
+            assign picker_type = 'swatch_dropdown'
+          else
+            assign picker_type = 'swatch'
+          endif
+        endif
+      -%}
+      {%- if picker_type == 'swatch' -%}
+        <fieldset class="js product-form__input product-form__input--swatch">
+          <legend class="form__label">
+            {{ option.name }}:
+            <span data-selected-swatch-value="{{ option.name }}">
+              {{- option.selected_value -}}
+            </span>
+          </legend>
+          {% render 'product-variant-options',
+            product: product,
+            option: option,
+            block: block,
+            picker_type: picker_type
+          %}
+        </fieldset>
+      {%- elsif picker_type == 'button' -%}
+        <fieldset class="js product-form__input product-form__input--pill">
+          <legend class="form__label">{{ option.name }}</legend>
+          {% render 'product-variant-options',
+            product: product,
+            option: option,
+            block: block,
+            picker_type: picker_type
+          %}
+
+         
+          {% assign option_name = option.name | downcase %}
+
+{% if option_name contains 'size' %}
+      <div class="custom-size-link">
+        <a href="/pages/customize-rug">
+          Custom size order are accepted
+        </a>
+      </div>
+    {% endif %}
+    
+
+        </fieldset>
+      {%- else -%}
+        <div class="product-form__input product-form__input--dropdown">
+          <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+            {{ option.name }}
+          </label>
+          <div class="select">
+            {%- if picker_type == 'swatch_dropdown' -%}
+              <span
+                data-selected-dropdown-swatch="options[{{ option.name | escape }}]"
+                class="dropdown-swatch"
+              >
+                {% render 'swatch', swatch: option.selected_value.swatch, shape: block.settings.swatch_shape %}
+              </span>
+            {%- endif -%}
+            <select
+              id="Option-{{ section.id }}-{{ forloop.index0 }}"
+              class="select__select"
+              name="options[{{ option.name | escape }}]"
+              form="{{ product_form_id }}"
+            >
+
+              {% if template.name == 'product' and template.suffix == 'stair-rugs' %}
+                <option value="" selected>Select an option</option>
+              {% endif %}
+
+              {% render 'product-variant-options',
+                product: product,
+                option: option,
+                block: block,
+                picker_type: picker_type
+              %}
+            </select>
+            {% render 'icon-caret' %}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+    <script type="application/json">
+      {{ product.variants | json }}
+    </script>
+  </variant-selects>
+
+
+ 
+
+
+
+{% if template.name == 'product' and template.suffix == 'stair-rugs' %}
+<script>
+(function () {
+  const sectionId = {{ section.id | json }};
+  const variants = {{ product.variants | json }};
+
+  const inventory = {
+    {% for variant in product.variants %}
+      {{ variant.id | json }}: {
+        available: {{ variant.available | json }},
+        quantity: {{ variant.inventory_quantity | json }},
+        management: {{ variant.inventory_management | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };
+
+  function formatPrice(cents) {
+    return 'US$' + (Number(cents) / 100).toFixed(2);
+  }
+
+  function inStock(variant) {
+    const data = inventory[variant.id];
+
+    if (!data || !data.available) return false;
+    if (!data.management) return true;
+
+    return Number(data.quantity) > 0;
+  }
+
+  // Format Size labels with inch and centimetre dimensions.
+  function formatSizeLabel(label) {
+    const match = label.match(
+      /^(\s*(?:Landing\s+|Runner\s+)?)?(\d+(?:\.\d+)?)\s*(?:["'″′])?\s*[xX×]\s*(\d+(?:\.\d+)?)\s*(?:["'″′])?\s*(?:INCH(?:ES)?|INC\.?|IN\.?)?\s*$/i
+    );
+
+    // Keep custom size codes unchanged.
+    if (!match) return label;
+
+    const prefix = match[1] || '';
+    const width = Number(match[2]);
+    const length = Number(match[3]);
+
+    const cmWidth = Math.round(width * 2.54);
+    const cmLength = Math.round(length * 2.54);
+
+    return prefix +
+      width + '"x' + length + '" Inch (' +
+      cmWidth + 'x' + cmLength + ' cm)';
+  }
+
+  function initialize() {
+    const picker = document.getElementById(
+      'variant-selects-' + sectionId
+    );
+
+    if (!picker) return;
+
+    const selects = Array.from(
+      picker.querySelectorAll('select[name^="options["]')
+    );
+
+    const targetIndices = selects
+      .map((select, index) => ({
+        index: index,
+        name: select.name.toLowerCase()
+      }))
+      .filter(item =>
+        item.name.includes('size') ||
+        item.name.includes('quantity')
+      )
+      .map(item => item.index);
+
+    if (targetIndices.length === 0) {
+      console.warn('Size or Quantity variant dropdown not found.');
+      return;
+    }
+
+    const originalValues = selects.map(select =>
+      Array.from(select.options)
+        .filter(option => option.value !== '')
+        .map(option => ({
+          value: option.value,
+          text: option.textContent.trim()
+        }))
+    );
+
+    let processing = false;
+    let scheduled = false;
+    let initialized = false;
+
+    function updateDropdowns() {
+      if (processing) return;
+
+      processing = true;
+
+      try {
+        const selectedValues = selects.map(select => select.value);
+
+        targetIndices.forEach(targetIndex => {
+          const targetSelect = selects[targetIndex];
+
+          if (!targetSelect || !targetSelect.isConnected) return;
+
+          const previousValue = targetSelect.value;
+          const isSize = targetSelect.name.toLowerCase().includes('size');
+
+          const validOptions = originalValues[targetIndex]
+            .map(item => {
+
+              // Only include available variants.
+              const matching = variants.filter(variant => {
+                if (!inStock(variant)) return false;
+
+                if (variant.options[targetIndex] !== item.value) {
+                  return false;
+                }
+
+                // Size: show if at least one available variant exists.
+                if (isSize) return true;
+
+                // Quantity: respect other selected options.
+                return selectedValues.every((selected, index) => {
+                  if (index === targetIndex) {
+                    return variant.options[index] === item.value;
+                  }
+
+                  return !selected ||
+                    variant.options[index] === selected;
+                });
+              });
+
+              // Hide options without any matching available variant.
+              if (!matching.length) return null;
+
+              const label = item.text.split(':')[0].trim();
+
+              return {
+                value: item.value,
+                text: isSize
+                  ? formatSizeLabel(label)
+                  : label + ': ' + formatPrice(matching[0].price)
+              };
+
+            })
+            .filter(Boolean);
+
+          const currentOptions = Array.from(targetSelect.options);
+
+          const needsUpdate =
+            currentOptions.length !== validOptions.length + 1 ||
+            currentOptions[0]?.value !== '' ||
+            validOptions.some(item => {
+              const existing = currentOptions.find(
+                option => option.value === item.value
+              );
+
+              return !existing ||
+                existing.textContent !== item.text;
+            });
+
+          if (!needsUpdate) return;
+
+          const fragment = document.createDocumentFragment();
+
+          const placeholder = document.createElement('option');
+          placeholder.value = '';
+          placeholder.textContent = 'Select an option';
+          placeholder.disabled = false;
+          placeholder.selected = true;
+
+          fragment.appendChild(placeholder);
+
+          validOptions.forEach(item => {
+            const option = document.createElement('option');
+
+            option.value = item.value;
+            option.textContent = item.text;
+
+            fragment.appendChild(option);
+          });
+
+          targetSelect.replaceChildren(fragment);
+
+          if (
+            initialized &&
+            previousValue &&
+            validOptions.some(item => item.value === previousValue)
+          ) {
+            targetSelect.value = previousValue;
+          } else {
+            targetSelect.value = '';
+          }
+        });
+
+        initialized = true;
+
+      } finally {
+        processing = false;
+      }
+    }
+
+    function scheduleUpdate() {
+      if (scheduled) return;
+
+      scheduled = true;
+
+      requestAnimationFrame(() => {
+        scheduled = false;
+        updateDropdowns();
+      });
+    }
+
+    updateDropdowns();
+
+    picker.addEventListener('change', scheduleUpdate);
+
+    const observer = new MutationObserver(scheduleUpdate);
+
+    observer.observe(picker, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+
+    window.addEventListener('pageshow', scheduleUpdate);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize);
+  } else {
+    initialize();
+  }
+
+})();
+</script>
+{% endif %}
+
+
+
+
+
+
+
+{%- endunless -%}
+
+<noscript class="product-form__noscript-wrapper-{{ section.id }}">
+  <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
+    <label class="form__label" for="Variants-{{ section.id }}">
+      {{- 'products.product.product_variants' | t -}}
+    </label>
+    <div class="select">
+      <select
+        name="id"
+        id="Variants-{{ section.id }}"
+        class="select__select"
+        form="{{ product_form_id }}"
+      >
+        {%- for variant in product.variants -%}
+          <option
+            {% if variant == product.selected_or_first_available_variant %}
+              selected="selected"
+            {% endif %}
+            {% if variant.available == false %}
+              disabled
+            {% endif %}
+            value="{{ variant.id }}"
+          >
+            {%- liquid
+              echo variant.title
+              echo variant.price | money | strip_html | prepend: ' - '
+              if variant.available == false
+                echo 'products.product.sold_out' | t | prepend: ' - '
+              endif
+              if variant.quantity_rule.increment > 1
+                echo 'products.product.quantity.multiples_of' | t: quantity: variant.quantity_rule.increment | prepend: ' - '
+              endif
+              if variant.quantity_rule.min > 1
+                echo 'products.product.quantity.minimum_of' | t: quantity: variant.quantity_rule.min | prepend: ' - '
+              endif
+              if variant.quantity_rule.max != null
+                echo 'products.product.quantity.maximum_of' | t: quantity: variant.quantity_rule.max | prepend: ' - '
+              endif
+              # TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter
+              # theme-check-disable
+              assign cart_quantity = cart | item_count_for_variant: variant.id
+              # theme-check-enable
+              if cart_quantity > 0
+                echo 'products.product.quantity.in_cart_html' | t: quantity: cart_quantity | prepend: ' - '
+              endif
+            -%}
+          </option>
+        {%- endfor -%}
+      </select>
+      {% render 'icon-caret' %}
+    </div>
+  </div>
+</noscript>

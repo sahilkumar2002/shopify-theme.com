@@ -1,0 +1,132 @@
+{% comment %}
+  Renders a luxury editorial megamenu for the header.
+  Includes multi-column sub-navigation, subtle underline slides,
+  and an optional featured image promo card per top-level link.
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      {%- liquid
+        assign featured_promo = nil
+        assign link_title_downcase = link.title | downcase | strip
+        for block in section.blocks
+          if block.type == 'mega_menu_promo'
+            assign block_menu_item = block.settings.menu_item | downcase | strip
+            if block_menu_item == link_title_downcase
+              assign featured_promo = block
+              break
+            endif
+          endif
+        endfor
+      -%}
+      <li>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset"
+              >
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | escape -}}
+                </span>
+                {% render 'icon-caret' %}
+              </summary>
+              <div
+                id="MegaMenu-Content-{{ forloop.index }}"
+                class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                tabindex="-1"
+              >
+                <div class="luxury-mega-menu-wrapper">
+                  <div class="luxury-mega-menu__columns">
+                    {%- for childlink in link.links -%}
+                      <div class="luxury-mega-menu__column">
+                        <a
+                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                          href="{{ childlink.url }}"
+                          class="luxury-mega-menu__column-title underline-slide"
+                        >
+                          {{ childlink.title | escape }}
+                        </a>
+                        {%- if childlink.links != blank -%}
+                          <ul class="luxury-mega-menu__links" role="list">
+                            {%- for grandchildlink in childlink.links -%}
+                              <li>
+                                <a
+                                  id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                  href="{{ grandchildlink.url }}"
+                                  class="luxury-mega-menu__link underline-slide"
+                                  {% if grandchildlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                >
+                                  {{ grandchildlink.title | escape }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      </div>
+                    {%- endfor -%}
+                  </div>
+
+                  {%- if featured_promo != blank and featured_promo.settings.image != blank -%}
+                    <a
+                      href="{{ featured_promo.settings.link | default: link.url }}"
+                      class="luxury-mega-menu__promo"
+                      {{ featured_promo.shopify_attributes }}
+                    >
+                      <div class="luxury-mega-menu__promo-image-box">
+                        {{ featured_promo.settings.image | image_url: width: 600 | image_tag:
+                          loading: 'lazy',
+                          widths: '300, 450, 600',
+                          alt: featured_promo.settings.heading | default: link.title
+                        }}
+                      </div>
+                      <div class="luxury-mega-menu__promo-content">
+                        {%- if featured_promo.settings.heading != blank -%}
+                          <h4 class="luxury-mega-menu__promo-heading">{{ featured_promo.settings.heading | escape }}</h4>
+                        {%- endif -%}
+                        {%- if featured_promo.settings.subtext != blank -%}
+                          <p class="luxury-mega-menu__promo-subtext">{{ featured_promo.settings.subtext | escape }}</p>
+                        {%- endif -%}
+                        <span class="luxury-mega-menu__promo-cta">
+                          Explore Collection <span aria-hidden="true">&rarr;</span>
+                        </span>
+                      </div>
+                    </a>
+                  {%- endif -%}
+                </div>
+              </div>
+            </details>
+          </header-menu>
+        {%- else -%}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

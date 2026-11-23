@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page-careers",
+      "settings": {
+        "eyebrow": "Craftsmanship & Human Purpose",
+        "heading": "Join Our Design & Artisan Sanctuary",
+        "subheading": "At Indian Rug Store, we cultivate human dignity, preserve a 2,500-year-old Rajasthani weaving heritage, and craft bespoke museum-grade heirlooms for architectural spaces worldwide."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
